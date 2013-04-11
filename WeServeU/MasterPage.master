@@ -33,11 +33,11 @@
 
     <div id="navBar">
         <ul>
-            <li><a href="services.aspx">Services</a></li>
-            <li><a href="aboutUs.aspx">About US</a></li>
-            <li><a href="contact.aspx">Contact</a></li>
-            <li><a href="requestServices.aspx">Request Services</a></li>
-            <li><a href="login.aspx">Login</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">About US</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Request Services</a></li>
+            <li><a href="">Login</a></li>
         </ul> 
 
     </div>
