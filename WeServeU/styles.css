@@ -1,0 +1,106 @@
+﻿body {
+    padding: 0px;
+    border: 0px;
+}
+
+#wrapper {
+    width: 1000px;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header {
+    width: 1000px;
+    height: 200px;
+    padding-bottom: 5px;
+    background-image:url('images/banner.jpg');
+    background-size:auto;
+    background-repeat:no-repeat;
+    position:relative;
+}
+
+    #header #logo {
+        float: left;
+        width: 350px;
+        padding: 5px 0px 0px 20px;
+    }
+
+    #header #infoHeader {
+        width: 300px;
+        float: right;
+        font: verdana;
+        text-align: right;
+    }
+
+    #header h1 {
+        font-size: 12px;
+    }
+
+    #header h2 {
+        font-size: 10px;
+    }
+
+#navBar {
+    width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	list-style: none;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+}
+
+#navBar ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+
+}
+
+#navBar li
+{
+display:inline;
+float:left;
+
+}
+
+#navBar li a { display: block;
+		padding: 8px 15px;
+		text-decoration: none;
+		font-weight: bold;
+		color: #069;
+		border-right: 1px solid #ccc;
+        text-align: center;
+        width: 120px;
+}
+
+#navBar a:visited { color: #0268a9; }
+
+#navBar li a:hover {
+		color: #c00;
+		background-color: #fff; }
+
+#navBar a:focus { outline: thin dotted; }
+
+#mainContainer {
+    min-height: 600px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.footerText {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer {
+    width: 1000px;
+    border: 1px solid #ccc;
+}
+
+
+
+
+

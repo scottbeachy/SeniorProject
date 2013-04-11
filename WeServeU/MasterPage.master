@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        WeServeU.biz
+    </title>
+    <link href="styles.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="wrapper">
+    
+    <div id="header">
+        <div id="logo">
+            <img src="images/logo.png" />
+
+        </div>
+
+        <div id="infoHeader">
+          
+            <h1>A FUTURISTIC PROCESS SERVING & TECHNOLOGY AGENCY</h1>
+            <h2>1(888)555-5555</h2>
+
+
+        </div>
+    </div>
+
+    <div id="navBar">
+        <ul>
+            <li><a href="services.aspx">Services</a></li>
+            <li><a href="aboutUs.aspx">About US</a></li>
+            <li><a href="contact.aspx">Contact</a></li>
+            <li><a href="requestServices.aspx">Request Services</a></li>
+            <li><a href="login.aspx">Login</a></li>
+        </ul> 
+
+    </div>
+
+    <div id="mainContainer">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+
+    <div id="footer">
+        <p class="footerText">
+            Copyright 2013 www.weserveu.biz
+        </p>
+    </div>
+
+    </div>
+    </form>
+</body>
+</html>
