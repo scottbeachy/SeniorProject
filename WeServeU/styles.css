@@ -31,6 +31,7 @@
         float: right;
         font: verdana;
         text-align: right;
+        margin-right:10px;
     }
 
     #header h1 {
@@ -73,7 +74,7 @@ float:left;
 		color: #069;
 		border-right: 1px solid #ccc;
         text-align: center;
-        width: 120px;
+        width: 135px;
 }
 
 #navBar a:visited { color: #0268a9; }
