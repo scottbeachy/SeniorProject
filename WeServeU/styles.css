@@ -35,21 +35,23 @@
     }
 
     #header h1 {
-        font-size: 12px;
+        font-size: 14px;
+        font-family:Tahoma;
     }
 
     #header h2 {
         font-size: 10px;
+        font-family:Tahoma;
     }
 
 #navBar {
-    width: 100%;
-	float: left;
-	margin: 0 0 3em 0;
+    width: auto;
+	height:36px;
+	margin: 0;
 	padding: 0;
 	list-style: none;
 	background-color: #f2f2f2;
-	border: 1px solid #ccc;
+	
 }
 
 #navBar ul
@@ -64,6 +66,8 @@ padding:0;
 {
 display:inline;
 float:left;
+width:20%;
+
 
 }
 
@@ -72,9 +76,9 @@ float:left;
 		text-decoration: none;
 		font-weight: bold;
 		color: #069;
-		border-right: 1px solid #ccc;
+		border:1px solid #ccc;
         text-align: center;
-        width: 135px;
+        
 }
 
 #navBar a:visited { color: #0268a9; }
@@ -97,8 +101,9 @@ float:left;
 }
 
 #footer {
-    width: 1000px;
+    width: auto;
     border: 1px solid #ccc;
+    text-align:center;
 }
 
 
