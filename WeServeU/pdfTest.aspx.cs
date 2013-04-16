@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-//add itextsharp using references
+//add iTextSharp using references
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
