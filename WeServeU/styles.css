@@ -1,6 +1,6 @@
 ﻿body {
     padding: 0px;
-    border: 0px;
+    margin:0px;
 }
 
 #wrapper {
@@ -78,14 +78,17 @@ width:20%;
 		color: #069;
 		border:1px solid #ccc;
         text-align: center;
+        background-image:url('images/backgrad4.png');
         
 }
 
 #navBar a:visited { color: #0268a9; }
 
-#navBar li a:hover {
-		color: #c00;
-		background-color: #fff; }
+    #navBar li a:hover
+    {
+        color: #c00;
+        background-image: url('images/backgrad5.png');
+    }
 
 #navBar a:focus { outline: thin dotted; }
 
@@ -93,6 +96,7 @@ width:20%;
     min-height: 600px;
     border: 1px solid #ccc;
     margin-top: 5px;
+    padding:5px;
 }
 
 .footerText {
