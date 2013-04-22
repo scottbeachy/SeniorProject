@@ -110,7 +110,18 @@ width:20%;
     text-align:center;
 }
 
+.createAcctLbl
+{
+    width: 100px;
+    display: inline-block;
+}
 
+.createAcctTxt
+{
+    margin-right: 60px;
+}
 
-
-
+.createAcctSubmitBtn
+{
+    margin-left: 100px;
+}

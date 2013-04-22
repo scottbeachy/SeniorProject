@@ -9,6 +9,9 @@ public partial class requestServices : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+    }
+    protected void TxtFname_TextChanged(object sender, EventArgs e)
+    {
+        TxtFname.Text = "";
     }
 }
