@@ -12,7 +12,8 @@
         <asp:RequiredFieldValidator ID="valCstUser" runat="server" ErrorMessage="*" ControlToValidate="txtCstUser"  ForeColor="Red" ValidationGroup="cstLogintxt"></asp:RequiredFieldValidator><br />
         <asp:Label ID="Label2" runat="server" Text="Password:" CssClass="lblLogin"></asp:Label><asp:TextBox ID="txtCstPass" runat="server" TextMode="Password" CssClass="txtLogin"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valCstPass" runat="server" ErrorMessage="*" ControlToValidate="txtCstPass" ForeColor="Red" ValidationGroup="cstLogintxt"></asp:RequiredFieldValidator><br /><br />
-        <asp:Button ID="btnCstLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="cstLogintxt" OnClick="btnCstLogin_Click"/>
+        <asp:Button ID="btnCstLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="cstLogintxt" OnClick="btnCstLogin_Click"/><br />
+        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
     </div>
 
     <div id="empLoginPnl">

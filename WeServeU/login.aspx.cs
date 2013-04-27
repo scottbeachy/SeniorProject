@@ -15,27 +15,68 @@ using System.Configuration;
 
 public partial class login : System.Web.UI.Page
 {
+
+    string perm;
+    string fname;
+    string lname;
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        lblError.Visible = false;
     }
     protected void btnCstLogin_Click(object sender, EventArgs e)
     {
-       //Trying to create a Test Connection. Works! Yay!
-        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-        SqlConnection conn = new SqlConnection(connection);
-        //conn.Open();
-
-
-        SqlCommand cmd = new SqlCommand("SELECT * from Customer", conn);
-        conn.Open();
-        SqlDataReader dr = cmd.ExecuteReader();
-
-        while (dr.Read())
+       //Customer Login Code
+        lblError.Visible = false;
+        //Try to Login and catch the exception
+        try
         {
-            //this didn't work so well but it did read data, I just couldnt figure out how to read it sequentially.
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+
+            SqlCommand cmd = new SqlCommand("SELECT CPerm, CFName, CLName from Customer where CUser = @CUser and CPass = @CPass", conn);
+            cmd.Parameters.AddWithValue("@CUser", txtCstUser.Text);
+            cmd.Parameters.AddWithValue("@CPass", txtCstPass.Text);
+
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                perm = dr[0].ToString();
+                fname = dr[1].ToString();
+                lname = dr[2].ToString();
+
+            }
+            dr.Close();
+            conn.Close();
+            if (perm == null)
+            {
+                lblError.Text = "Your login was incorrect. Please try again. ";
+                lblError.Visible = true;
+                txtCstPass.Text = "";
+            }
+            else 
+            {
+                Session["Perm"] = perm;
+                Session["CFname"] = fname;
+                Session["CLname"] = lname;
+                Response.Redirect("CustomerHome.aspx");
+            }
+
+            
+            
+
         }
-        dr.Close();
-        conn.Close();
+        catch (SqlException ex)
+        {
+            //Bad connection or something else happened 
+            lblError.Text = "Something happened to your connection. Please try again later. ";
+            lblError.Visible = true;
+            txtCstPass.Text = "";
+            txtCstUser.Text = "";
+        }
+        
     }
 }

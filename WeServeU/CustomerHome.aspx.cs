@@ -9,6 +9,16 @@ public partial class CustomerHome : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Perm"] == null)
+        {
+            Response.Redirect("login.aspx");
+        }
 
+        if(!Session["Perm"].Equals("C"))
+        {
+            Response.Redirect("login.aspx");
+             
+        }
+        
     }
 }
