@@ -13,7 +13,7 @@
         <asp:Label ID="Label2" runat="server" Text="Password:" CssClass="lblLogin"></asp:Label><asp:TextBox ID="txtCstPass" runat="server" TextMode="Password" CssClass="txtLogin"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valCstPass" runat="server" ErrorMessage="*" ControlToValidate="txtCstPass" ForeColor="Red" ValidationGroup="cstLogintxt"></asp:RequiredFieldValidator><br /><br />
         <asp:Button ID="btnCstLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="cstLogintxt" OnClick="btnCstLogin_Click"/><br />
-        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+        <asp:Label ID="lblCstError" runat="server" ForeColor="Red"></asp:Label>
     </div>
 
     <div id="empLoginPnl">
@@ -25,9 +25,10 @@
         <asp:Label ID="Label4" runat="server" Text="Password:" CssClass="lblLogin"></asp:Label><asp:TextBox ID="txtEmpPass" runat="server" TextMode="Password" CssClass="txtLogin"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valEmpPass" runat="server" ErrorMessage="*" ControlToValidate="txtEmpPass" ForeColor="Red" ValidationGroup="empLogintxt"></asp:RequiredFieldValidator><br />
         <br />
-        <asp:Button ID="btnEmpLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="empLogintxt"/>
+        <asp:Button ID="btnEmpLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="empLogintxt" OnClick="btnEmpLogin_Click"/>
+        <asp:Label ID="lblEmpError" runat="server" ForeColor="Red"></asp:Label>
     </div>
-    <div id="testDiv" runat="server"></div>
+    <%--<div id="testDiv" runat="server"></div>--%>
 
 
 

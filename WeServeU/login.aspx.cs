@@ -23,12 +23,13 @@ public partial class login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblError.Visible = false;
+        lblCstError.Visible = false;
+        lblEmpError.Visible = false;
     }
     protected void btnCstLogin_Click(object sender, EventArgs e)
     {
        //Customer Login Code
-        lblError.Visible = false;
+        lblCstError.Visible = false;
         //Try to Login and catch the exception
         try
         {
@@ -53,8 +54,8 @@ public partial class login : System.Web.UI.Page
             conn.Close();
             if (perm == null)
             {
-                lblError.Text = "Your login was incorrect. Please try again. ";
-                lblError.Visible = true;
+                lblCstError.Text = "Your login was incorrect. Please try again. ";
+                lblCstError.Visible = true;
                 txtCstPass.Text = "";
             }
             else 
@@ -72,10 +73,69 @@ public partial class login : System.Web.UI.Page
         catch (SqlException ex)
         {
             //Bad connection or something else happened 
-            lblError.Text = "Something happened to your connection. Please try again later. ";
-            lblError.Visible = true;
+            lblCstError.Text = "Something happened to your connection. Please try again later. ";
+            lblCstError.Visible = true;
             txtCstPass.Text = "";
             txtCstUser.Text = "";
+        }
+        
+    }
+    protected void btnEmpLogin_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+
+            SqlCommand cmd = new SqlCommand("SELECT EmpPerm, EmpFName, EmpLName from Employee where EmpUser = @EmpUser and EmpPass = @EmpPass", conn);
+            cmd.Parameters.AddWithValue("@EmpUser", txtEmpUser.Text);
+            cmd.Parameters.AddWithValue("@EmpPass", txtEmpPass.Text);
+
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                perm = dr[0].ToString();
+                fname = dr[1].ToString();
+                lname = dr[2].ToString();
+
+            }
+            dr.Close();
+            conn.Close();
+            if (perm == null)
+            {
+                lblEmpError.Text = "Your login was incorrect. Please try again. ";
+                lblEmpError.Visible = true;
+                txtEmpPass.Text = "";
+            }
+            else
+            {
+                Session["Perm"] = perm;
+                Session["CFname"] = fname;
+                Session["CLname"] = lname;
+
+                if (perm == "E")
+                {
+                    Response.Redirect("EmpHome.aspx");
+                }
+                if(perm == "A")
+                {
+                    Response.Redirect("AdminHome.aspx");
+                }
+            }
+
+
+
+
+        }
+        catch (SqlException ex)
+        {
+            //Bad connection or something else happened 
+            lblEmpError.Text = "Something happened to your connection. Please try again later. ";
+            lblEmpError.Visible = true;
+            txtEmpPass.Text = "";
+            txtEmpUser.Text = "";
         }
         
     }

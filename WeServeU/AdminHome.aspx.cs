@@ -9,6 +9,15 @@ public partial class AdminHome : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Perm"] == null)
+        {
+            Response.Redirect("login.aspx");
+        }
 
+        if (!Session["Perm"].Equals("A"))
+        {
+            Response.Redirect("login.aspx");
+
+        }
     }
 }

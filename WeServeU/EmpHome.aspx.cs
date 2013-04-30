@@ -9,6 +9,15 @@ public partial class EmpHome : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Perm"] == null)
+        {
+            Response.Redirect("login.aspx");
+        }
 
+        if (!Session["Perm"].Equals("E"))
+        {
+            Response.Redirect("login.aspx");
+
+        }
     }
 }
