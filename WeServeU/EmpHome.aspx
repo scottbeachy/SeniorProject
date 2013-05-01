@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    This is the logged in Employee Page
+    <div class="welcomeBox">
+        <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
+    </div>
 </asp:Content>
 

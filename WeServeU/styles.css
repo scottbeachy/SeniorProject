@@ -176,3 +176,11 @@ width:166px;
     margin-bottom: 15px;
     font: bold 14px tahoma;
 }
+.welcomeBox
+{
+    height: 30px;
+    text-align: right;
+    padding: 3px;
+    margin-right: 5px;
+    font: bold 16px verdana;
+}

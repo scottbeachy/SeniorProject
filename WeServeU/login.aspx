@@ -28,7 +28,7 @@
         <asp:Button ID="btnEmpLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="empLogintxt" OnClick="btnEmpLogin_Click"/>
         <asp:Label ID="lblEmpError" runat="server" ForeColor="Red"></asp:Label>
     </div>
-    <%--<div id="testDiv" runat="server"></div>--%>
+    
 
 
 
