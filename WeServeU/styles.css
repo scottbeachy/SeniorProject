@@ -1,6 +1,7 @@
 ﻿body {
     padding: 0px;
     margin:0px;
+    font-family:Tahoma;
 }
 
 #wrapper {
@@ -29,7 +30,6 @@
     #header #infoHeader {
         width: 300px;
         float: right;
-        font: verdana;
         text-align: right;
         margin-right:10px;
     }
@@ -74,7 +74,6 @@ width:166px;
 #navBar li a { display: block;
 		padding: 8px 15px;
 		text-decoration: none;
-		font-weight: bold;
 		color: #069;
 		border:1px solid #ccc;
         text-align: center;
@@ -182,5 +181,34 @@ width:166px;
     text-align: right;
     padding: 3px;
     margin-right: 5px;
-    font: bold 16px verdana;
+    font: bold 16px Tahoma;
 }
+.adminDashboard
+{
+    border-bottom: 2px solid #ccc;
+    margin:-5px;
+    padding:2px;
+    background-color:#EFEFEF;
+    
+}
+.adminDashboard h2
+{
+    font:bold 18px Tahoma;
+    margin:1px;
+    padding:1px;
+    
+}
+
+.lblDash 
+{
+    width: 200px;
+    font-family: Tahoma;
+    margin:2px 15px 2px 135px;
+}
+.btnDash
+{
+    width: 250px;
+    font: bold 14px tahoma;
+    margin: 8px 25px 8px 350px;    
+}
+

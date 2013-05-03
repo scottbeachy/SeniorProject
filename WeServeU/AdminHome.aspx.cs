@@ -18,6 +18,8 @@ public partial class AdminHome : System.Web.UI.Page
     string fname;
     string lname;
     string perm;
+    //string date1;
+    //string date2;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -41,5 +43,20 @@ public partial class AdminHome : System.Web.UI.Page
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+    }
+    protected void btnUpdateWrk_Click(object sender, EventArgs e)
+    {
+        //date1 = txtWrkDate1.Text;
+        //date2 = txtWrkDate2.Text;
+        //Session["workOrderDate1"] = date1;
+        //Session["workOrderDate2"] = date2;
+        //Response.Redirect("UpdateWorkOrder.aspx");
+        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connection);
+        SqlCommand cmd = new SqlCommand("SELECT WorkOrderID from WorkOrder WHERE WDateCreated BETWEEN @date1 AND @date2", conn);
+        cmd.Parameters.AddWithValue("date1", txtWrkDate1.Text);
+        cmd.Parameters.AddWithValue("date2", txtWrkDate2.Text);
+
+
     }
 }
