@@ -211,4 +211,9 @@ width:166px;
     font: bold 14px tahoma;
     margin: 8px 25px 8px 350px;    
 }
+.updateTable
+{
+    width: 100%;
+    border: none;
+}
 
