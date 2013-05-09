@@ -114,23 +114,6 @@ width:166px;
     clear:both;
 }
 
-.createAcctLbl
-{
-    width: 100px;
-    display: inline-block;
-}
-
-.createAcctTxt
-{
-    margin-right: 60px;
-}
-
-.createAcctSubmitBtn
-{
-    margin-left: 100px;
-}
-
-
 #cstLoginPnl
 {
     width:450px;
@@ -221,3 +204,43 @@ width:166px;
     border: none;
 }
 
+.createAcctLbl
+{
+    display: inline-block;
+    padding: 0px;
+    margin: 0px 0px 16px 0px;
+}
+
+.createAcctTxt
+{
+    display: inline-block;
+    padding: 0px;
+    margin: 0px 0px 15px 0px;
+}
+
+.createAcctSubmitBtn
+{
+    margin-left: 100px;
+}
+
+#createAcctContainer
+{
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#createAcctLblPnl
+{
+    float: left;
+    width: 300px;
+    text-align: right;
+}
+
+#createAcctTxtPnl
+{
+    float: left;
+    margin-left: 5px;
+    width: 350px;
+    text-align: left;
+}
