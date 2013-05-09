@@ -2,6 +2,7 @@
 //Created by Scott Beachy
 //4/30/13
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,43 +56,38 @@ public partial class AdminHome : System.Web.UI.Page
         date2 = txtWrkDate2.Text;
         try
         {
-            // SELECT WorkOrderID, from WorkOrder WHERE WDateCreated BETWEEN @date1 AND @date2
+            //Connnect to DB and fill the ddl list with the WorkOrder Values
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select  Customer.CFName + ' ' + Customer.CLName AS CustomerName, WorkOrder.WorkOrderID FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = WorkOrder.WorkOrderID Where WorkOrder.WDateCreated Between @date1 AND @date2 ORDER BY WorkOrderID;", conn);
+            SqlCommand cmd = new SqlCommand("Select WorkOrder.WorkOrderID, Customer.CFName + ' ' + Customer.CLName AS CustomerName FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = WorkOrder.WorkOrderID Where WorkOrder.WDateCreated Between @date1 AND @date2 ORDER BY WorkOrderID;", conn);
             cmd.Parameters.AddWithValue("date1", date1);
             cmd.Parameters.AddWithValue("date2", date2);
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            //SqlDataReader dr = cmd.ExecuteReader();
-            //List<object> dlist = new List<object>();
+            
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ddlUpdateWO.Items.Add(new ListItem(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString()));
-                }
-
-
-            //    while (dr.Read())
-            //    {
-            //        dlist.Add(dr["WorkOrderID"]);
-            //    }
+                    ddlUpdateWO.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    
+                }            
             }
             else
             {
+                //If there are no workorders in the specified date range, display this message
                 lblUpdate.Text = ("There are no work orders in that date range. Please select another range.");
                 lblUpdate.Visible = true;
             }
-            //ddlUpdateWO.DataSource = dlist;
-            //ddlUpdateWO.DataBind();
+            
             ddlUpdateWO.Visible = true;
             conn.Close();    
         }
         catch (Exception ex)
         {
+            //Oops, something bad happened...
             lblUpdate.Text = ("There was an error connecting to the database. Description: " + ex);
             lblUpdate.Visible = true;
         }
