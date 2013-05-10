@@ -36,9 +36,9 @@
     <div id="navBar">
         <ul>
             <li><a href="Default.aspx">Home</a></li>
-            <li><a href="">Services</a></li>
-            <li><a href="">About US</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="services.aspx">Services</a></li>
+            <li><a href="aboutUs.aspx">About US</a></li>
+            <li><a href="contact.aspx">Contact</a></li>
             <li><a href="requestServices.aspx">Request Services</a></li>
             <li><a href="login.aspx">Login</a></li>
         </ul> 
@@ -55,10 +55,6 @@
     <div id="footer">
         <p class="footerText">
             2013 &copy; www.weserveu.biz
-            <p class="footerText">
-                <a href="PrivacyPolicy.aspx">Privacy Policy</a>
-                <a href="TermsOfUse.aspx">Terms of Use</a>
-            </p>
         </p>
     </div>
 

@@ -92,19 +92,16 @@ width:166px;
 #navBar a:focus { outline: thin dotted; }
 
 #mainContainer {
-    min-height: 600px;
+    height: 800px;
     border: 1px solid #ccc;
     margin-top: 5px;
     padding:5px;
+   
 }
 
-.footerText a {
+.footerText {
     margin-left: auto;
     margin-right: auto;
-    text-decoration:none;
-    font-size:small;
-    color: #000;
-    margin:2px;
 }
 
 #footer {
@@ -113,6 +110,23 @@ width:166px;
     text-align:center;
     clear:both;
 }
+
+.createAcctLbl
+{
+    width: 100px;
+    display: inline-block;
+}
+
+.createAcctTxt
+{
+    margin-right: 60px;
+}
+
+.createAcctSubmitBtn
+{
+    margin-left: 100px;
+}
+
 
 #cstLoginPnl
 {
@@ -168,6 +182,7 @@ width:166px;
     text-align: right;
     padding: 3px;
     margin-right: 5px;
+<<<<<<< HEAD
     font: bold 16px Tahoma;
 }
 .adminDashboard
@@ -198,49 +213,50 @@ width:166px;
     font: bold 14px tahoma;
     margin: 8px 25px 8px 350px;    
 }
-.updateTable
-{
-    width: 100%;
-    border: none;
+
+=======
+    font: bold 16px verdana;
 }
 
-.createAcctLbl
-{
-    display: inline-block;
-    padding: 0px;
-    margin: 0px 0px 16px 0px;
-}
-
-.createAcctTxt
-{
-    display: inline-block;
-    padding: 0px;
-    margin: 0px 0px 15px 0px;
-}
-
-.createAcctSubmitBtn
-{
-    margin-left: 100px;
-}
-
-#createAcctContainer
-{
-    width: 700px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#createAcctLblPnl
+#pic1 
 {
     float: left;
-    width: 300px;
+}
+#pic2 
+{
+    float: left;
+    padding-left: 15px;
+}
+#pic3 
+{
+    float: right;
+}
+#box1 
+{
+    position: absolute;
+    top: 610px;
+    height: 200px;
+    width: 988px;
+    background-image:url('images/Transparent.png');
+    font-family: Verdana;
+}
+    #box1 h1 
+    {
+        padding-left: 30px;
+    }
+
+.indent 
+{
+    padding-left: 100px;
+}
+
+#box2 {
+    width: 380px;
+    height: 200px;
+    position: absolute;
+    top: 830px;
+    font-family: 'Times New Roman';
+    padding-left: 20px;
     text-align: right;
 }
-
-#createAcctTxtPnl
-{
-    float: left;
-    margin-left: 5px;
-    width: 350px;
-    text-align: left;
-}
+>>>>>>> More work on Index
