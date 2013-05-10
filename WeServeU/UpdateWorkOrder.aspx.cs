@@ -7,9 +7,21 @@ using System.Web.UI.WebControls;
 
 public partial class UpdateWorkOrder : System.Web.UI.Page
 {
+    string WorkOrderID = null;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //DateTime date1 = Convert.ToDateTime(txtWrkDate1.Text);
-        //DateTime date2 = Convert.ToDateTime(txtWrkDate2.Text);
+        if (Session["Perm"] == null)
+        {
+            Response.Redirect("login.aspx");
+        }
+
+        if (!Session["Perm"].Equals("A"))
+        {
+            Response.Redirect("login.aspx");
+
+        }
+        WorkOrderID = Session["WorkOrderID"].ToString();
+        testLabel.Text = WorkOrderID;
     }
 }

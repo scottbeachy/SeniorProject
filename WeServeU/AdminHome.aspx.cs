@@ -49,6 +49,7 @@ public partial class AdminHome : System.Web.UI.Page
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
         lblUpdate.Visible = false;
+        btnChoose.Visible = false;
     }
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
     {
@@ -66,24 +67,26 @@ public partial class AdminHome : System.Web.UI.Page
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            
+
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     ddlUpdateWO.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                    
-                }            
+
+                }
             }
+               
             else
             {
                 //If there are no workorders in the specified date range, display this message
                 lblUpdate.Text = ("There are no work orders in that date range. Please select another range.");
                 lblUpdate.Visible = true;
             }
-            
+            //make both the select button and the ddl visible
+            btnChoose.Visible = true;
             ddlUpdateWO.Visible = true;
-            conn.Close();    
+            conn.Close();
         }
         catch (Exception ex)
         {
@@ -92,5 +95,17 @@ public partial class AdminHome : System.Web.UI.Page
             lblUpdate.Visible = true;
         }
 
+    }
+
+
+    protected void btnChoose_Click(object sender, EventArgs e)
+    {
+        string id = null;
+
+        id = ddlUpdateWO.SelectedValue;
+
+        Session["WorkOrderID"] = id;
+
+        Response.Redirect("UpdateWorkOrder.aspx");
     }
 }
