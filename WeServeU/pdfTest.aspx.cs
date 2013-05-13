@@ -14,16 +14,26 @@ public partial class pdfTest : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //name of the pdf field is "pdfTest"
+        
         //instantiate new pdf doc
-        Document doc1 = new Document();
+        Document doc2 = new Document(PageSize.LETTER, 36f, 36f, 144f, 77f);
 
         //create the pdf in the "PDFs" folder
         string path = Server.MapPath("PDFs");
-        PdfWriter.GetInstance(doc1, new FileStream(path + "/doc1.pdf", FileMode.Create));
+        PdfWriter.GetInstance(doc2, new FileStream(path + "/doc2.pdf", FileMode.Create));
 
         //edit the newly created pdf
-        doc1.Open();
-        doc1.Add(new Paragraph("My first PDF"));
-        doc1.Close();
+        doc2.Open();
+        doc2.Add(new Paragraph("My first PDF"));
+        doc2.Close();
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        var reader = new PdfReader(Server.MapPath("PDFs/testing.pdf"));
     }
 }
