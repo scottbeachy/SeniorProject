@@ -244,3 +244,16 @@ width:166px;
     width: 350px;
     text-align: left;
 }
+
+.termsUse
+{
+    margin: 10px;
+    padding: 0px 40px 0px 40px;
+    text-indent:40px;
+}
+
+.listTermsUse
+{
+    margin:0px 40px 20px 20px;
+    padding: 0px 40px 20px 50px;
+}
