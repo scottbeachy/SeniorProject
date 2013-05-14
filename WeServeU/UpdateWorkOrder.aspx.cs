@@ -22,6 +22,6 @@ public partial class UpdateWorkOrder : System.Web.UI.Page
 
         }
         WorkOrderID = Session["WorkOrderID"].ToString();
-        testLabel.Text = WorkOrderID;
+        
     }
 }
