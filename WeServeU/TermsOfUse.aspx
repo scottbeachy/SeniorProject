@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h3>Terms of Use</h3>
+    <h3 class="headerTerms">Terms of Use</h3>
     <p class="termsUse">Welcome to Weserveu.biz. If you continue to browse and use this website you are agreeing to 
         comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern 
         We Serve U’s relationship with you in relation to this website. The term ‘We Serve U’ or ‘us’ or ‘we’ refers to the owner of the website whose registered office is YOUR BUSINESS ADDRESS. 
