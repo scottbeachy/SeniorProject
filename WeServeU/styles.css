@@ -92,7 +92,7 @@ width:166px;
 #navBar a:focus { outline: thin dotted; }
 
 #mainContainer {
-    min-height: 600px;
+    height: 800px;
     border: 1px solid #ccc;
     margin-top: 5px;
     padding:5px;
@@ -260,4 +260,46 @@ width:166px;
 .headerTerms
 {
     margin-left: 45px;
+}
+
+#pic1 
+{
+    float: left;
+}
+#pic2 
+{
+    float: left;
+    padding-left: 15px;
+}
+#pic3 
+{
+    float: right;
+}
+#box1 
+{
+    position: absolute;
+    top: 610px;
+    height: 200px;
+    width: 988px;
+    background-image:url('images/Transparent.png');
+    font-family: Verdana;
+}
+    #box1 h1 
+    {
+        padding-left: 30px;
+    }
+
+.indent 
+{
+    padding-left: 100px;
+}
+
+#box2 {
+    width: 380px;
+    height: 200px;
+    position: absolute;
+    top: 830px;
+    font-family: 'Times New Roman';
+    padding-left: 20px;
+    text-align: right;
 }

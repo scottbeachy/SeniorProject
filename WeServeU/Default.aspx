@@ -3,12 +3,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+   
+        <div id="pic1">
+            <img src="images/stock_photo1.jpg" />
+        </div>
 
+        <div id="pic2">
+            <img src="images/stock_photo2.jpg" />
+        </div>
 
+        <div id="pic3">
+            <img src="images/stock_photo3.jpg" />
+        </div>
 
-    </p>
+        <div id="box1">
+            
+            <h1>Great Process Service.</h1> 
+            <div class="indent"><h1>Great Customer Service.</h1></div>
+            
+        </div>
+        <div id="box2">
+            <h2>We wanted to let you know that we offer first rate process service. We serve you, the customer, so let us know what you need!</h2>
+        </div>
 
 </asp:Content>
 
