@@ -303,3 +303,23 @@ width:166px;
     padding-left: 20px;
     text-align: right;
 }
+
+#aboutUs_text {
+    width: 500px;
+    height: 800px;
+    padding-left: 25px;
+    font-family: Verdana;
+    float: left;
+}
+
+#aboutUs_pic1 {
+    padding-top: 85px;
+    float: right;
+    padding-right: 25px;
+}
+
+#aboutUs_pic2 {
+    float: right;
+    padding-right: 25px;
+    padding-top: 35px;
+}
