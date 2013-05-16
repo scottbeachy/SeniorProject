@@ -21,7 +21,7 @@ public partial class UpdateWorkOrder : System.Web.UI.Page
             Response.Redirect("login.aspx");
 
         }
-        WorkOrderID = Session["WorkOrderID"].ToString();
+        //WorkOrderID = Session["WorkOrderID"].ToString();
         
     }
 }
