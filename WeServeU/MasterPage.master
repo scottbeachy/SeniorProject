@@ -20,7 +20,7 @@
     
     <div id="header">
         <div id="logo">
-            <img src="images/logo.png" />
+            <a href="Default.aspx"><img src="images/logo.png" /></a>
 
         </div>
 

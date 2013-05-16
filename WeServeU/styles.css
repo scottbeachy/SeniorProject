@@ -323,3 +323,41 @@ width:166px;
     padding-right: 25px;
     padding-top: 35px;
 }
+
+#services_text {
+    width: 800px;
+    height: 150px;
+    padding-left: 25px;
+    font-family: Verdana;
+    float: left;
+}
+
+#services_text2 {
+    float: left;
+    width: 900px;
+    padding-left: 25px;
+}
+
+    #services_text2 .price {
+        float: right;
+        font-weight:bold;
+    }
+
+    #services_text2 .title {
+        
+        font-weight:bold;
+    }
+
+    #services_text2 .info {
+        width: 700px;
+        padding-left: 30px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+#services_container {
+    width: 980px;
+    height: 800px;
+    background-image: url('images/services_background.png');
+
+}
