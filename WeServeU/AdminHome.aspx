@@ -6,7 +6,7 @@
      <script type="text/javascript">
          $(document).ready(function () {
              $(".txtDate").datepicker();
-             $("#accordion").accordion({ collapsible: true, active: false });
+             $("#accordion").accordion({ collapsible: true, active: false, autoheight: true });
          });
         
      </script>
@@ -20,7 +20,13 @@
     <div id="accordion">
         <h3>Assign Work to a Server</h3>
         <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit orci eu orci laoreet posuere. Cras et nibh libero. Phasellus varius elit non ante elementum ac pretium ante congue. Donec iaculis odio quis dui mattis vitae imperdiet lorem bibendum. Donec vitae metus eros, ut congue tortor. Maecenas aliquet ipsum sed erat suscipit luctus. Duis convallis, nibh id cursus dictum, dui sem fringilla nisl, at porta est odio a arcu. Nunc consectetur blandit ante quis mollis. Nulla aliquet arcu eget nulla tempor vitae tincidunt neque ullamcorper. Suspendisse quis orci ut dui congue auctor. Duis sed odio tortor.</p>
+            <p>Select an Employee:</p>
+            <asp:DropDownList ID="ddlEmpList" runat="server" DataSourceID="EmpDDLSource" DataTextField="EmpFName" DataValueField="EmpID"></asp:DropDownList>
+            <asp:SqlDataSource ID="EmpDDLSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [EmpID], [EmpFName], [EmpLName], [EmpStatus] FROM [Employee] WHERE ([EmpStatus] = @EmpStatus) ORDER BY [EmpID]">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="A" Name="EmpStatus" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
         </div>
         <h3>Update a Work Order</h3>
         <div>
