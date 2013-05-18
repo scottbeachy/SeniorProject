@@ -275,8 +275,14 @@ width:166px;
 
 .listTermsUse
 {
-    margin:0px 40px 20px 20px;
-    padding: 0px 40px 20px 50px;
+    margin:0px 40px 0px 20px;
+    padding: 0px 40px 0px 50px;
+}
+
+.listPrivacy
+{
+    margin:0px 40px 0px 20px;
+    padding: 0px 40px 0px 50px;
 }
 
 .headerTerms
@@ -284,6 +290,11 @@ width:166px;
     margin-left: 45px;
 }
 
+.contactLink
+{
+    text-decoration:none;
+    color:#000;
+}
 #pic1 
 {
     float: left;
