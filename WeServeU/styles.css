@@ -177,8 +177,13 @@ width:166px;
     padding:2px;
     background-color:#EFEFEF;
     text-align:center;
-    /*background-image:url("images/backgrad4.png");*/
+    
 }
+    .adminDashboard h3
+    {
+        text-align: center;
+        background-color: #ccc;
+    }
 #adminList
 {
     list-style-type:none;

@@ -25,6 +25,7 @@ public partial class login : System.Web.UI.Page
     {
         lblCstError.Visible = false;
         lblEmpError.Visible = false;
+        
     }
     protected void btnCstLogin_Click(object sender, EventArgs e)
     {

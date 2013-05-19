@@ -50,6 +50,7 @@ public partial class AdminHome : System.Web.UI.Page
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
         lblUpdate.Visible = false;
         btnChoose.Visible = false;
+
     }
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
     {
