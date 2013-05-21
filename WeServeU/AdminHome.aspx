@@ -49,7 +49,7 @@
         <asp:DropDownList ID="ddlUpdateWO" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnChoose" runat="server" Text="Update" OnClick="btnChoose_Click" CssClass="btnDash" /><br />
         <asp:Label ID="lblUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
 
-        <h3>Update Client Information:</h3>
+<%--        <h3>Update Client Information:</h3>
         <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
         <asp:TextBox ID="txtFirstName" runat="server" ValidationGroup="wrkUpdate" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkUpdate" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFirstName"></asp:RequiredFieldValidator><br />
@@ -70,7 +70,7 @@
         <asp:TextBox ID="TextBox2" runat="server" ValidationGroup="wrkUpdate" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkUpdate" ControlToValidate="txtWrkDate2"></asp:RequiredFieldValidator>
         <asp:Button ID="Button1" runat="server" Text="Submit" CssClass="btnDash" ValidationGroup="wrkUpdate" CausesValidation="true" OnClick="btnUpdateWrk_Click" /><br />
-        <asp:Label ID="Label7" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+        <asp:Label ID="Label7" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>--%>
 
     </div>
 </asp:Content>
