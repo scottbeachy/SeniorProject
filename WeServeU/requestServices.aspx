@@ -97,10 +97,10 @@
                 <asp:TextBox ID="txtCounty" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
                 <asp:TextBox ID="txtZip" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
                 <asp:TextBox ID="txtUsername" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
-                <asp:TextBox ID="txtPassword" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
-                <asp:TextBox ID="txtPasswordVerified" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
+                <asp:TextBox ID="txtPassword" runat="server"  CssClass="createAcctTxt" TextMode="Password"></asp:TextBox> <br />
+                <asp:TextBox ID="txtPasswordVerified" runat="server"  CssClass="createAcctTxt" TextMode="Password"></asp:TextBox> <br />
         </div>
-        <asp:Button ID="btnCreateAcct" runat="server" Text="Create Account" />
+        <asp:Button ID="btnCreateAcct" runat="server" Text="Create Account" OnClick="btnCreateAcct_Click" />
     </div>
 </asp:Content>
 
