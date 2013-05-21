@@ -215,15 +215,14 @@ width:166px;
     text-align:center;
     /*background-image:url("images/backgrad4.png");*/
 }
-<<<<<<< HEAD
+
     .adminDashboard h3
     {
         text-align: center;
         background-color: #ccc;
         
     }
-=======
->>>>>>> 8ec8b4756d6aea0e7da0fe18686e8951ae089458
+
 #adminList
 {
     list-style-type:none;
