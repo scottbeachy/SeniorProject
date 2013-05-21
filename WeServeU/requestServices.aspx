@@ -6,9 +6,8 @@
     <div id="createAcctContainer" >
         <div id="createAcctHeader">
             <p>
-                Some info goes here
-            <br />
-            ...On multiple lines
+                New customers must create an account using the form below. Customers can then log in to their accounts where they will be able to submit 
+                work orders, upload documents, and check the status of existing work orders.
             </p>
         </div>
 
@@ -34,11 +33,11 @@
                 <asp:TextBox ID="txtFname" runat="server" ForeColor="Gray" CssClass="createAcctTxt" OnClick="this.value=''">First</asp:TextBox> <br />
                 <asp:TextBox ID="txtLname" runat="server" ForeColor="Gray" CssClass="createAcctTxt" OnClick="this.value=''">Last</asp:TextBox> <br />
                 <asp:TextBox ID="txtFirmName" runat="server" CssClass="createAcctTxt"></asp:TextBox> <br />
-                <asp:TextBox ID="txtPhone" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
-                <asp:TextBox ID="txtFax" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
+                <asp:TextBox ID="txtPhone" runat="server"  CssClass="createAcctTxt" MaxLength="10"></asp:TextBox> <br />
+                <asp:TextBox ID="txtFax" runat="server"  CssClass="createAcctTxt" MaxLength="10"></asp:TextBox> <br />
                 <asp:TextBox ID="txtEmail" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
                 <asp:TextBox ID="txtAddress" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
-                <asp:TextBox ID="txtApartment" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
+                <asp:TextBox ID="txtApartment" runat="server"  CssClass="createAcctTxt" MaxLength="10"></asp:TextBox> <br />
                 <asp:TextBox ID="txtCity" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
                 <asp:DropDownList ID="ddState" runat="server" CssClass="createAcctTxt">
                     <asp:ListItem Value="">Select</asp:ListItem>
@@ -95,7 +94,7 @@
                     <asp:ListItem Value="WY">Wyoming</asp:ListItem>
                 </asp:DropDownList> <br />
                 <asp:TextBox ID="txtCounty" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
-                <asp:TextBox ID="txtZip" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
+                <asp:TextBox ID="txtZip" runat="server"  CssClass="createAcctTxt" MaxLength="10"></asp:TextBox> <br />
                 <asp:TextBox ID="txtUsername" runat="server"  CssClass="createAcctTxt"></asp:TextBox> <br />
                 <asp:TextBox ID="txtPassword" runat="server"  CssClass="createAcctTxt" TextMode="Password"></asp:TextBox> <br />
                 <asp:TextBox ID="txtPasswordVerified" runat="server"  CssClass="createAcctTxt" TextMode="Password"></asp:TextBox> <br />

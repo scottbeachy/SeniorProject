@@ -46,8 +46,4 @@ public partial class pdfTest : System.Web.UI.Page
         Response.End();
 
     }
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        var reader = new PdfReader(Server.MapPath("PDFs/testing.pdf"));
-    }
 }
