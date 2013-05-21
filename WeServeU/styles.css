@@ -127,6 +127,42 @@ width:166px;
     text-align:center;
 }
 
+.cstUpdate
+{
+    width:450px;
+    background-color:#cfdcfc;
+    border: solid 1px #000;
+    padding:5px;
+    margin:22px;
+    box-shadow:#808080  5px 5px;
+    border-radius:8px;
+    text-align:center;
+    margin-left:210px;
+}
+
+.cstGenReport
+{
+    width:800px;
+    background-color:#cfdcfc;
+    border: solid 1px #000;
+    padding:5px;
+    margin:22px;
+    box-shadow:#808080  5px 5px;
+    border-radius:8px;
+    text-align:center;
+    margin-left:50px;
+}
+
+.txtFirstName
+{
+    margin:5px;
+}
+
+.lblFirstName
+{
+    margin:5px;
+}
+
 #empLoginPnl
 {
     width:450px;
@@ -177,14 +213,17 @@ width:166px;
     padding:2px;
     background-color:#EFEFEF;
     text-align:center;
-    
+    /*background-image:url("images/backgrad4.png");*/
 }
+<<<<<<< HEAD
     .adminDashboard h3
     {
         text-align: center;
         background-color: #ccc;
         
     }
+=======
+>>>>>>> 8ec8b4756d6aea0e7da0fe18686e8951ae089458
 #adminList
 {
     list-style-type:none;

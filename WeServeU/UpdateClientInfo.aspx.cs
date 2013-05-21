@@ -11,4 +11,11 @@ public partial class UpdateClientInfo : System.Web.UI.Page
     {
 
     }
+    //protected void btnSearch_Click(object sender, EventArgs e)
+    //{
+    //    if (txtFirmName.Text == "" && txtLastName.Text == "" && txtFirmName.Text == "")
+    //        lblValidateClient.Text = "Need search details. Please try again!!!!";
+    //    else
+    //        lblFirmName.Text = null;
+    //}
 }
