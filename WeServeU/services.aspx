@@ -9,7 +9,7 @@
     </div>
     <div id="services_text2">
         <h3>Currently we provide a variety of services including:</h3>
-        <p class="price">Price: $55<br /></p>
+        <p class="price">Price: $60<br /></p>
         <p class="title">Process Service</p>
         <p class="info">We provide flat rate process service to most areas of the Greater Phoenix Area by knowledgeable Officers of the Court. We will make at least four attempts of service. Your documents will be handled with the same level of care that you would handle them. Your service will be attempted within two days after we receive it. You will be provided instructions on how to create a login so that you may view the status of your documents at any time and view your Certificate of Service via our website once it’s been filed with the courts.  The certificate of service will be filed promptly after the other party is served.</p>
             
