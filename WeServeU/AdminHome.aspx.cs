@@ -60,7 +60,7 @@ public partial class AdminHome : System.Web.UI.Page
             //Connnect to DB and fill the ddl list with the WorkOrder Values
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select WorkOrder.WorkOrderID, Customer.CFName + ' ' + Customer.CLName AS CustomerName FROM WorkOrder INNER JOIN Customer ON WorkOrder.CustomerID = WorkOrder.WorkOrderID Where WorkOrder.WDateCreated Between @date1 AND @date2 ORDER BY WorkOrderID;", conn);
+            SqlCommand cmd = new SqlCommand("Select WorkOrder.WorkOrderID, WorkOrder.WLName + ' VS ' + WorkOrder.WOPLName AS CustomerName FROM WorkOrder WHERE WorkOrder.WDateCreated Between @date1 AND @date2 ORDER BY WorkOrderID;", conn);
             cmd.Parameters.AddWithValue("date1", date1);
             cmd.Parameters.AddWithValue("date2", date2);
             conn.Open();
@@ -72,7 +72,8 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ddlUpdateWO.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    
+                    ddlUpdateWO.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));           
 
                 }
             }

@@ -44,84 +44,10 @@
             <asp:CommandField ShowEditButton="True" />
         </Fields>
     </asp:DetailsView>      
-    <asp:SqlDataSource ID="UpdateWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT * FROM [WorkOrder] WHERE ([WorkOrderID] = @WorkOrderID)" UpdateCommand="UPDATE [WorkOrder] SET [WCaseNumber] = @WCaseNumber, [WClientStatus] = @WClientStatus, [WFName] = @WFName, [WLName] = @WLName, [WOPFName] = @WOPFName, [WOPLName] = @WOPLName, [WPaperTitle] = @WPaperTitle, [WToBeServed] = @WToBeServed, [WServAdd] = @WServAdd, [WServApt] = @WServApt, [WServCounty] = @WServCounty, [WServCity] = @WServCity, [WServState] = @WServState, [WServZip] = @WServZip, [WServedFName] = @WServedFName, [WServedLName] = @WServedLName, [WServedRel] = @WServedRel, [WCountyFiled] = @WCountyFiled, [WCourtFiled] = @WCourtFiled, [WServedHeight] = @WServedHeight, [WServedWeight] = @WServedWeight, [WServedHair] = @WServedHair, [WServedEye] = @WServedEye, [WServedSex] = @WServedSex, [WServedAge] = @WServedAge, [WServDate] = @WServDate, [WServTime] = @WServTime, [WStatus] = @WStatus, [WFiledBy] = @WFiledBy, [WDateCreated] = @WDateCreated WHERE [WorkOrderID] = @WorkOrderID AND [CustomerID] = @CustomerID AND [EmpID] = @EmpID" DeleteCommand="DELETE FROM [WorkOrder] WHERE [WorkOrderID] = @WorkOrderID AND [CustomerID] = @CustomerID AND [EmpID] = @EmpID" InsertCommand="INSERT INTO [WorkOrder] ([WCaseNumber], [CustomerID], [EmpID], [WClientStatus], [WFName], [WLName], [WOPFName], [WOPLName], [WPaperTitle], [WToBeServed], [WServAdd], [WServApt], [WServCounty], [WServCity], [WServState], [WServZip], [WServedFName], [WServedLName], [WServedRel], [WCountyFiled], [WCourtFiled], [WServedHeight], [WServedWeight], [WServedHair], [WServedEye], [WServedSex], [WServedAge], [WServDate], [WServTime], [WStatus], [WFiledBy], [WDateCreated]) VALUES (@WCaseNumber, @CustomerID, @EmpID, @WClientStatus, @WFName, @WLName, @WOPFName, @WOPLName, @WPaperTitle, @WToBeServed, @WServAdd, @WServApt, @WServCounty, @WServCity, @WServState, @WServZip, @WServedFName, @WServedLName, @WServedRel, @WCountyFiled, @WCourtFiled, @WServedHeight, @WServedWeight, @WServedHair, @WServedEye, @WServedSex, @WServedAge, @WServDate, @WServTime, @WStatus, @WFiledBy, @WDateCreated)">
-        <DeleteParameters>
-            <asp:Parameter Name="WorkOrderID" Type="Decimal" />
-            <asp:Parameter Name="CustomerID" Type="Decimal" />
-            <asp:Parameter Name="EmpID" Type="Decimal" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="WCaseNumber" Type="String" />
-            <asp:Parameter Name="CustomerID" Type="Decimal" />
-            <asp:Parameter Name="EmpID" Type="Decimal" />
-            <asp:Parameter Name="WClientStatus" Type="String" />
-            <asp:Parameter Name="WFName" Type="String" />
-            <asp:Parameter Name="WLName" Type="String" />
-            <asp:Parameter Name="WOPFName" Type="String" />
-            <asp:Parameter Name="WOPLName" Type="String" />
-            <asp:Parameter Name="WPaperTitle" Type="String" />
-            <asp:Parameter Name="WToBeServed" Type="String" />
-            <asp:Parameter Name="WServAdd" Type="String" />
-            <asp:Parameter Name="WServApt" Type="String" />
-            <asp:Parameter Name="WServCounty" Type="String" />
-            <asp:Parameter Name="WServCity" Type="String" />
-            <asp:Parameter Name="WServState" Type="String" />
-            <asp:Parameter Name="WServZip" Type="String" />
-            <asp:Parameter Name="WServedFName" Type="String" />
-            <asp:Parameter Name="WServedLName" Type="String" />
-            <asp:Parameter Name="WServedRel" Type="String" />
-            <asp:Parameter Name="WCountyFiled" Type="String" />
-            <asp:Parameter Name="WCourtFiled" Type="String" />
-            <asp:Parameter Name="WServedHeight" Type="String" />
-            <asp:Parameter Name="WServedWeight" Type="String" />
-            <asp:Parameter Name="WServedHair" Type="String" />
-            <asp:Parameter Name="WServedEye" Type="String" />
-            <asp:Parameter Name="WServedSex" Type="String" />
-            <asp:Parameter Name="WServedAge" Type="String" />
-            <asp:Parameter Name="WServDate" Type="DateTime" />
-            <asp:Parameter Name="WServTime" Type="String" />
-            <asp:Parameter Name="WStatus" Type="String" />
-            <asp:Parameter Name="WFiledBy" Type="String" />
-            <asp:Parameter Name="WDateCreated" Type="DateTime" />
-        </InsertParameters>
+    <asp:SqlDataSource ID="UpdateWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT * FROM [WorkOrder] WHERE ([WorkOrderID] = @WorkOrderID) ORDER BY [WorkOrderID]">
         <SelectParameters>
-            <asp:SessionParameter Name="WorkOrderID" SessionField="WorkOrderID" Type="Decimal" />
+            <asp:SessionParameter Name="WorkOrderID" SessionField="WorkOrderID" Type="Decimal" DefaultValue="10" />
         </SelectParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="WCaseNumber" Type="String" />
-            <asp:Parameter Name="WClientStatus" Type="String" />
-            <asp:Parameter Name="WFName" Type="String" />
-            <asp:Parameter Name="WLName" Type="String" />
-            <asp:Parameter Name="WOPFName" Type="String" />
-            <asp:Parameter Name="WOPLName" Type="String" />
-            <asp:Parameter Name="WPaperTitle" Type="String" />
-            <asp:Parameter Name="WToBeServed" Type="String" />
-            <asp:Parameter Name="WServAdd" Type="String" />
-            <asp:Parameter Name="WServApt" Type="String" />
-            <asp:Parameter Name="WServCounty" Type="String" />
-            <asp:Parameter Name="WServCity" Type="String" />
-            <asp:Parameter Name="WServState" Type="String" />
-            <asp:Parameter Name="WServZip" Type="String" />
-            <asp:Parameter Name="WServedFName" Type="String" />
-            <asp:Parameter Name="WServedLName" Type="String" />
-            <asp:Parameter Name="WServedRel" Type="String" />
-            <asp:Parameter Name="WCountyFiled" Type="String" />
-            <asp:Parameter Name="WCourtFiled" Type="String" />
-            <asp:Parameter Name="WServedHeight" Type="String" />
-            <asp:Parameter Name="WServedWeight" Type="String" />
-            <asp:Parameter Name="WServedHair" Type="String" />
-            <asp:Parameter Name="WServedEye" Type="String" />
-            <asp:Parameter Name="WServedSex" Type="String" />
-            <asp:Parameter Name="WServedAge" Type="String" />
-            <asp:Parameter Name="WServDate" Type="DateTime" />
-            <asp:Parameter Name="WServTime" Type="String" />
-            <asp:Parameter Name="WStatus" Type="String" />
-            <asp:Parameter Name="WFiledBy" Type="String" />
-            <asp:Parameter Name="WDateCreated" Type="DateTime" />
-            <asp:Parameter Name="WorkOrderID" Type="Decimal" />
-            <asp:Parameter Name="CustomerID" Type="Decimal" />
-            <asp:Parameter Name="EmpID" Type="Decimal" />
-        </UpdateParameters>
     </asp:SqlDataSource>
 </asp:Content>
 
