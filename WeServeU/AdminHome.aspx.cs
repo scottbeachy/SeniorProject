@@ -109,4 +109,26 @@ public partial class AdminHome : System.Web.UI.Page
 
         Response.Redirect("UpdateWorkOrder.aspx");
     }
+    protected void ddlWOList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        lblWONum.Text = "Work Order # " + ddlWOList.SelectedValue.ToString();
+        lblWONum.Visible = true;
+    }
+    protected void btnAssign_Click(object sender, EventArgs e)
+    {
+        string workOrderNum;
+        string empNum;
+        workOrderNum = ddlWOList.SelectedValue;
+        empNum = ddlEmpList.SelectedValue;
+
+        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connection);
+        SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder (EmpID) VALUES (@EmpID) WHERE WorkOrderID = @WorkOrderID;", conn);
+        cmd.Parameters.AddWithValue("@EmpID", empNum);
+        cmd.Parameters.AddWithValue("@WorkOrderID", workOrderNum);
+
+
+
+    }
+   
 }

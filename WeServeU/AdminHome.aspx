@@ -27,13 +27,17 @@
             </asp:SqlDataSource>
             <div id="woSelect">
                 <p>Select a Work Order to Assign and Click Assign Work Below:</p>
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SelectWODDL" DataTextField="WorkOrderID" DataValueField="WorkOrderID"></asp:DropDownList><br />
-                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID], [WStatus], [WFName], [WLName] FROM [WorkOrder] WHERE ([WStatus] = @WStatus) ORDER BY [WorkOrderID]">
+                
+                <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID" OnSelectedIndexChanged="ddlWOList_SelectedIndexChanged" AutoPostBack="true">                
+                </asp:DropDownList><br />
+                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID],  [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([WStatus] = @WStatus) ORDER BY [WorkOrderID]">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="A" Name="WStatus" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-                <asp:Button ID="btnAssign" runat="server" Text="Assign Work" CssClass="btnDash" /><br />
+                <asp:Label ID="lblWONum" runat="server" Text="Work Order #" Visible="false"></asp:Label><br />
+                
+                <asp:Button ID="btnAssign" runat="server" Text="Assign Work" CssClass="btnDash" OnClick="btnAssign_Click" /><br />
                 <asp:Label ID="lblAssignError" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </div>
         </div>
@@ -48,6 +52,9 @@
         <asp:Button ID="btnUpdateWrk" runat="server" Text="Submit" CssClass="btnDash" ValidationGroup="wrkUpdate" CausesValidation="true" OnClick="btnUpdateWrk_Click" /><br />
         <asp:DropDownList ID="ddlUpdateWO" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnChoose" runat="server" Text="Update" OnClick="btnChoose_Click"  CssClass="btnDash" /><br />
         <asp:Label ID="lblUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+
+
+
 
 <%--        <h3>Update Client Information:</h3>
         <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
