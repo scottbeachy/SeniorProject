@@ -48,6 +48,11 @@ public partial class AdminHome : System.Web.UI.Page
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        if (!IsPostBack) 
+        {
+            lblWONum.Visible = false;
+            
+        }
         lblUpdate.Visible = false;
         btnChoose.Visible = false;
     }
@@ -120,12 +125,26 @@ public partial class AdminHome : System.Web.UI.Page
         string empNum;
         workOrderNum = ddlWOList.SelectedValue;
         empNum = ddlEmpList.SelectedValue;
+        try
+        {
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand("UPDATE WorkOrder SET EmpID = @EmpID WHERE WorkOrderID = @WorkOrderID;", conn);
+            cmd.Parameters.AddWithValue("@EmpID", empNum);
+            cmd.Parameters.AddWithValue("@WorkOrderID", workOrderNum);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            lblWONum.Text = ddlEmpList.SelectedItem.ToString() + " was assigned to work order #" + workOrderNum;
+            lblWONum.Visible = true;
 
-        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-        SqlConnection conn = new SqlConnection(connection);
-        SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder (EmpID) VALUES (@EmpID) WHERE WorkOrderID = @WorkOrderID;", conn);
-        cmd.Parameters.AddWithValue("@EmpID", empNum);
-        cmd.Parameters.AddWithValue("@WorkOrderID", workOrderNum);
+        }
+        catch (SqlException ex)
+        {
+            lblWONum.Text = "The work order was not assigned due to an error";            
+            lblWONum.ForeColor = System.Drawing.Color.Red;
+            lblWONum.Visible = true;
+        }
 
 
 
