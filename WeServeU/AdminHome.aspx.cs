@@ -48,11 +48,7 @@ public partial class AdminHome : System.Web.UI.Page
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
-        if (!IsPostBack) 
-        {
-            lblWONum.Visible = false;
-            
-        }
+       
         lblUpdate.Visible = false;
         btnChoose.Visible = false;
     }
@@ -66,8 +62,8 @@ public partial class AdminHome : System.Web.UI.Page
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
             SqlCommand cmd = new SqlCommand("Select WorkOrder.WorkOrderID, WorkOrder.WLName + ' VS ' + WorkOrder.WOPLName AS CustomerName FROM WorkOrder WHERE WorkOrder.WDateCreated Between @date1 AND @date2 ORDER BY WorkOrderID;", conn);
-            cmd.Parameters.AddWithValue("date1", date1);
-            cmd.Parameters.AddWithValue("date2", date2);
+            cmd.Parameters.AddWithValue("@date1", date1);
+            cmd.Parameters.AddWithValue("@date2", date2);
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -121,6 +117,7 @@ public partial class AdminHome : System.Web.UI.Page
     }
     protected void btnAssign_Click(object sender, EventArgs e)
     {
+        lblWONum.Visible = false;
         string workOrderNum;
         string empNum;
         workOrderNum = ddlWOList.SelectedValue;
@@ -135,9 +132,22 @@ public partial class AdminHome : System.Web.UI.Page
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
-            lblWONum.Text = ddlEmpList.SelectedItem.ToString() + " was assigned to work order #" + workOrderNum;
-            lblWONum.Visible = true;
-
+            //call the mail class to send the notification
+            SendMail sm = new SendMail();
+            bool success = sm.Send_EmpEmail(workOrderNum);
+            //Check to see if the email was actually sent or not
+            if (success)
+            {
+                lblWONum.Text = ddlEmpList.SelectedItem.ToString() + " was assigned to work order #" + workOrderNum + " and they were notified by email.";
+                lblWONum.Visible = true;
+            }
+            else
+            {
+                //If there was a problem display this message
+                lblWONum.Text = "There was a problem sending the notification email. But the employee was assigned to the workorder. Please try again later";
+                lblWONum.ForeColor = System.Drawing.Color.Red;
+                lblWONum.Visible = true;
+            }
         }
         catch (SqlException ex)
         {
