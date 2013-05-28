@@ -327,7 +327,7 @@ width:166px;
 #createAcctLblPnl
 {
     float: left;
-    width: 300px;
+    width: 275px;
     text-align: right;
 }
 
@@ -335,7 +335,7 @@ width:166px;
 {
     float: left;
     margin-left: 5px;
-    width: 350px;
+    width: 375px;
     text-align: left;
 }
 
@@ -467,13 +467,24 @@ width:166px;
     width: 980px;
     height: 800px;
     background-image: url('images/services_background.png');
-
 }
 
 #contact_container {
     width: 980px;
-    
-
 }
 
+#redirectText
+{
+    text-align: center;
+}
 
+    #redirectText a:link
+    {
+         color: blue;
+         text-decoration: none;
+    }
+
+    #redirectText a:hover
+    {
+        color: red;
+    }
