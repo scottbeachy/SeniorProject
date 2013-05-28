@@ -48,14 +48,15 @@ public class SendMail
 
             try
             {
+                //Create the email message
                 email = dt.Rows[0][3].ToString();
                 MailAddress from = new MailAddress("info@weserveu.biz");
                 MailAddress to = new MailAddress(email);
                 MailMessage mailObj = new MailMessage(from, to);
-
-                mailObj.Body = "<h2>You have been assigned a new serve by the staff at WeserveU.biz.</h2> <br /> " +
+                //Create the message body
+                mailObj.Body += "<h2>You have been assigned a new serve by the staff at WeserveU.biz.</h2> <br /> " +
                     "<h3>Please log in to WeServeU.biz to download documents</h3><h2>Details: </h2> <P>Case Number: " +
-                    dt.Rows[0][2].ToString() + "</p><p>Customer: " + dt.Rows[0][0].ToString() + "</p><p>Oppsing Party: " +
+                    dt.Rows[0][2].ToString() + "</p><p>Customer: " + dt.Rows[0][0].ToString() + "</p><p>Opposing Party: " +
                     dt.Rows[0][1].ToString();
 
 
