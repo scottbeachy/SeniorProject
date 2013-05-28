@@ -56,8 +56,8 @@
         <p class="footerText">
             2013 &copy; www.weserveu.biz
             <p class="footerText">
-                <a href="PrivacyPolicy.aspx">Privacy Policy</a>
-                <a href="TermsOfUse.aspx">Terms of Use</a>
+                <a class="footerLink" href="PrivacyPolicy.aspx">Privacy Policy</a>
+                <a class="footerLink" href="TermsOfUse.aspx">Terms of Use</a>
             </p>
         </p>
     </div>

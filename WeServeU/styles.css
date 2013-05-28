@@ -114,6 +114,11 @@ width:166px;
     clear:both;
 }
 
+.footerLink:hover
+{
+    color:#c00;
+}
+
 #cstLoginPnl
 {
     width:450px;
