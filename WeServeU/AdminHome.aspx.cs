@@ -51,6 +51,7 @@ public partial class AdminHome : System.Web.UI.Page
        
         lblUpdate.Visible = false;
         btnChoose.Visible = false;
+        btnSelectClient.Visible = false;
     }
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
     {
@@ -159,5 +160,66 @@ public partial class AdminHome : System.Web.UI.Page
 
 
     }
-   
+
+    protected void btnUpdateClient_Click(object sender, EventArgs e)
+    {
+        string clientNum = txtClientID.Text;
+        string clientFName = txtClientFirstName.Text;
+        string clientLName = txtClientLastName.Text;
+        string firmName = txtFirmName.Text;
+
+        try
+        {
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand("Select CustomerID, CFname, CLname, CFirmName FROM Customer WHERE CustomerID = @clientNum AND (CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName) ;", conn);
+
+            cmd.Parameters.AddWithValue("@clientNum", clientNum);
+            cmd.Parameters.AddWithValue("@clientFName", clientFName);
+            cmd.Parameters.AddWithValue("@clientLName", clientLName);
+            cmd.Parameters.AddWithValue("@firmName", firmName);
+
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    ddUpdateClient.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+
+                }
+            }
+
+            else
+            {
+                lblCLientUpdate.Text = ("Input invalid. Please enter proper customer data.");
+                lblCLientUpdate.Visible = true;
+            }
+            btnSelectClient.Visible = true;
+            ddUpdateClient.Visible = true;
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            //Oops, something bad happened...
+            lblCLientUpdate.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+            lblCLientUpdate.Visible = true;
+        }
+
+    }
+    protected void btnSelectClient_Click(object sender, EventArgs e)
+    {
+        string id = null;
+
+        id = ddUpdateClient.SelectedValue;
+
+        Session["CustomerID"] = id;
+
+        Response.Redirect("UpdateClientInfo.aspx");
+
+    }
 }

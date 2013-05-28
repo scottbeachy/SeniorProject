@@ -61,15 +61,16 @@
         <asp:TextBox ID="txtClientID" CssClass="txtFirstName" runat="server" ValidationGroup="wrkClient"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientID"></asp:RequiredFieldValidator><br />
         <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
-        <asp:TextBox ID="txtFirstName" runat="server" ValidationGroup="wrkClient" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFirstName"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtClientFirstName" runat="server" ValidationGroup="wrkClient" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox><br />
+<%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientFirstName"></asp:RequiredFieldValidator><br />--%>
         <asp:Label ID="Label2" runat="server" Text="Last Name:" CssClass="lblFirstName"></asp:Label>
-        <asp:TextBox ID="txtLastName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtLastName"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtClientLastName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox><br />
+<%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientLastName"></asp:RequiredFieldValidator><br />--%>
         <asp:Label ID="Label4" runat="server" Text="Firm Name:" CssClass="lblFirstName"></asp:Label>
-        <asp:TextBox ID="txtFirmName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFirmName"></asp:RequiredFieldValidator><br />
-        <asp:Button ID="btnUpdateClient" runat="server" Text="Submit" CssClass="btnUpdateClient" ValidationGroup="wrkClient" CausesValidation="true" /><br />
+        <asp:TextBox ID="txtFirmName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox><br />
+<%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFirmName"></asp:RequiredFieldValidator><br />--%>
+        <asp:Button ID="btnUpdateClient" runat="server" Text="Submit" CssClass="btnUpdateClient" ValidationGroup="wrkClient" CausesValidation="true" OnClick="btnUpdateClient_Click" /><br />
+        <asp:DropDownList ID="ddUpdateClient" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnSelectClient" runat="server" Text="Select Client" CssClass="btnDash" OnClick="btnSelectClient_Click" /><br />
         <asp:Label ID="lblCLientUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
 
         <h3>To Generate a Report Please Enter Dates Below:</h3>
