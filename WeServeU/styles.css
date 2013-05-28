@@ -181,6 +181,11 @@ width:166px;
 
 }
 
+.updateClientHeader
+{
+    text-align:center;
+}
+
 #empLoginPnl
 {
     width:450px;
@@ -286,6 +291,11 @@ width:166px;
 {
     width: 100%;
     border: none;
+}
+
+.updateClientDetails
+{
+    width:100%;
 }
 
 .createAcctLbl
