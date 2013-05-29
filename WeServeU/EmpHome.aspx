@@ -26,8 +26,9 @@
                 
                 <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID" OnSelectedIndexChanged="ddlWOList_SelectedIndexChanged" AutoPostBack="true">                
                 </asp:DropDownList><br />
-                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID],  [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([WStatus] = @WStatus) ORDER BY [WorkOrderID]">
+                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID],  [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([WStatus] = @WStatus) AND ([EmpID] = @EmpID) ORDER BY [WorkOrderID]">
                     <SelectParameters>
+                        <asp:SessionParameter Name="EmpID" SessionField="EmpID" Type="Decimal" />
                         <asp:Parameter DefaultValue="A" Name="WStatus" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
