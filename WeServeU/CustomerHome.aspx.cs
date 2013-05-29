@@ -34,7 +34,7 @@ public partial class CustomerHome : System.Web.UI.Page
         }
 
         //assign the variables from the session created from the login page
-        id = Convert.ToInt32(Session["CustomerID"]);
+        id = Convert.ToInt32(Session["CustID"]);
         perm = Session["Perm"].ToString();
         fname = Session["CFname"].ToString();
         lname = Session["CLname"].ToString();
@@ -42,4 +42,6 @@ public partial class CustomerHome : System.Web.UI.Page
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Customer ID: " + id;
     }
+
+
 }

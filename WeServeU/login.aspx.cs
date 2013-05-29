@@ -121,8 +121,8 @@ public partial class login : System.Web.UI.Page
             {
                 Session["EmpID"] = id;
                 Session["Perm"] = perm;
-                Session["CFname"] = fname;
-                Session["CLname"] = lname;
+                Session["EmpFname"] = fname;
+                Session["EmpLname"] = lname;
 
                 if (perm == "E")
                 {

@@ -42,8 +42,8 @@ public partial class EmpHome : System.Web.UI.Page
         //assign the variables from the session created from the login page
         id = Convert.ToInt32(Session["EmpID"]);
         perm = Session["Perm"].ToString();
-        fname = Session["CFname"].ToString();
-        lname = Session["CLname"].ToString();
+        fname = Session["EmpFname"].ToString();
+        lname = Session["EmpLname"].ToString();
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;

@@ -26,6 +26,7 @@
             <asp:RequiredFieldValidator ID="valEmpPass" runat="server" ErrorMessage="*" ControlToValidate="txtEmpPass" ForeColor="Red" ValidationGroup="empLogintxt"></asp:RequiredFieldValidator><br />
             <br />
             <asp:Button ID="btnEmpLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="empLogintxt" OnClick="btnEmpLogin_Click" />
+            <br />
             <asp:Label ID="lblEmpError" runat="server" ForeColor="Red"></asp:Label>
         </div>
 
