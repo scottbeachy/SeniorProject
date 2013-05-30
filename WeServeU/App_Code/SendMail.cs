@@ -82,5 +82,19 @@ public class SendMail
 
 
     }
+    //Send the Customer Email when the CoS is completed. 
+    public bool Send_CustMail(string workOrderID)
+    {
+        //just put this in to remove the squiggles
+        return false;
+    }
+
+
+    //Send the Admin Email when a new WorkOrder is created. 
+    public bool Send_AdminMail(string workOrderID)
+    {
+        //just put this in to remove the squiggles
+        return false;
+    }
 
 }
