@@ -239,6 +239,14 @@ width:166px;
     /*background-image:url("images/backgrad4.png");*/
 }
 
+    .adminDashboard .btnMenuEmp 
+    {
+        text-align: left;
+        
+    }
+
+    .adminDashboard 
+
     .adminDashboard h3
     {
         text-align: center;
@@ -286,6 +294,14 @@ width:166px;
     width: 250px;
     font: bold 14px tahoma;
     margin: 8px 25px 8px 60px;    
+}
+.btnDash2
+{
+    width: 250px;
+    font: bold 14px tahoma;
+    margin: 8px 25px 8px 60px;
+    float: left;
+        
 }
 .updateTable
 {
