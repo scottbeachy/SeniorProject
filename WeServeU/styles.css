@@ -15,7 +15,7 @@
     width: 1000px;
     height: 200px;
     padding-bottom: 5px;
-    background-image:url('images/banner.jpg');
+    background-image:url('images/newbanner.jpg');
     background-size:auto;
     background-repeat:no-repeat;
     position:relative;
@@ -93,7 +93,7 @@ width:166px;
 
 #mainContainer {
     height: 100%;
-    border: 1px solid #ccc;
+    
     margin-top: 5px;
     padding:5px;
 }
@@ -109,7 +109,7 @@ width:166px;
 
 #footer {
     width: auto;
-    border: 1px solid #ccc;
+    padding-top:15px;
     text-align:center;
     clear:both;
 }
@@ -401,11 +401,11 @@ width:166px;
 #box1 
 {
     position: absolute;
-    top: 610px;
+    top: 300px;
     height: 200px;
     width: 988px;
     background-image:url('images/Transparent.png');
-    font-family: Verdana;
+    /*font-family: Verdana;*/
 }
     #box1 h1 
     {
@@ -421,10 +421,10 @@ width:166px;
     width: 380px;
     height: 200px;
     position: absolute;
-    top: 830px;
-    font-family: 'Times New Roman';
+    top: 625px;
+    /*font-family: 'Times New Roman';*/
     padding-left: 20px;
-    text-align: right;
+    text-align: left;
 }
 
 #aboutUs_text {
