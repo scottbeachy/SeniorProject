@@ -7,8 +7,10 @@
     
     <link href="styles.css" rel="stylesheet" />
     <link href="jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
+    <link href="jquery.ui.datepicker.monthyearpicker.css" rel="stylesheet" />
     <script src="jquery-1.9.1.js"></script>
     <script src="jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="jquery.ui.datepicker.monthyearpicker.js"></script>
     <link type="image/ico" href="Flag.ico" rel="icon" />
     <link type="image/png" href="images/Flag.ico" rel="icon" />
     <asp:ContentPlaceHolder id="head" runat="server">        

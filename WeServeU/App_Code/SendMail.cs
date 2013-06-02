@@ -24,10 +24,7 @@ public class SendMail
 		// TODO: Add constructor logic here
 		//
 	}
-    //public bool Send_CustMail(string custID)
-    //{
-
-    //}
+   
     public bool Send_EmpEmail(string workOrderNum)
     {
         string email;

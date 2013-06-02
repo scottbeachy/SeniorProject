@@ -222,4 +222,8 @@ public partial class AdminHome : System.Web.UI.Page
         Response.Redirect("UpdateClientInfo.aspx");
 
     }
+    protected void btnAddEmp_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AddEmployee.aspx");
+    }
 }

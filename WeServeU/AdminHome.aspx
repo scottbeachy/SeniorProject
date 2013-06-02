@@ -52,7 +52,8 @@
         <asp:Button ID="btnUpdateWrk" runat="server" Text="Submit" CssClass="btnDash" ValidationGroup="wrkUpdate" CausesValidation="true" OnClick="btnUpdateWrk_Click" /><br />
         <asp:DropDownList ID="ddlUpdateWO" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnChoose" runat="server" Text="Update" OnClick="btnChoose_Click"  CssClass="btnDash" /><br />
         <asp:Label ID="lblUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
-
+        <h3>Add a new Employee</h3>
+        <asp:Button ID="btnAddEmp" runat="server" Text="Add Employee"  CssClass="btnDash" OnClick="btnAddEmp_Click" />
 
 
 
