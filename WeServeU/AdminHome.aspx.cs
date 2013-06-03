@@ -53,6 +53,7 @@ public partial class AdminHome : System.Web.UI.Page
         lblUpdate.Visible = false;
         btnChoose.Visible = false;
         btnSelectClient.Visible = false;
+        btnGenReportSubmit.Visible = false;
     }
 
     protected void btnUpdateWrk_Click(object sender, EventArgs e)

@@ -534,3 +534,28 @@ width:166px;
     font: bold 14px tahoma;
     
 }
+
+.lblGenStartDate
+{
+    font-family: Tahoma;
+    margin:2px 5px 2px 20px;
+    padding-left:60px;
+}
+
+.lblGenEndDate
+{
+    font-family: Tahoma;
+    margin:2px 5px 2px 8px;
+}
+
+.chkGenReport
+{
+    margin: 36px;
+}
+
+.btnSubmitRep
+{
+    width: 250px;
+    font: bold 14px tahoma;
+    margin: 8px 60px 8px 10px;    
+}
