@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="welcomeBox">
+        <asp:Button ID="btnReturnHome" runat="server" Text="Back to Admin Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
+        <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
+    </div>
     <h3>Update Work Order View. To Make Updates, Please Click the "Edit" Button At The Bottom Of The Page.</h3>
     
     <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" DataSourceID="UpdateWODataSource" AutoGenerateRows="False" DataKeyNames="WorkOrderID,CustomerID,EmpID" CssClass="updateTable" AlternatingRowStyle-BackColor="#CCCCCC" >

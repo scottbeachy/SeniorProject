@@ -25,6 +25,7 @@ public partial class AdminHome : System.Web.UI.Page
     string perm;
     string date1;
     string date2;
+    string emp;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -53,6 +54,7 @@ public partial class AdminHome : System.Web.UI.Page
         btnChoose.Visible = false;
         btnSelectClient.Visible = false;
     }
+
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
     {
         date1 = txtWrkDate1.Text;
@@ -225,5 +227,13 @@ public partial class AdminHome : System.Web.UI.Page
     protected void btnAddEmp_Click(object sender, EventArgs e)
     {
         Response.Redirect("AddEmployee.aspx");
+    }
+    protected void btnUpdateEmp_Click(object sender, EventArgs e)
+    {
+        
+        emp = ddlEmpList.SelectedValue;
+        Session["EmployeeID"] = emp;
+        Response.Redirect("UpdateEmployee.aspx");
+        
     }
 }
