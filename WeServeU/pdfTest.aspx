@@ -3,13 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:Label ID="lblCourtFiled" runat="server" Text="Court Filed: "></asp:Label>
+<%--    <asp:Label ID="lblCourtFiled" runat="server" Text="Court Filed: "></asp:Label>
     <asp:TextBox ID="txtCourt" runat="server"></asp:TextBox>
     <br />
 
     <asp:Label ID="lblCountyFiled" runat="server" Text="County Filed: "></asp:Label>
     <asp:TextBox ID="txtCounty" runat="server"></asp:TextBox>
-    <br />
+    <br />--%>
 
     <asp:Button ID="btnCreatePdf" runat="server" Text="Create PDF" OnClick="btnCreatePdf_Click" />
 
