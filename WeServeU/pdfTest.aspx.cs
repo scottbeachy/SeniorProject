@@ -15,7 +15,8 @@ using System.IO;
 
 public partial class pdfTest : System.Web.UI.Page
 {
-    string county, clientStatus;
+    string county, clientStatus, clientFName, clientLName, opFName, opLName, empFName, empLName, empLCounty;
+    string caseNum, dateCreated, paperTitle, toBeServed;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -24,31 +25,76 @@ public partial class pdfTest : System.Web.UI.Page
 
     }
     protected void btnCreatePdf_Click(object sender, EventArgs e)
-    {
-        //string county;
-        
-        //Make DB connection
+    {        
+        //Make DB connection & sql command
         string connection = ConfigurationManager.ConnectionStrings["testdb"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
-        SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
+        SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
         cmd.Parameters.AddWithValue("@WorkOrderID", 90);
 
-
+        SqlCommand empCmd = new SqlCommand("SELECT Employee.EmpFName, Employee.EmpLName, Employee.EmpLicCnty FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID=Employee.EmpID WHERE WorkOrderID = @WorkorderID", conn);
+        empCmd.Parameters.AddWithValue("@WorkOrderID", 90);
+        
         conn.Open();
+        SqlDataReader empDr = empCmd.ExecuteReader();
+        while (empDr.Read())
+        {
+            empFName = empDr[0].ToString();
+            empLName = empDr[1].ToString();
+            empLCounty = empDr[2].ToString();
+        }
+        empDr.Close();
+
+        //open connection & read in DB fields
+        
         SqlDataReader dr = cmd.ExecuteReader();
         while (dr.Read())
         {
-            county = dr[0].ToString().ToUpper();
+            county = dr[0].ToString();
             clientStatus = dr[1].ToString();
+            clientFName = dr[2].ToString();
+            clientLName = dr[3].ToString();
+            opFName = dr[4].ToString();
+            opLName = dr[5].ToString();
+            caseNum = dr[6].ToString();
+            dateCreated = dr[7].ToString();
+            paperTitle = dr[8].ToString();
+            toBeServed = dr[9].ToString();
+
         }
         dr.Close();
         conn.Close();
 
+        //build necessary strings to fill in PDF
         StringBuilder countyLine = new StringBuilder("IN AND FOR THE COUNTY OF ");
         countyLine.Append(county);
-
-
+        StringBuilder clientName = new StringBuilder();
+        clientName.Append(clientFName);
+        clientName.Append(" ");
+        clientName.Append(clientLName);
+        clientName.Append(",");
+        StringBuilder opName = new StringBuilder();
+        opName.Append(opFName);
+        opName.Append(" ");
+        opName.Append(opLName);
+        opName.Append(",");
+        StringBuilder paragraphOne = new StringBuilder("I, ");
+        paragraphOne.Append(empFName.ToUpper());
+        paragraphOne.Append(" ");
+        paragraphOne.Append(empLName.ToUpper());
+        paragraphOne.Append(", a private process server, having been so appointed by the court in the County of ");
+        paragraphOne.Append(empLCounty);
+        paragraphOne.Append(".");
+        StringBuilder dateReceived = new StringBuilder("On ");
+        dateReceived.Append(dateCreated);
+        dateReceived.Append(" I received the following documents:");
+        StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
+        paragraphTwo.Append(toBeServed);
+        paragraphTwo.Append(" by leaving a copy with \"Jane Doe\" (whose true name is refused) ");
+        //*******************Need to finish this one
         
+
+
         
         //Read in the PDF template
         var reader = new PdfReader(Server.MapPath("PDFs/SuperiorSubShell.pdf"));
@@ -59,11 +105,23 @@ public partial class pdfTest : System.Web.UI.Page
         var stamper = new PdfStamper(reader, output);
 
         //Use the AcroFields property & SetField method to insert text into Pdf fields
-        stamper.AcroFields.SetField("countyLine", countyLine.ToString());
+        stamper.AcroFields.SetField("countyLine", countyLine.ToString().ToUpper());
+        stamper.AcroFields.SetField("caseNumber", caseNum);
+        stamper.AcroFields.SetField("paragraphOne", paragraphOne.ToString());
+        stamper.AcroFields.SetField("dateReceived", dateReceived.ToString());
+        stamper.AcroFields.SetField("paperTitle", paperTitle.ToUpper());
+        stamper.AcroFields.SetField("paragraphTwo", paragraphTwo.ToString());
+
+        
+        //Write Names/Statuses (RE, DE, PE, PL) in the correct positions
         if (clientStatus == "DE")
         {
             stamper.AcroFields.SetField("bottomStatus", "Defendant");
             stamper.AcroFields.SetField("topStatus", "Plantiff");
+            stamper.AcroFields.SetField("bottomName", clientName.ToString());
+            stamper.AcroFields.SetField("topName", opName.ToString());
+
+            //*******Probably need to also set Name in paragraphTwo depending on the clientStatus
         }
 
         //Disable field editing by flattening the stamper
