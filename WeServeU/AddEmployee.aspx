@@ -117,11 +117,22 @@
         <asp:TextBox ID="txtConAgreeDate" runat="server" CssClass="txtAddEmp" ToolTip="Contract Agreement Date"></asp:TextBox><br />
         <asp:Label ID="Label24" runat="server" Text="Contract Expiration Date:" CssClass="lblEmp" AssociatedControlID="txtConExp"></asp:Label>
         <asp:TextBox ID="txtConExp" runat="server" CssClass="txtAddEmp" ToolTip="Contract Expiration Date"></asp:TextBox><br />
-        <asp:Label ID="Label25" runat="server" Text="Base Pay:" CssClass="lblEmp" AssociatedControlID="txtBase"></asp:Label>
+        <asp:Label ID="Label25" runat="server" Text="Base Pay: (ie .25 for 25%) " CssClass="lblEmp" AssociatedControlID="txtBase"></asp:Label>
         <asp:TextBox ID="txtBase" runat="server" CssClass="txtAddEmp" ToolTip="Employees Base Pay"></asp:TextBox><br />
         <asp:Label ID="Label26" runat="server" Text="W9 Filing Date:" CssClass="lblEmp" AssociatedControlID="txtW9Date"></asp:Label>
         <asp:TextBox ID="txtW9Date" runat="server" CssClass="txtAddEmp" ToolTip="W9 Filing Date"></asp:TextBox><br />
-        <%--Dont forget to add their status and their permission when creating record--%>
+
+        <h3>Is this employee going to be an administrator for this system?</h3>
+       <%-- <asp:DropDownList ID="ddlAdmin" runat="server" CssClass="ddlEmp" ToolTip="Select Yes or No">
+            <asp:ListItem Value="E" Text="No"></asp:ListItem>
+            <asp:ListItem Value="A" Text="Yes"></asp:ListItem>            
+        </asp:DropDownList>--%>
+        <asp:RadioButtonList ID="rdoAdmin" runat="server" CssClass="rdoAdmin">
+            <asp:ListItem Enabled="true" Selected ="true" Text="No" Value="E"></asp:ListItem>
+            <asp:ListItem Enabled="true" Selected="False" Text="Yes" Value="A"></asp:ListItem>
+        </asp:RadioButtonList>
+
+
         <h3>Click the button below to add this employee</h3>
         <asp:Button ID="btnAddEmployee" runat="server" Text="Add" CssClass="btnDash" OnClick="btnAddEmployee_Click"/>
     </div>

@@ -74,7 +74,8 @@ public partial class AddEmployee : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@EmpECAddress", txtEAddr.Text );
             cmd.Parameters.AddWithValue("@EmpUser", txtUser.Text);
             cmd.Parameters.AddWithValue("@EmpPass", txtPass.Text);
-            cmd.Parameters.AddWithValue("@EmpPerm", "E" );
+            //cmd.Parameters.AddWithValue("@EmpPerm", ddlAdmin.SelectedValue);
+            cmd.Parameters.AddWithValue("@EmpPerm", rdoAdmin.SelectedValue);
             cmd.Parameters.AddWithValue("@EmpCont", txtConAgreeDate.Text );
             cmd.Parameters.AddWithValue("@EmpExp", txtConExp.Text);
             cmd.Parameters.AddWithValue("@EmpPay", txtBase.Text);
