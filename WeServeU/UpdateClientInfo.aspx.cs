@@ -21,4 +21,8 @@ public partial class UpdateClientInfo : System.Web.UI.Page
         }
     }
 
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AdminHome.aspx");
+    }
 }
