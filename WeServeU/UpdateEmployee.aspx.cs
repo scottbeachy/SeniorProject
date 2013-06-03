@@ -11,4 +11,10 @@ public partial class UpdateEmployee : System.Web.UI.Page
     {
 
     }
+
+    //This is the onclick for the return button. Do not remove
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AdminHome.aspx");
+    }
 }

@@ -228,6 +228,7 @@ width:166px;
     padding:2px 5px 2px 5px;
     font: bold 16px Tahoma;
     background-color:#EFEFEF;
+    border-bottom: 2px solid #000;
 }
 .adminDashboard
 {
@@ -525,4 +526,11 @@ width:166px;
 .rdoAdmin
 {
     margin-left: 15px;
+}
+.returnHome
+{
+    float: left;
+    width: 250px;
+    font: bold 14px tahoma;
+    
 }

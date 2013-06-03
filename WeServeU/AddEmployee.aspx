@@ -10,6 +10,8 @@
         });
     </script>
     <div class="welcomeBox">
+        <asp:Button ID="btnReturnHome" runat="server" Text="Back to Admin Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
+
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
     </div>
     <div id="AddEmp">
@@ -34,7 +36,7 @@
         <asp:Label ID="Label9" runat="server" Text="City:" CssClass="lblEmp" AssociatedControlID="txtCity"></asp:Label>
         <asp:TextBox ID="txtCity" runat="server" CssClass="txtAddEmp" ToolTip="City"></asp:TextBox><br />
         <asp:Label ID="Label10" runat="server" Text="State:" CssClass="lblEmp" AssociatedControlID="ddlState"></asp:Label>
-        <%--<asp:TextBox ID="txtState" runat="server" CssClass="txtAddEmp" ToolTip="State"></asp:TextBox>--%>
+       
         <asp:DropDownList ID="ddlState" runat="server" ToolTip="State" CssClass="txtAddEmp">
 	        <asp:ListItem Value="AL">Alabama</asp:ListItem>
 	        <asp:ListItem Value="AK">Alaska</asp:ListItem>
@@ -123,10 +125,7 @@
         <asp:TextBox ID="txtW9Date" runat="server" CssClass="txtAddEmp" ToolTip="W9 Filing Date"></asp:TextBox><br />
 
         <h3>Is this employee going to be an administrator for this system?</h3>
-       <%-- <asp:DropDownList ID="ddlAdmin" runat="server" CssClass="ddlEmp" ToolTip="Select Yes or No">
-            <asp:ListItem Value="E" Text="No"></asp:ListItem>
-            <asp:ListItem Value="A" Text="Yes"></asp:ListItem>            
-        </asp:DropDownList>--%>
+     
         <asp:RadioButtonList ID="rdoAdmin" runat="server" CssClass="rdoAdmin">
             <asp:ListItem Enabled="true" Selected ="true" Text="No" Value="E"></asp:ListItem>
             <asp:ListItem Enabled="true" Selected="False" Text="Yes" Value="A"></asp:ListItem>

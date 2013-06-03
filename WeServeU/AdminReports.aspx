@@ -1,8 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AdminReports.aspx.cs" Inherits="AdminReports" %>
+﻿<%@ Page Title="Reports" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AdminReports.aspx.cs" Inherits="AdminReports" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="welcomeBox">
+        <asp:Button ID="btnReturnHome" runat="server" Text="Back to Admin Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
+        <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
+    </div>
     <h1>This is the Admin Reports Page -Elmer-</h1>
 <%--    <div class="cstGenReport">
                 <h4>To Generate a Report Please Enter Dates Below:</h4>

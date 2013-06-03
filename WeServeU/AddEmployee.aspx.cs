@@ -73,8 +73,7 @@ public partial class AddEmployee : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@EmpECPhone", txtEPhone.Text);
             cmd.Parameters.AddWithValue("@EmpECAddress", txtEAddr.Text );
             cmd.Parameters.AddWithValue("@EmpUser", txtUser.Text);
-            cmd.Parameters.AddWithValue("@EmpPass", txtPass.Text);
-            //cmd.Parameters.AddWithValue("@EmpPerm", ddlAdmin.SelectedValue);
+            cmd.Parameters.AddWithValue("@EmpPass", txtPass.Text);            
             cmd.Parameters.AddWithValue("@EmpPerm", rdoAdmin.SelectedValue);
             cmd.Parameters.AddWithValue("@EmpCont", txtConAgreeDate.Text );
             cmd.Parameters.AddWithValue("@EmpExp", txtConExp.Text);
@@ -99,7 +98,7 @@ public partial class AddEmployee : System.Web.UI.Page
         }
     }
 
-
+    //this method clears all the textboxes without actually calling all the seperate values
     private void ClearInputs(ControlCollection ctrls)
     {
         foreach (Control ctrl in ctrls)
@@ -109,5 +108,9 @@ public partial class AddEmployee : System.Web.UI.Page
             
             ClearInputs(ctrl.Controls);
         }
+    }
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AdminHome.aspx");
     }
 }
