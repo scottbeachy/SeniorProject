@@ -15,8 +15,9 @@ using System.IO;
 
 public partial class pdfTest : System.Web.UI.Page
 {
-    string county, clientStatus, clientFName, clientLName, opFName, opLName, empFName, empLName, empLCounty;
-    string caseNum, dateCreated, paperTitle, toBeServed;
+    string day, county, clientStatus, clientFName, clientLName, opFName, opLName, empFName, empLName, empLCounty;
+    string caseNum, dateCreated, paperTitle, toBeServed, serveStreet, serveApt, serveCity, serveState, serveZip;
+    string serveDt, serveTime;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -29,7 +30,8 @@ public partial class pdfTest : System.Web.UI.Page
         //Make DB connection & sql command
         string connection = ConfigurationManager.ConnectionStrings["testdb"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
-        SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
+        SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed," + 
+            "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
         cmd.Parameters.AddWithValue("@WorkOrderID", 90);
 
         SqlCommand empCmd = new SqlCommand("SELECT Employee.EmpFName, Employee.EmpLName, Employee.EmpLicCnty FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID=Employee.EmpID WHERE WorkOrderID = @WorkorderID", conn);
@@ -60,6 +62,13 @@ public partial class pdfTest : System.Web.UI.Page
             dateCreated = dr[7].ToString();
             paperTitle = dr[8].ToString();
             toBeServed = dr[9].ToString();
+            serveStreet = dr[10].ToString();
+            serveApt = dr[11].ToString();
+            serveCity = dr[12].ToString();
+            serveState = dr[13].ToString();
+            serveZip = dr[14].ToString();
+            serveDt = dr[15].ToString();
+            serveTime = dr[16].ToString();
 
         }
         dr.Close();
@@ -90,9 +99,69 @@ public partial class pdfTest : System.Web.UI.Page
         dateReceived.Append(" I received the following documents:");
         StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
         paragraphTwo.Append(toBeServed);
-        paragraphTwo.Append(" by leaving a copy with \"Jane Doe\" (whose true name is refused) ");
+        paragraphTwo.Append(" by leaving a copy with \"Jane Doe\" (whose true name is refused) at: ");
         //*******************Need to finish this one
-        
+  
+        //StringBuilder for Serve address - w/ and w/o Apartment
+        StringBuilder serveAddress = new StringBuilder();
+
+        StringBuilder serveDate = new StringBuilder();
+        serveDate.Append(serveDt);
+        serveDate.Append(" ");
+        serveDate.Append(serveTime);
+
+        //StringBuilder & formatting for Execute date
+        DateTime myDate = DateTime.Now;
+
+        //Old code w/ superscript
+        //if ((myDate.Day == 1) || (myDate.Day == 21) || (myDate.Day == 31)) day = myDate.ToString("%d") + "<sup>st</sup>";
+        //else if ((myDate.Day == 2) || (myDate.Day == 22)) day = myDate.ToString("%d") + "<sup>nd</sup>";
+        //else if ((myDate.Day == 3) || (myDate.Day == 23)) day = myDate.ToString("%d") + "<sup>rd</sup>";
+        //else day = myDate.ToString("%d") + "<sup>th</sup>";
+
+
+        if ((myDate.Day == 1) || (myDate.Day == 21) || (myDate.Day == 31)) day = myDate.ToString("%d") + "st";
+        else if ((myDate.Day == 2) || (myDate.Day == 22)) day = myDate.ToString("%d") + "nd";
+        else if ((myDate.Day == 3) || (myDate.Day == 23)) day = myDate.ToString("%d") + "rd";
+        else day = myDate.ToString("%d") + "th";
+
+
+        StringBuilder executeDate = new StringBuilder("Executed this ");
+        executeDate.Append(day);
+        executeDate.Append(" day of ");
+        executeDate.Append(myDate.ToString("MMMM"));
+        executeDate.Append(", ");
+        executeDate.Append(myDate.Year.ToString());
+        executeDate.Append(".");
+
+
+        if (serveApt == "")
+        {
+            serveAddress.Append(serveStreet);
+            serveAddress.Append(" ");
+            serveAddress.Append(serveCity);
+            serveAddress.Append(", ");
+            serveAddress.Append(serveState);
+            serveAddress.Append(" ");
+            serveAddress.Append(serveZip);
+            serveAddress.Append(" on:");
+        }
+
+        else
+        {
+            serveAddress.Append(serveStreet);
+            serveAddress.Append(" ");
+            serveAddress.Append("Apt ");
+            serveAddress.Append(serveApt);
+            serveAddress.Append(" ");
+            serveAddress.Append(serveCity);
+            serveAddress.Append(", ");
+            serveAddress.Append(serveState);
+            serveAddress.Append(" ");
+            serveAddress.Append(serveZip);
+            serveAddress.Append(" on:");
+        }
+
 
 
         
@@ -111,6 +180,11 @@ public partial class pdfTest : System.Web.UI.Page
         stamper.AcroFields.SetField("dateReceived", dateReceived.ToString());
         stamper.AcroFields.SetField("paperTitle", paperTitle.ToUpper());
         stamper.AcroFields.SetField("paragraphTwo", paragraphTwo.ToString());
+        stamper.AcroFields.SetField("serveAddress", serveAddress.ToString());
+        stamper.AcroFields.SetField("serveDateTime", serveDate.ToString());
+
+        
+        stamper.AcroFields.SetField("executeDate", executeDate.ToString());
 
         
         //Write Names/Statuses (RE, DE, PE, PL) in the correct positions
@@ -123,6 +197,8 @@ public partial class pdfTest : System.Web.UI.Page
 
             //*******Probably need to also set Name in paragraphTwo depending on the clientStatus
         }
+
+
 
         //Disable field editing by flattening the stamper
         stamper.FormFlattening = true;
