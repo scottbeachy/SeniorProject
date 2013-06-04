@@ -14,12 +14,12 @@
             &nbsp;</div>
 
         <div id="pic2">
-            <img src="images/stock_photo1.jpg" />
-            <img src="images/stock_photo2.jpg" />
+            <img src="images/stock_photo1.png" />
+            <img src="images/stock_photo2.png" />
         </div>
 
         <div id="pic3">
-            <img src="images/stock_photo3.jpg" />
+            <img src="images/stock_photo3.png" />
         </div>
 
        

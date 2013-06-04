@@ -4,15 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $(".txtDate").datepicker();
-        });
-    </script>
-
     <div class="welcomeBox">
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
+        <asp:Button ID="Button1" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
     </div>
 
 
@@ -39,27 +33,42 @@
             </div>
         </div>
         <div class="btnMenuEmp">
-            <asp:Button ID="btnAssign" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnAssign_Click" /><span class="firstLine">View the current work order selected from above</span>
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnAssign" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnAssign_Click" />
+                <asp:Label ID="Label1" runat="server" Text="View the current work order selected from above" CssClass="btnDash3"></asp:Label>
+                <br />
+                &nbsp;</div>
             <br />
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnPrintWO" runat="server" Text="Print Work Order Sheet" CssClass="btnDash2" />
+                <asp:Label ID="Label2" runat="server" Text="Print out the Work Order Sheet to start your work order" CssClass="btnDash3"></asp:Label>
+                <br />
+                &nbsp;</div>
             <br />
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnDownloadCOS" runat="server" Text="Download C.O.S." CssClass="btnDash2" />
+                <asp:Label ID="Label3" runat="server" Text="Download the Certificate Of Service" CssClass="btnDash3"></asp:Label>
+                <br />
+                &nbsp;</div>
             <br />
-            <asp:Button ID="btnPrintWO" runat="server" Text="Print Work Order Sheet" CssClass="btnDash2"/>Print out the Work Order Sheet to start your work order
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnUploadCOS" runat="server" Text="Upload C.O.S." CssClass="btnDash2" />
+                <asp:Label ID="Label4" runat="server" Text="Upload the Stamped Certificate of Service" CssClass="btnDash3"></asp:Label>
+                <br />
+                <br />
+            </div>
             <br />
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnCompleteCOS" runat="server" Text="Update Account" CssClass="btnDash2" />
+                <asp:Label ID="Label5" runat="server" Text="Update Your Account Information" CssClass="btnDash3"></asp:Label>
+                <br />
+                &nbsp;</div>
             <br />
-            <br />
-            <asp:Button ID="btnDownloadCOS" runat="server" Text="Download C.O.S." CssClass="btnDash2"/>Download the Certificate Of Service
-            <br />
-            <br />
-            <br />
-            <asp:Button ID="btnUploadCOS" runat="server" Text="Upload C.O.S." CssClass="btnDash2"/>Upload the Stamped Certificate of Service
-            <br />
-            <br />
-            <br />
-            <asp:Button ID="btnCompleteCOS" runat="server" Text="Update Account" CssClass="btnDash2"/>Update Your Account Information
-            <br />
-            <br />
-            <br />
-            <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btnDash2" OnClick="btnLogout_Click" />Log Out of Your Account
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btnDash2" OnClick="btnLogout_Click" />
+                <asp:Label ID="Label6" runat="server" Text="Log Out of Your Account" CssClass="btnDash3"></asp:Label>
+                <br />
+                &nbsp;</div>
             <br />
             <br />
             <br />

@@ -246,6 +246,11 @@ width:166px;
         
     }
 
+    .adminDashboard .btnMenuEmpItem 
+    {
+        vertical-align: central;
+    }
+
 
 
     .adminDashboard h3
@@ -302,6 +307,13 @@ width:166px;
     width: 250px;
     font: bold 14px tahoma;
     margin: 8px 25px 8px 60px;
+    float: left;
+        
+}
+.btnDash3
+{
+    
+    margin-top: 8px;
     float: left;
         
 }
