@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="welcomeBox">
+        <asp:Button ID="Button1" runat="server" Text="Back to Admin Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    </div>
     <h3 class="updateClientHeader">To Make Updates to the Client, Please Click the "Edit" Button At The Bottom Of The Page.</h3>
 
     <asp:DetailsView ID="clientDetailsView" CssClass="updateClientDetails" FieldHeaderStyle-Width="80%" runat="server" Height="50px" AutoGenerateRows="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="CustomerID" DataSourceID="UpdateClientDataSource" ForeColor="Black" GridLines="Vertical">

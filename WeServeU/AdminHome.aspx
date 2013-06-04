@@ -11,7 +11,7 @@
         });
     </script>
 
-    <div class="welcomeBox">
+    <div class="welcomeBox">        
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
     </div>
     <div class="adminDashboard">
