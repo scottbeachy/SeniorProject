@@ -63,8 +63,8 @@
 
         <h3>Update Client Information:</h3>
         <asp:Label ID="lblClientID" runat="server" CssClass="lblUpdateClientID" Text="ID:"></asp:Label>
-        <asp:TextBox ID="txtClientID" CssClass="txtFirstName" runat="server" ValidationGroup="wrkClient"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientID"></asp:RequiredFieldValidator><br />
+        <asp:TextBox ID="txtClientID" CssClass="txtFirstName" runat="server" ValidationGroup="wrkClient"></asp:TextBox><br />
+        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientID"></asp:RequiredFieldValidator><br />--%>
         <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
         <asp:TextBox ID="txtClientFirstName" runat="server" ValidationGroup="wrkClient" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox><br />
 <%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientFirstName"></asp:RequiredFieldValidator><br />--%>
