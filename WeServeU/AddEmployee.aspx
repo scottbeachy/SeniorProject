@@ -11,7 +11,7 @@
     </script>
     <div class="welcomeBox">
         <asp:Button ID="btnReturnHome" runat="server" Text="Back to Admin Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
-
+        <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
     </div>
     <div id="AddEmp">

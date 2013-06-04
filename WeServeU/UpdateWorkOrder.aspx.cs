@@ -41,4 +41,12 @@ public partial class UpdateWorkOrder : System.Web.UI.Page
     {
         Response.Redirect("AdminHome.aspx");
     }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.RemoveAll();
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("login.aspx");
+    }
 }

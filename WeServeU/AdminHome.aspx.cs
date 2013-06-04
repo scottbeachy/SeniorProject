@@ -237,5 +237,12 @@ public partial class AdminHome : System.Web.UI.Page
         Response.Redirect("UpdateEmployee.aspx");
         
     }
-    
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.RemoveAll();
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("login.aspx");
+    }
 }
