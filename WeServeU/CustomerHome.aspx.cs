@@ -42,6 +42,13 @@ public partial class CustomerHome : System.Web.UI.Page
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Customer ID: " + id;
     }
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.RemoveAll();
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("login.aspx");
+    }
 
 
 }

@@ -55,7 +55,7 @@
                 <asp:Button ID="btnUploadCOS" runat="server" Text="Upload C.O.S." CssClass="btnDash2" OnClick="btnUploadCOS_Click" />
                 <asp:Label ID="Label4" runat="server" Text="Upload the Stamped Certificate of Service" CssClass="btnDash3"></asp:Label>
                 <br />
-                <br />
+                &nbsp;<br />
             </div>
             <br />
             <div class="btnMenuEmpItem">
