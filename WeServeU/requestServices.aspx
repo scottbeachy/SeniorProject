@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div id="createAcctContainer">
+    <div class="createAcctContainer">
         <div id="createAcctHeader">
             <p>
                 New customers must create an account using the form below. Customers can then log in to their accounts where they will be able to submit 
