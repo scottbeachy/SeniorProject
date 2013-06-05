@@ -12,11 +12,21 @@
     <div class="adminDashboard">
         <br />
         <h3>DOWNLOAD CERTIFICATE OF SERVICE</h3>
-        <br />
-
+        
         <div class="cosRadio">
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server"></asp:RadioButtonList>
+            <asp:RadioButtonList ID="rblDownloadCOS" runat="server" CausesValidation="True" CellPadding="10" CssClass="radioButtonCOS" TextAlign="Right" RepeatLayout="Table" RepeatColumns="1">
+                <asp:ListItem Text="SuperiorSub" Value=""></asp:ListItem>
+                <asp:ListItem Text="SuperiorPersonal" Value=""></asp:ListItem>
+                <asp:ListItem Text="JusticeSub" Value=""></asp:ListItem>
+                <asp:ListItem Text="JustincePersonal" Value=""></asp:ListItem>
+            </asp:RadioButtonList>
         </div>
+        <br />
+        <div>
+            <asp:Button ID="btnEmpDownloadCOS" runat="server" Text="Download C.O.S."  class="btnDash" />
+        </div>
+        <br />
+        <br />
 
 
 

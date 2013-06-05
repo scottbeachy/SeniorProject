@@ -571,3 +571,22 @@ width:166px;
     font: bold 14px tahoma;
     margin: 8px 60px 8px 10px;    
 }
+
+
+
+.cosRadio 
+{
+    margin-left: 440px;
+}
+
+.downloadCOSbtn 
+{
+    width: 250px;
+    font: bold 14px tahoma;
+    margin: 8px 25px 8px 60px;   
+    text-align: center;
+}
+
+.empFileUpload {
+    text-align: center;
+}

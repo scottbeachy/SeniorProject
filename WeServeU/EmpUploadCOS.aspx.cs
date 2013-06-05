@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class EmpDownloadCOS : System.Web.UI.Page
+public partial class EmpUploadCOS : System.Web.UI.Page
 {
     //Some variables for use on this page
     int id;

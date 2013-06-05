@@ -22,9 +22,7 @@ public partial class EmpHome : System.Web.UI.Page
     string fname;
     string lname;
     string perm;
-    string date1;
-    string date2;
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         //Check permission level and redirect if needed
@@ -74,6 +72,21 @@ public partial class EmpHome : System.Web.UI.Page
 
     protected void btnLogout_Click(object sender, EventArgs e)
     {
+        Session.RemoveAll();
+        Session.Abandon();
+        Session.Clear();
         Response.Redirect("login.aspx");
+    }
+    protected void btnDownloadCOS_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpDownloadCOS.aspx");
+    }
+    protected void btnUploadCOS_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpUploadCOS.aspx");
+    }
+    protected void btnPrintWO_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("workOrderTemplate.pdf");
     }
 }

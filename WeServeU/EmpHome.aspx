@@ -40,19 +40,19 @@
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnPrintWO" runat="server" Text="Print Work Order Sheet" CssClass="btnDash2" />
+                <asp:Button ID="btnPrintWO" runat="server" Text="Print Work Order Sheet" CssClass="btnDash2" OnClick="btnPrintWO_Click" />
                 <asp:Label ID="Label2" runat="server" Text="Print out the Work Order Sheet to start your work order" CssClass="btnDash3"></asp:Label>
                 <br />
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnDownloadCOS" runat="server" Text="Download C.O.S." CssClass="btnDash2" />
+                <asp:Button ID="btnDownloadCOS" runat="server" Text="Download C.O.S." CssClass="btnDash2" OnClick="btnDownloadCOS_Click" />
                 <asp:Label ID="Label3" runat="server" Text="Download the Certificate Of Service" CssClass="btnDash3"></asp:Label>
                 <br />
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnUploadCOS" runat="server" Text="Upload C.O.S." CssClass="btnDash2" />
+                <asp:Button ID="btnUploadCOS" runat="server" Text="Upload C.O.S." CssClass="btnDash2" OnClick="btnUploadCOS_Click" />
                 <asp:Label ID="Label4" runat="server" Text="Upload the Stamped Certificate of Service" CssClass="btnDash3"></asp:Label>
                 <br />
                 <br />
