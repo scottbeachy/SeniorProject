@@ -51,4 +51,25 @@ public partial class CustomerHome : System.Web.UI.Page
     }
 
 
+    protected void btnCreateWorkOrder_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerCreateWO.aspx");
+    }
+
+    protected void btnViewWorkOrder_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerViewWO.aspx");
+    }
+
+
+    protected void btnUpdateAccount_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerUpdateAccount.aspx");
+    }
+
+
+    protected void btnDownloadCOS_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerDownloadCOS.aspx");
+    }
 }
