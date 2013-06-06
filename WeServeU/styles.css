@@ -587,6 +587,12 @@ width:166px;
     text-align: center;
 }
 
-.empFileUpload {
+.empFileUpload 
+{
+    text-align: center;
+}
+
+#custUpload
+{
     text-align: center;
 }

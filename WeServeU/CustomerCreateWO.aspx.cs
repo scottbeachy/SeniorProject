@@ -43,4 +43,14 @@ public partial class CustomerCreateWO : System.Web.UI.Page
         Session.Clear();
         Response.Redirect("login.aspx");
     }
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerHome.aspx");
+    }
+
+    protected void btnCreateWO_Click(object sender, EventArgs e)
+    {
+       
+    }
+
 }

@@ -72,4 +72,8 @@ public partial class CustomerHome : System.Web.UI.Page
     {
         Response.Redirect("CustomerDownloadCOS.aspx");
     }
+    protected void btnGoToUpload_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerUpload.aspx");
+    }
 }

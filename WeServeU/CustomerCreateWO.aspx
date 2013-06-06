@@ -7,6 +7,7 @@
     <div class="welcomeBox">
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
         <asp:Button ID="Button1" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
+        <asp:Button ID="btnReturnHome" runat="server" Text="Back to Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
     </div>
 
     <div class="createAcctContainer">
@@ -128,15 +129,10 @@
             
         </div>
 
-        <div class="empUploadCOS">
-                Browse to find the File to Upload, then click Upload:
-            <br />
-                <br />
-                <asp:FileUpload ID="FileUpload1" runat="server" CssClass="custFileUpload" />
-                <br />
-                <br />
-            </div>
-            <asp:Button ID="Button2" runat="server" Text="Upload" CssClass="btnDash" />
+        
+         
+            <asp:Button ID="btnCreateWO" runat="server" Text="Create Work Order" CssClass="btnDash" OnClick="btnCreateWO_Click" /><br />
+        <asp:Label ID="lblCreateWOError" runat="server" Text="" Visible="false"></asp:Label>
 
             <br />
             <br />

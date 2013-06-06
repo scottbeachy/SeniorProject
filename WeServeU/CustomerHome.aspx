@@ -39,8 +39,8 @@
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btnDash2" OnClick="btnLogout_Click" />
-                <asp:Label ID="Label6" runat="server" Text="Log Out of Your Account" CssClass="btnDash3"></asp:Label>
+                <asp:Button ID="btnGoToUpload" runat="server" Text="Upload Documents" CssClass="btnDash2" OnClick="btnGoToUpload_Click"/>
+                <asp:Label ID="Label6" runat="server" Text="Upload Documents for a Work Order" CssClass="btnDash3"></asp:Label>
                 <br />
                 &nbsp;</div>
             <br />
