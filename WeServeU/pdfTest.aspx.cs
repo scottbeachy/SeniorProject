@@ -166,7 +166,7 @@ public partial class pdfTest : System.Web.UI.Page
 
         
         //Read in the PDF template
-        var reader = new PdfReader(Server.MapPath("PDFs/SuperiorSubShell.pdf"));
+        var reader = new PdfReader(Server.MapPath("PDFs/SuperiorSubShell1.pdf"));
 
         //Create PdfStamper object. Used to populate Pdf fields & generate new Pdf
         //MemoryStream used to stream pdf back to user. In order to save, use FileStream instead
@@ -201,7 +201,7 @@ public partial class pdfTest : System.Web.UI.Page
 
 
         //Disable field editing by flattening the stamper
-        stamper.FormFlattening = true;
+        //stamper.FormFlattening = true;
 
         //Close the stamper and reader
         stamper.Close();
