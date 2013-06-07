@@ -166,7 +166,6 @@ public partial class AdminHome : System.Web.UI.Page
 
     protected void btnUpdateClient_Click(object sender, EventArgs e)
     {
-        string clientNum = txtClientID.Text;
         string clientFName = txtClientFirstName.Text;
         string clientLName = txtClientLastName.Text;
         string firmName = txtFirmName.Text;
@@ -175,9 +174,8 @@ public partial class AdminHome : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select CustomerID, CFname, CLname, CFirmName FROM Customer WHERE CustomerID = @clientNum AND (CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName) ;", conn);
+            SqlCommand cmd = new SqlCommand("Select * FROM Customer WHERE (CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName) ;", conn);
 
-            cmd.Parameters.AddWithValue("@clientNum", clientNum);
             cmd.Parameters.AddWithValue("@clientFName", clientFName);
             cmd.Parameters.AddWithValue("@clientLName", clientLName);
             cmd.Parameters.AddWithValue("@firmName", firmName);
