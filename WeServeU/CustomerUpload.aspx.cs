@@ -1,4 +1,5 @@
 ﻿/* Created by Scott Beachy
+ * for WeServeU LLC
  * 6/5/2013
  * */
 
@@ -60,7 +61,7 @@ public partial class CustomerUpload : System.Web.UI.Page
             //create a new instance to use its methods
             FileWork fw = new FileWork();
             //method returns a boolean to check for successfull addition of the file to the db
-            success = fw.CustUploadFile(connectionString, ddlWOList.SelectedValue , fileBytes);
+            success = fw.UploadFile(connectionString, ddlWOList.SelectedValue , fileBytes);
             if (success)
             {
                 lblUploadStatus.Text = "Your file has been uploaded and the staff at WeServeU notified.";
@@ -92,5 +93,14 @@ public partial class CustomerUpload : System.Web.UI.Page
     protected void btnReturnHome_Click(object sender, EventArgs e)
     {
         Response.Redirect("CustomerHome.aspx");
+    }
+
+
+    protected void btndown_Click(object sender, EventArgs e)
+    {
+        FileWork fw = new FileWork();
+        string selectStatement = "SELECT Doc FROM Docs WHERE DocID = 1";
+        string wo = "1";
+        fw.DownloadFile(selectStatement, wo);
     }
 }

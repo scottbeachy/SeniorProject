@@ -21,6 +21,7 @@
     <asp:FileUpload ID="cstFileUp" runat="server" CssClass="custFileUpload" /><br /><br /><br />
     <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" CssClass="btnDash" /><br />
     <asp:Label ID="lblUploadStatus" runat="server" Text=""></asp:Label>
+        <asp:Button ID="btndown" runat="server" Text="Button" OnClick="btndown_Click" />
         </div>
 </asp:Content>
 
