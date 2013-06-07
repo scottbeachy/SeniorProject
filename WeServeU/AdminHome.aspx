@@ -11,6 +11,8 @@
         });
     </script>
 
+    <asp:ScriptManager ID="ScriptManagerAdminHome" runat="server"></asp:ScriptManager>
+
     <div class="welcomeBox">        
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
         <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
@@ -63,18 +65,19 @@
 
 
         <h3>Update Client Information:</h3>
-        <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
-        <asp:TextBox ID="txtClientFirstName" runat="server" ValidationGroup="wrkClient" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox><br />
-<%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientFirstName"></asp:RequiredFieldValidator><br />--%>
-        <asp:Label ID="Label2" runat="server" Text="Last Name:" CssClass="lblFirstName"></asp:Label>
-        <asp:TextBox ID="txtClientLastName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox><br />
-<%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientLastName"></asp:RequiredFieldValidator><br />--%>
-        <asp:Label ID="Label4" runat="server" Text="Firm Name:" CssClass="lblFirstName"></asp:Label>
-        <asp:TextBox ID="txtFirmName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox><br />
-<%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtFirmName"></asp:RequiredFieldValidator><br />--%>
-        <asp:Button ID="btnUpdateClient" runat="server" Text="Submit" CssClass="btnUpdateClient" ValidationGroup="wrkClient" CausesValidation="true" OnClick="btnUpdateClient_Click" /><br />
-        <asp:DropDownList ID="ddUpdateClient" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnSelectClient" runat="server" Text="Select Client" CssClass="btnDash" OnClick="btnSelectClient_Click" /><br />
-        <asp:Label ID="lblCLientUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+        <asp:UpdatePanel ID="UpdateClientPanel" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
+                <asp:TextBox ID="txtClientFirstName" runat="server" ValidationGroup="wrkClient" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox><br />
+                <asp:Label ID="Label2" runat="server" Text="Last Name:" CssClass="lblFirstName"></asp:Label>
+                <asp:TextBox ID="txtClientLastName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox><br />
+                <asp:Label ID="Label4" runat="server" Text="Firm Name:" CssClass="lblFirstName"></asp:Label>
+                <asp:TextBox ID="txtFirmName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkClient" ViewStateMode="Enabled"></asp:TextBox><br />
+                <asp:Button ID="btnUpdateClient" runat="server" Text="Submit" CssClass="btnUpdateClient" ValidationGroup="wrkClient" CausesValidation="true" OnClick="btnUpdateClient_Click" /><br />
+                <asp:DropDownList ID="ddUpdateClient" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnSelectClient" runat="server" Text="Select Client" CssClass="btnDash" OnClick="btnSelectClient_Click" /><br />
+                <asp:Label ID="lblCLientUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
         <h3>To Generate a Report Please Enter Dates Below:</h3>
         <asp:CheckBox ID="chkGenCompleted" runat="server" Text="Completed" CssClass="chkGenReport" />
