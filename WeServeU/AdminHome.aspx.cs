@@ -193,15 +193,18 @@ public partial class AdminHome : System.Web.UI.Page
                     ddUpdateClient.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
 
                 }
+                lblCLientUpdate.Visible = false;
+                btnSelectClient.Visible = true;
+                ddUpdateClient.Visible = true;
             }
 
             else
             {
                 lblCLientUpdate.Text = ("Input invalid. Please enter proper customer data.");
                 lblCLientUpdate.Visible = true;
+                btnSelectClient.Visible = false;
+                ddUpdateClient.Visible = false;
             }
-            btnSelectClient.Visible = true;
-            ddUpdateClient.Visible = true;
             conn.Close();
         }
         catch (Exception ex)
