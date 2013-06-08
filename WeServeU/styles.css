@@ -2,11 +2,12 @@
     padding: 0px;
     margin:0px;
     font-family:Tahoma;
+    background-image:url('images/freedom.jpg');
 }
 
 #wrapper {
     width: 1000px;
-    
+    background-color:#fff;
     margin-left: auto;
     margin-right: auto;
 }

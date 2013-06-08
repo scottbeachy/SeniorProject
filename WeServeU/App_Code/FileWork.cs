@@ -63,40 +63,17 @@ public class FileWork
         }
     }
 
-    //public bool EmpUploadFile(string connectionString, string workOrderID, byte[] fileBytes)
-    //{
-    //    try
-    //    {
-    //        string id = HttpContext.Current.Session["CustID"].ToString();
-
-    //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-    //        SqlConnection conn = new SqlConnection(connection);
-    //        SqlCommand cmd = new SqlCommand(connectionString, conn);
-    //        cmd.Parameters.AddWithValue("@WorkOrderID", workOrderID);
-    //        cmd.Parameters.AddWithValue("@EmpID", id);
-    //        cmd.Parameters.AddWithValue("@Doc", fileBytes);
-
-    //        conn.Open();
-    //        cmd.ExecuteNonQuery();
-    //        conn.Close();
-    //        return true;
-    //    }
-    //    catch (SqlException s)
-    //    {
-    //        return false;
-    //    }
-    //}
 
 
-    public void DownloadFile(string connectionString, string docID)
+
+    public void DownloadFile(string selectStatement)
     {
         byte[] fileData;
-        //int fileLength = 0;
-        //byte[] fileData = new byte[fileLength -1];
+        
 
         string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
-        SqlCommand cmd = new SqlCommand(connectionString, conn);
+        SqlCommand cmd = new SqlCommand(selectStatement, conn);
         conn.Open();
         SqlDataReader dr = cmd.ExecuteReader();
 
@@ -107,17 +84,11 @@ public class FileWork
             {
                 HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=YourPdf.pdf");
                 HttpContext.Current.Response.ContentType = "application/pdf";
-
                 HttpContext.Current.Response.BinaryWrite(stream.ToArray());
                 HttpContext.Current.Response.End();
             }
              
         }
 
-        
-
-
-        
-        //return fileData;
     }
 }

@@ -101,6 +101,6 @@ public partial class CustomerUpload : System.Web.UI.Page
         FileWork fw = new FileWork();
         string selectStatement = "SELECT Doc FROM Docs WHERE DocID = 1";
         string wo = "1";
-        fw.DownloadFile(selectStatement, wo);
+        fw.DownloadFile(selectStatement);
     }
 }
