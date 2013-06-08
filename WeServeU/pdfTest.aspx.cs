@@ -99,9 +99,18 @@ public partial class pdfTest : System.Web.UI.Page
         paragraphOne.Append(", a private process server, having been so appointed by the court in the County of ");
         paragraphOne.Append(empLCounty);
         paragraphOne.Append(".");
+
+        //convert string "dateCreated" to DateTime in order to properly format & pull the month, day, & year
+        dt = DateTime.Parse(dateCreated);
         StringBuilder dateReceived = new StringBuilder("On ");
-        dateReceived.Append(dateCreated);
+        dateReceived.Append(dt.ToString("MMMM"));
+        dateReceived.Append(" ");
+        dateReceived.Append(dt.ToString("%d"));
+        dateReceived.Append(", ");
+        dateReceived.Append(dt.ToString("yyyy"));
         dateReceived.Append(" I received the following documents:");
+
+
         StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
         paragraphTwo.Append(toBeServed);
         paragraphTwo.Append(" by leaving a copy with \"Jane Doe\" (whose true name is refused) at: ");
@@ -110,11 +119,20 @@ public partial class pdfTest : System.Web.UI.Page
         //StringBuilder for Serve address - w/ and w/o Apartment
         StringBuilder serveAddress = new StringBuilder();
 
-        //Need to lop off the time of date time
+        
+
+        //convert string "serveDT" to DateTime in order to properly format & pull the month, day, & year
+        dt = DateTime.Parse(serveDt);
         StringBuilder serveDate = new StringBuilder();
-        serveDate.Append(serveDt);
+        serveDate.Append(dt.ToString("MMMM"));
         serveDate.Append(" ");
+        serveDate.Append(dt.ToString("%d"));
+        serveDate.Append(", ");
+        serveDate.Append(dt.ToString("yyyy"));
+        serveDate.Append(" at ");
         serveDate.Append(serveTime);
+
+
 
         //StringBuilder & formatting for Execute date
         //DateTime myDate = DateTime.Now;

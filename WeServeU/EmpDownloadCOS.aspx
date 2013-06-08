@@ -15,15 +15,15 @@
         
         <div class="cosRadio">
             <asp:RadioButtonList ID="rblDownloadCOS" runat="server" CausesValidation="True" CellPadding="10" CssClass="radioButtonCOS" TextAlign="Right" RepeatLayout="Table" RepeatColumns="1">
-                <asp:ListItem Text="SuperiorSub" Value=""></asp:ListItem>
-                <asp:ListItem Text="SuperiorPersonal" Value=""></asp:ListItem>
-                <asp:ListItem Text="JusticeSub" Value=""></asp:ListItem>
-                <asp:ListItem Text="JustincePersonal" Value=""></asp:ListItem>
+                <asp:ListItem Text="SuperiorSub" Value="superiorSub"></asp:ListItem>
+                <asp:ListItem Text="SuperiorPersonal" Value="superiorPersonal"></asp:ListItem>
+                <asp:ListItem Text="JusticeSub" Value="justiceSub"></asp:ListItem>
+                <asp:ListItem Text="JustincePersonal" Value="justicePersonal"></asp:ListItem>
             </asp:RadioButtonList>
         </div>
         <br />
         <div>
-            <asp:Button ID="btnEmpDownloadCOS" runat="server" Text="Download C.O.S."  class="btnDash" />
+            <asp:Button ID="btnEmpDownloadCOS" runat="server" Text="Download C.O.S."  class="btnDash" OnClick="btnEmpDownloadCOS_Click" />
         </div>
         <br />
         <br />
