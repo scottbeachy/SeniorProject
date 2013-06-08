@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Net;
 using System.Data.SqlClient;
+using System.Net.Mime;
 
 
 /// Created By Scott Beachy
@@ -48,15 +49,36 @@ public class SendMail
                 //Create the email message
                 email = dt.Rows[0][3].ToString();
                 MailAddress from = new MailAddress("info@weserveu.biz");
-                MailAddress to = new MailAddress(email);
+                MailAddress to = new MailAddress(email.Trim());
                 MailMessage mailObj = new MailMessage(from, to);
+
+                //string body = "<h2>You have been assigned a new serve by the staff at WeserveU.biz.</h2> <br /> " +
+                //    "<h3>Please log in to WeServeU.biz to download documents</h3><h2>Details: </h2> <P>Case Number: " +
+                //    dt.Rows[0][2].ToString() + "</p><p>Customer: " + dt.Rows[0][0].ToString() + "</p><p>Opposing Party: " +
+                //    dt.Rows[0][1].ToString() + "</p>";
+                
+
+                mailObj.Subject = "You were assigned a new serve from WeserveU";
                 //Create the message body
+                
                 mailObj.Body += "<h2>You have been assigned a new serve by the staff at WeserveU.biz.</h2> <br /> " +
                     "<h3>Please log in to WeServeU.biz to download documents</h3><h2>Details: </h2> <P>Case Number: " +
                     dt.Rows[0][2].ToString() + "</p><p>Customer: " + dt.Rows[0][0].ToString() + "</p><p>Opposing Party: " +
                     dt.Rows[0][1].ToString();
-
-
+                //Tried to get the logo into the message but it is not working at this time. 
+                //ContentType ct = new ContentType("text/html");
+                //ContentType plain = new ContentType("text/plain");
+                //string path = HttpContext.Current.Server.MapPath("images/newbanner.jpg");
+                //AlternateView plainTextView = AlternateView.CreateAlternateViewFromString(body, plain);
+                //AlternateView htmlView = AlternateView.CreateAlternateViewFromString("<image src=\"cid:Logo\" />" + body, ct);
+                
+                ////"<image src=cid:Logo />" + body, null, MediaTypeNames.Text.Html
+                //LinkedResource image = new LinkedResource(path, "image/jpeg");
+                //image.ContentId = "Logo";
+                //htmlView.LinkedResources.Add(image);
+                //mailObj.AlternateViews.Add(plainTextView);
+                //mailObj.AlternateViews.Add(htmlView);
+                
                 mailObj.IsBodyHtml = true;
 
                 //uncomment these lines when loading to GoDaddy Servers. 
@@ -103,10 +125,38 @@ public class SendMail
 
 
     //Send the Admin Email when a new WorkOrder is created. 
-    public bool Send_AdminMail(string workOrderID)
+    public bool Send_AdminMail(string customerID)
     {
-        //just put this in to remove the squiggles
-        return false;
+        string id = customerID;
+        try
+        {
+            //Create the email message
+            
+            MailAddress from = new MailAddress("info@weserveu.biz");
+            MailAddress to = new MailAddress("info@weservu.biz");
+            MailMessage mailObj = new MailMessage(from, to);
+            mailObj.Subject = "A new work order has been created on WeserveU";
+            //Create the message body
+            mailObj.Body += "<h2>A new work order has been created by customer number" + id + "</h2> <br /> "
+                + "The workorder is editable at this time but they need to upload documents to complete the serve";
+                
+
+
+            mailObj.IsBodyHtml = true;
+
+            //uncomment these lines when loading to GoDaddy Servers. 
+
+            //SmtpClient smtp = new SmtpClient(SERVER);
+            //smtp.Send(mailObj);
+            //mailObj = null;
+            return true;
+        }
+        catch(SmtpException ex)
+        {
+            return false;
+        }
+        
+        
     }
 
 }

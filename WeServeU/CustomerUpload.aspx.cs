@@ -53,24 +53,34 @@ public partial class CustomerUpload : System.Web.UI.Page
         //first check to see if there is actually a file selected, then do work
         if (cstFileUp.HasFile)
         {
-            //get the file length to initialize the array to
-            fileLength = cstFileUp.PostedFile.ContentLength;
-            byte[] fileBytes = new byte[fileLength - 1];
-            //read the bytes of the file
-            fileBytes = cstFileUp.FileBytes;
-            //create a new instance to use its methods
-            FileWork fw = new FileWork();
-            //method returns a boolean to check for successfull addition of the file to the db
-            success = fw.UploadFile(connectionString, ddlWOList.SelectedValue , fileBytes);
-            if (success)
+            string fileExt = System.IO.Path.GetExtension(cstFileUp.FileName);
+            if (fileExt == ".pdf")
             {
-                lblUploadStatus.Text = "Your file has been uploaded and the staff at WeServeU notified.";
-                lblUploadStatus.ForeColor = System.Drawing.Color.Green;
-                lblUploadStatus.Visible = true;
+                //get the file length to initialize the array to
+                fileLength = cstFileUp.PostedFile.ContentLength;
+                byte[] fileBytes = new byte[fileLength - 1];
+                //read the bytes of the file
+                fileBytes = cstFileUp.FileBytes;
+                //create a new instance to use its methods
+                FileWork fw = new FileWork();
+                //method returns a boolean to check for successfull addition of the file to the db
+                success = fw.UploadFile(connectionString, ddlWOList.SelectedValue, fileBytes);
+                if (success)
+                {
+                    lblUploadStatus.Text = "Your file has been uploaded and the staff at WeServeU notified.";
+                    lblUploadStatus.ForeColor = System.Drawing.Color.Green;
+                    lblUploadStatus.Visible = true;
+                }
+                else
+                {
+                    lblUploadStatus.Text = "There was an error uploading your file. Please try again later";
+                    lblUploadStatus.ForeColor = System.Drawing.Color.Red;
+                    lblUploadStatus.Visible = true;
+                }
             }
             else
             {
-                lblUploadStatus.Text = "There was an error uploading your file. Please try again later";
+                lblUploadStatus.Text = "File is not a PDF. Please only upload PDF documents";
                 lblUploadStatus.ForeColor = System.Drawing.Color.Red;
                 lblUploadStatus.Visible = true;
             }
@@ -96,11 +106,11 @@ public partial class CustomerUpload : System.Web.UI.Page
     }
 
 
-    protected void btndown_Click(object sender, EventArgs e)
-    {
-        FileWork fw = new FileWork();
-        string selectStatement = "SELECT Doc FROM Docs WHERE DocID = 1";
-        string wo = "1";
-        fw.DownloadFile(selectStatement);
-    }
+    //protected void btndown_Click(object sender, EventArgs e)
+    //{
+    //    FileWork fw = new FileWork();
+    //    string selectStatement = "SELECT Doc FROM Docs WHERE DocID = 1";
+    //    string wo = "1";
+    //    fw.DownloadFile(selectStatement);
+    //}
 }

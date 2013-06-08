@@ -2,7 +2,7 @@
     padding: 0px;
     margin:0px;
     font-family:Tahoma;
-    background-image:url('images/freedom.jpg');
+    /*background-image:url('images/freedom.jpg');*/
 }
 
 #wrapper {
@@ -596,4 +596,5 @@ width:166px;
 #custUpload
 {
     text-align: center;
+    background-color: #EFEFEF;
 }

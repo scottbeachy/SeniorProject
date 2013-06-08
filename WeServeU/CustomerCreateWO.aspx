@@ -55,11 +55,7 @@
             <asp:TextBox ID="txtOppFName" runat="server" CssClass="createAcctTxt"></asp:TextBox>
             <br />
             <asp:TextBox ID="txtOppLName" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtDocTitle" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtWhoToServe" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
+            <br />           
             <asp:TextBox ID="txtServiceStreetAddress" runat="server" CssClass="createAcctTxt"></asp:TextBox>
             <br />
             <asp:TextBox ID="txtApartment" runat="server" CssClass="createAcctTxt"></asp:TextBox>

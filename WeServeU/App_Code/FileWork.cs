@@ -56,16 +56,18 @@ public class FileWork
                 return true;
             }
             else { return false; }
+            
         }
         catch (SqlException s)
         {
             return false;
         }
+        
     }
 
 
 
-
+    //you need to provide the correct select statement for whatever doc you are trying to recieve
     public void DownloadFile(string selectStatement)
     {
         byte[] fileData;
@@ -82,13 +84,15 @@ public class FileWork
             fileData = (byte[])dr[0];
             using ( MemoryStream stream = new MemoryStream(fileData))
             {
-                HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=YourPdf.pdf");
+                HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=weserveuFIle.pdf");
                 HttpContext.Current.Response.ContentType = "application/pdf";
                 HttpContext.Current.Response.BinaryWrite(stream.ToArray());
                 HttpContext.Current.Response.End();
             }
              
         }
+        dr.Close();
+        conn.Close();
 
     }
 }
