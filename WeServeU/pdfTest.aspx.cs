@@ -19,6 +19,11 @@ public partial class pdfTest : System.Web.UI.Page
     string caseNum, dateCreated, paperTitle, toBeServed, serveStreet, serveApt, serveCity, serveState, serveZip;
     string serveDt, serveTime;
 
+    //Variable for Date/Time objects from DB
+    //DateTime dt = new DateTime();
+    DateTime dt = new DateTime();
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -105,13 +110,14 @@ public partial class pdfTest : System.Web.UI.Page
         //StringBuilder for Serve address - w/ and w/o Apartment
         StringBuilder serveAddress = new StringBuilder();
 
+        //Need to lop off the time of date time
         StringBuilder serveDate = new StringBuilder();
         serveDate.Append(serveDt);
         serveDate.Append(" ");
         serveDate.Append(serveTime);
 
         //StringBuilder & formatting for Execute date
-        DateTime myDate = DateTime.Now;
+        //DateTime myDate = DateTime.Now;
 
         //Old code w/ superscript
         //if ((myDate.Day == 1) || (myDate.Day == 21) || (myDate.Day == 31)) day = myDate.ToString("%d") + "<sup>st</sup>";
@@ -120,18 +126,21 @@ public partial class pdfTest : System.Web.UI.Page
         //else day = myDate.ToString("%d") + "<sup>th</sup>";
 
 
-        if ((myDate.Day == 1) || (myDate.Day == 21) || (myDate.Day == 31)) day = myDate.ToString("%d") + "st";
-        else if ((myDate.Day == 2) || (myDate.Day == 22)) day = myDate.ToString("%d") + "nd";
-        else if ((myDate.Day == 3) || (myDate.Day == 23)) day = myDate.ToString("%d") + "rd";
-        else day = myDate.ToString("%d") + "th";
+        //Set datetime dt to current date/time for the execute date field
+        dt = DateTime.Now;
+
+        if ((dt.Day == 1) || (dt.Day == 21) || (dt.Day == 31)) day = dt.ToString("%d") + "st";
+        else if ((dt.Day == 2) || (dt.Day == 22)) day = dt.ToString("%d") + "nd";
+        else if ((dt.Day == 3) || (dt.Day == 23)) day = dt.ToString("%d") + "rd";
+        else day = dt.ToString("%d") + "th";
 
 
         StringBuilder executeDate = new StringBuilder("Executed this ");
         executeDate.Append(day);
         executeDate.Append(" day of ");
-        executeDate.Append(myDate.ToString("MMMM"));
+        executeDate.Append(dt.ToString("MMMM"));
         executeDate.Append(", ");
-        executeDate.Append(myDate.Year.ToString());
+        executeDate.Append(dt.Year.ToString());
         executeDate.Append(".");
 
 
@@ -201,7 +210,7 @@ public partial class pdfTest : System.Web.UI.Page
 
 
         //Disable field editing by flattening the stamper
-        //stamper.FormFlattening = true;
+        stamper.FormFlattening = true;
 
         //Close the stamper and reader
         stamper.Close();
@@ -209,7 +218,7 @@ public partial class pdfTest : System.Web.UI.Page
 
         //Upon close, the Pdf is stored in the specified stream (MemoryStream in this case)
         //Send Pdf from MemoryStream back to the browser to be displayed
-        Response.AddHeader("Content-Disposition", "attachment; filename=YourPdf.pdf");
+        Response.AppendHeader("Content-Disposition", "attachment; filename=YourPdf.pdf");
         Response.ContentType = "application/pdf";
 
         Response.BinaryWrite(output.ToArray());
