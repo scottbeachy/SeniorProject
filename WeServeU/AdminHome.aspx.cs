@@ -54,6 +54,14 @@ public partial class AdminHome : System.Web.UI.Page
         btnChoose.Visible = false;
         btnSelectClient.Visible = false;
         btnGenReportSubmit.Visible = false;
+
+        //if (RadioButtonReport.SelectedIndex == 0)
+        //{
+        //    txtGenFName.Enabled = false;
+        //    txtGenLName.Enabled = false;
+        //    txtStartDateRep.Enabled = false;
+        //    txtEndDateRep.Enabled = false;
+        //}
     }
 
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
@@ -245,5 +253,60 @@ public partial class AdminHome : System.Web.UI.Page
         Session.Abandon();
         Session.Clear();
         Response.Redirect("login.aspx");
+    }
+    protected void btnSubmitRep_Click(object sender, EventArgs e)
+    {
+        string WStatus = txtGenStatus.Text;
+
+        if (RadioButtonReport.SelectedIndex == 0)
+        {
+            try
+            {
+                string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connection);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
+
+                cmd.Parameters.AddWithValue("@WStatus", WStatus);
+
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+
+                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    }
+                }
+
+                else
+                {
+                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
+                    lblGenReport.Visible = true;
+                }
+                btnGenReportSubmit.Visible = true;
+                ddGenReport.Visible = true;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                //Oops, something bad happened...
+                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+                lblGenReport.Visible = true;
+            }
+        }
+        else
+        {
+            lblGenReport.Text = "Please choose at least one from the checkbox selection.";
+            lblGenReport.Visible = true;
+            return;
+        }
+    }
+    protected void btnGenReportSubmit_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TrackCompleteServes.aspx");
     }
 }

@@ -174,6 +174,11 @@ width:166px;
     margin: 5px 5px 5px 75px;
 }
 
+.lblGenReportStatus
+{
+    margin: 5px 5px 5px 22px;
+}
+
 .btnUpdateClient
 {
     width: 250px;
@@ -325,6 +330,11 @@ width:166px;
 }
 
 .updateClientDetails
+{
+    width:100%;
+}
+
+.completeServesDetails
 {
     width:100%;
 }
@@ -571,6 +581,11 @@ width:166px;
     width: 250px;
     font: bold 14px tahoma;
     margin: 8px 60px 8px 10px;    
+}
+
+.RadioButtonReport td
+{
+   padding-left:110px;
 }
 
 

@@ -11,4 +11,18 @@ public partial class TrackCompleteServes : System.Web.UI.Page
     {
 
     }
+
+    //This is the onclick for the return button. Do not remove
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AdminHome.aspx");
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.RemoveAll();
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("login.aspx");
+    }
 }

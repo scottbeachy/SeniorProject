@@ -94,28 +94,34 @@
         <h3>To Generate a Report Please Enter Dates Below:</h3>
         <asp:UpdatePanel ID="UpdateGenReportPanel" runat="server">
             <ContentTemplate>
-                <asp:CheckBox ID="chkGenCompleted" runat="server" Text="Completed" CssClass="chkGenReport" />
+                <asp:RadioButtonList ID="RadioButtonReport" CssClass="RadioButtonReport" runat="server" RepeatDirection="Horizontal" CellPadding="5">
+                    <asp:ListItem>Completed</asp:ListItem>
+                    <asp:ListItem>Not Completed</asp:ListItem>
+                    <asp:ListItem>Client</asp:ListItem>
+                    <asp:ListItem>Plaintiff/Respondent</asp:ListItem>
+                </asp:RadioButtonList>
+
+                <%--                <asp:CheckBox ID="chkGenCompleted" runat="server" Text="Completed" CssClass="chkGenReport" />
                 <asp:CheckBox ID="chkGenNotCompleted" runat="server" Text="Not Completed" CssClass="chkGenReport" />
                 <asp:CheckBox ID="chkGenClientName" runat="server" Text="Client" CssClass="chkGenReport" />
-                <asp:CheckBox ID="chkGenRespondent" runat="server" Text="Plaintiff/Respondent" CssClass="chkGenReport" /><br />
+                <asp:CheckBox ID="chkGenRespondent" runat="server" Text="Plaintiff/Respondent" CssClass="chkGenReport" /><br />--%>
                 <br />
-                <asp:Label ID="lblGenID" runat="server" CssClass="lblUpdateClientID" Text="ID:"></asp:Label>
-                <asp:TextBox ID="txtGenID" CssClass="txtFirstName" runat="server" ValidationGroup="wrkGenReport"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkGenReport" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtGenID"></asp:RequiredFieldValidator>
+                <asp:Label ID="lblGenStatus" runat="server" CssClass="lblGenReportStatus" Text="Status:"></asp:Label>
+                <asp:TextBox ID="txtGenStatus" CssClass="txtFirstName" runat="server" ValidationGroup="wrkGenReport"></asp:TextBox>
+
                 <asp:Label ID="lblGenFName" runat="server" Text="First Name:" CssClass="lblFirstName"></asp:Label>
                 <asp:TextBox ID="txtGenFName" runat="server" ValidationGroup="wrkGenReport" CssClass="txtFirstName" ViewStateMode="Enabled"></asp:TextBox>
-                <%--        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="wrkClient" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtClientFirstName"></asp:RequiredFieldValidator><br />--%>
                 <asp:Label ID="lblGenLName" runat="server" Text="Last Name:" CssClass="lblFirstName"></asp:Label>
                 <asp:TextBox ID="txtGenLName" runat="server" CssClass="txtFirstName" ValidationGroup="wrkGenReport" ViewStateMode="Enabled"></asp:TextBox><br />
 
                 <asp:Label ID="lblGenStartDate" runat="server" Text="Start Date:" CssClass="lblGenStartDate"></asp:Label>
                 <asp:TextBox ID="txtStartDateRep" runat="server" ValidationGroup="wrkGenReport" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkGenReport" ControlToValidate="txtStartDateRep"></asp:RequiredFieldValidator>
+
                 <asp:Label ID="lblGenEndDate" runat="server" Text="End Date:" CssClass="lblGenEndDate"></asp:Label>
                 <asp:TextBox ID="txtEndDateRep" runat="server" ValidationGroup="wrkGenReport" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkGenReport" ControlToValidate="txtEndDateRep"></asp:RequiredFieldValidator>
-                <asp:Button ID="btnSubmitRep" runat="server" Text="Submit" CssClass="btnSubmitRep" ValidationGroup="wrkGenReport" CausesValidation="true" /><br />
-                <asp:DropDownList ID="ddGenReport" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnGenReportSubmit" runat="server" Text="Select Client" CssClass="btnDash" OnClick="btnSelectClient_Click" /><br />
+
+                <asp:Button ID="btnSubmitRep" runat="server" Text="Submit" CssClass="btnSubmitRep" ValidationGroup="wrkGenReport" CausesValidation="true" OnClick="btnSubmitRep_Click" /><br />
+                <asp:DropDownList ID="ddGenReport" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList><asp:Button ID="btnGenReportSubmit" runat="server" Text="Select Client" CssClass="btnDash" OnClick="btnGenReportSubmit_Click" /><br />
                 <asp:Label ID="lblGenReport" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>

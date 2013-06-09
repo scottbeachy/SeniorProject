@@ -108,7 +108,6 @@
             <asp:Parameter Name="original_CPerm" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:Button ID="btnReturnHome" runat="server" Text="Back to Admin Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
     <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
 </asp:Content>
 
