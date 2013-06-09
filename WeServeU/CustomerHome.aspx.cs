@@ -58,7 +58,8 @@ public partial class CustomerHome : System.Web.UI.Page
 
     protected void btnViewWorkOrder_Click(object sender, EventArgs e)
     {
-        Response.Redirect("CustomerViewWO.aspx");
+        pnlViewWO.Visible = true;
+        //Response.Redirect("CustomerViewWO.aspx");
     }
 
 
@@ -75,5 +76,10 @@ public partial class CustomerHome : System.Web.UI.Page
     protected void btnGoToUpload_Click(object sender, EventArgs e)
     {
         Response.Redirect("CustomerUpload.aspx");
+    }
+    protected void btnViewWO_Click(object sender, EventArgs e)
+    {
+        Session["WorkOrderID"] = ddlCustWO.SelectedValue;
+        Response.Redirect("CustomerViewWO.aspx");
     }
 }

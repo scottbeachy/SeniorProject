@@ -23,7 +23,20 @@
             <div class="btnMenuEmpItem">
                 <asp:Button ID="btnViewWorkOrder" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnViewWorkOrder_Click" />
                 <asp:Label ID="Label2" runat="server" Text="View One Of Your Current Work Orders" CssClass="btnDash3"></asp:Label>
-                <br />
+                <br /><br />
+                <asp:Panel ID="pnlViewWO" runat="server" Visible="false" CssClass="pnlViewWO" Width="100%">
+                    <asp:DropDownList ID="ddlCustWO" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
+
+                    <asp:SqlDataSource ID="CustWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, WLName + ' ' + WOPLName AS Parties 
+FROM WorkOrder
+WHERE CustomerID = @CustomerID
+ORDER BY WorkOrderID">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="10" Name="CustomerID" SessionField="CustID" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Button ID="btnViewWO" runat="server" Text="View" CssClass="btnDash" OnClick="btnViewWO_Click" />
+                </asp:Panel>
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">

@@ -14,7 +14,9 @@
             <asp:RequiredFieldValidator ID="valCstPass" runat="server" ErrorMessage="*" ControlToValidate="txtCstPass" ForeColor="Red" ValidationGroup="cstLogintxt"></asp:RequiredFieldValidator><br />
             <br />
             <asp:Button ID="btnCstLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="cstLogintxt" OnClick="btnCstLogin_Click" /><br />
-            <asp:Label ID="lblCstError" runat="server" ForeColor="Red"></asp:Label>
+            <asp:Label ID="lblCstError" runat="server" ForeColor="Red"></asp:Label><br />
+            <%--<asp:Button ID="btnCstForgot" runat="server" Text="Forgot Password?" Visible="false" CssClass="btnDash" OnClick="btnCstForgot_Click" /><br />--%>
+            <asp:Label ID="lblCustForgot" runat="server" Text="We can email your password by clicking the Forgot Password Button above." Visible="false" ></asp:Label>
         </div>
     </asp:Panel>
     <asp:Panel ID="pnlEmp" DefaultButton="btnEmpLogin" runat="server">
@@ -29,7 +31,9 @@
             <br />
             <asp:Button ID="btnEmpLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="empLogintxt" OnClick="btnEmpLogin_Click" />
             <br />
-            <asp:Label ID="lblEmpError" runat="server" ForeColor="Red"></asp:Label>
+            <asp:Label ID="lblEmpError" runat="server" ForeColor="Red"></asp:Label><br />
+            <%--<asp:Button ID="btnEmpForgot" runat="server" Text="Forgot Password?" CssClass="btnDash" Visible="false" OnClick="btnEmpForgot_Click" /><br />--%>
+            <asp:Label ID="lblEmpForgot" runat="server" Text="We can email your password by clicking the Forgot Password Button above." Visible="false" ></asp:Label>
         </div>
     </asp:Panel>
 

@@ -159,4 +159,38 @@ public class SendMail
         
     }
 
+    public bool Retrieve_Password(string email, string pass)
+    {
+        string _email = email;        
+        string _pass = pass;
+        
+        try
+        {
+            //Create the email message
+
+            MailAddress from = new MailAddress("info@weserveu.biz");
+            MailAddress to = new MailAddress(email.Trim());
+            MailMessage mailObj = new MailMessage(from, to);
+            mailObj.Subject = "Password Recovery";
+            //Create the message body
+            mailObj.Body += "<h2>Password recovery request from Weservullc.com</h2><br /> "
+                + "<p>Your password is: " + _pass + "</p>";
+
+
+
+            mailObj.IsBodyHtml = true;
+
+            //uncomment these lines when loading to GoDaddy Servers. 
+
+            //SmtpClient smtp = new SmtpClient(SERVER);
+            //smtp.Send(mailObj);
+            //mailObj = null;
+            return true;
+        }
+        catch(SmtpException se)
+        {
+            return false;
+        }
+        
+    }
 }
