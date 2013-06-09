@@ -326,8 +326,14 @@ width:166px;
 .updateTable
 {
     width: 100%;
-    border: none;
+    border:2px solid #FFF;
+    margin-top:5px;
+
 }
+    .updateTable td
+    {
+        padding: 3px;
+    }
 
 .updateClientDetails
 {
@@ -363,6 +369,7 @@ width:166px;
     width: 700px;
     margin: 0 auto;
     text-align: center;
+    
 }
 
 #createAcctLblPnl

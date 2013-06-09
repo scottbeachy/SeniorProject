@@ -37,6 +37,12 @@ public partial class CustomerCreateWO : System.Web.UI.Page
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Customer ID: " + id;
+
+        //if(Page.IsPostBack)
+        //{
+        //    lblCreateWOError.Visible = false;
+        //}
+        lblCreateWOError.Visible = false;
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
@@ -56,8 +62,9 @@ public partial class CustomerCreateWO : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder (WCaseNumber, WFName, WLName, WOPFName, WOPLName, WServAdd, WServApt, WServCity, WServState, WServZip) VALUES (@WCaseNumber, @WFName, @WLName, @WOPFname, @WOPLName, @WServAdd, @WServApt, @WServCity, @WServSate, @WServZip);", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder (CustomerID, WCaseNumber, WFName, WLName, WOPFName, WOPLName, WServAdd, WServApt, WServCity, WServState, WServZip) VALUES (@CustomerID, @WCaseNumber, @WFName, @WLName, @WOPFname, @WOPLName, @WServAdd, @WServApt, @WServCity, @WServState, @WServZip);", conn);
 
+            cmd.Parameters.AddWithValue("@CustomerID", id);
             cmd.Parameters.AddWithValue("@WCaseNumber", txtCaseNumber.Text);
             cmd.Parameters.AddWithValue("@WFName", txtFNameServiceRequestedBy.Text);
             cmd.Parameters.AddWithValue("@WLName", txtLNameServiceRequestedBy.Text);
@@ -71,19 +78,48 @@ public partial class CustomerCreateWO : System.Web.UI.Page
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
-           //Show a success label
-            lblCreateWOError.Text = "Your work order was created successfully. Please navigate to the Upload document page to upload the needed court documents.";
-            lblCreateWOError.ForeColor = System.Drawing.Color.Green;
-            lblCreateWOError.Visible = true;
+           
             // Email the admin about the new work order
             SendMail sm = new SendMail();
-            sm.Send_AdminMail(id.ToString());
+            if(sm.Send_AdminMail(id.ToString()))
+            {
+                //Show a success label
+                lblCreateWOError.Text = "Your work order was created successfully. Please navigate to the Upload document page to upload the needed court documents.";
+                lblCreateWOError.ForeColor = System.Drawing.Color.Green;
+                lblCreateWOError.Visible = true;
+                btnGoToUpload.Visible = true;
+                ClearInputs(Page.Controls);
+
+            }
+            else
+            {
+                lblCreateWOError.Text = "Your work order was created successfully but the system failed to properly notify the staff at WeServeU LLC.";
+                lblCreateWOError.ForeColor = System.Drawing.Color.Green;
+                lblCreateWOError.Visible = true;
+            }
 
        }
         catch(SqlException se)
-       {            
-
+       {
+           lblCreateWOError.Text = "There was an error creating your work order" + se.ToString();
+           lblCreateWOError.ForeColor = System.Drawing.Color.Red;
+           lblCreateWOError.Visible = true;
        }
     }
+    //clears all textboxes
+    private void ClearInputs(ControlCollection ctrls)
+    {
+        foreach (Control ctrl in ctrls)
+        {
+            if (ctrl is TextBox)
+                ((TextBox)ctrl).Text = string.Empty;
 
+            ClearInputs(ctrl.Controls);
+        }
+    }
+
+    protected void btnGoToUpload_Click(object sender, EventArgs e)
+    {
+
+    }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="CustomerCreateWO.aspx.cs" Inherits="CustomerCreateWO" %>
+﻿<%@ Page Title="WeServeU -Create a New Work Order for Service-" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="CustomerCreateWO.aspx.cs" Inherits="CustomerCreateWO" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -25,11 +25,7 @@
             <asp:Label ID="Label3" runat="server" Text="First Name Opposing Party:" CssClass="createAcctLbl"></asp:Label>
             <br />
             <asp:Label ID="Label4" runat="server" Text="First Name Opposing Party:" CssClass="createAcctLbl"></asp:Label>
-            <br />
-            <asp:Label ID="Label5" runat="server" Text="Document Title:" CssClass="createAcctLbl"></asp:Label>
-            <br />
-            <asp:Label ID="Label6" runat="server" Text="Who to Serve:" CssClass="createAcctLbl"></asp:Label>
-            <br />
+            <br />            
             <asp:Label ID="Label7" runat="server" Text="Service Street Address:" CssClass="createAcctLbl"></asp:Label>
             <br />
             <asp:Label ID="Label8" runat="server" Text="Apartment/Suite Number" CssClass="createAcctLbl"></asp:Label>
@@ -128,10 +124,10 @@
         
          
             <asp:Button ID="btnCreateWO" runat="server" Text="Create Work Order" CssClass="btnDash" OnClick="btnCreateWO_Click" /><br />
-        <asp:Label ID="lblCreateWOError" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblCreateWOError" runat="server" Text="" Visible="false"></asp:Label><br />
+        <asp:Button ID="btnGoToUpload" runat="server" Text="Upload Documents" Visible="false" CssClass="btnDash" OnClick="btnGoToUpload_Click"/><br />
 
-            <br />
-            <br />
+            
 
 
 

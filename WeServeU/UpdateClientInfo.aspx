@@ -10,7 +10,7 @@
     </div>
     <h3 class="updateClientHeader">To Make Updates to the Client, Please Click the "Edit" Button At The Bottom Of The Page.</h3>
 
-    <asp:DetailsView ID="clientDetailsView" CssClass="updateClientDetails" FieldHeaderStyle-Width="80%" runat="server" Height="50px" AutoGenerateRows="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="CustomerID" DataSourceID="UpdateClientDataSource" ForeColor="Black" GridLines="Vertical">
+    <asp:DetailsView ID="clientDetailsView" CssClass="updateTable" runat="server" Height="50px" AutoGenerateRows="False"  DataKeyNames="CustomerID" DataSourceID="UpdateClientDataSource" >
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
 
@@ -31,7 +31,6 @@
             <asp:BoundField DataField="CZip" HeaderText="CZip" SortExpression="CZip" />
             <asp:BoundField DataField="CUser" HeaderText="CUser" SortExpression="CUser" />
             <asp:BoundField DataField="CPass" HeaderText="CPass" SortExpression="CPass" />
-            <asp:BoundField DataField="CPerm" HeaderText="CPerm" SortExpression="CPerm" />
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#CCCCCC" />

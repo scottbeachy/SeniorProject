@@ -10,7 +10,7 @@
     </div>
     <h3>Update Employee View. To Make Updates, Please Click the "Edit" Button At The Bottom Of The Page.</h3>
     <asp:DetailsView ID="dtvUpdateEmp" runat="server" Height="50px" CssClass="updateTable" AlternatingRowStyle-BackColor="#CCCCCC" AutoGenerateRows="False" DataKeyNames="EmpID" DataSourceID="UpdateEmp">
-<AlternatingRowStyle BackColor="#CCCCCC"></AlternatingRowStyle>
+<AlternatingRowStyle BackColor="#CCCCCC" BorderColor="#FFF"></AlternatingRowStyle>
         <Fields>
             <asp:BoundField DataField="EmpID" HeaderText="EmpID" InsertVisible="False" ReadOnly="True" SortExpression="EmpID" />
             <asp:BoundField DataField="EmpFName" HeaderText="First Name" SortExpression="EmpFName" />

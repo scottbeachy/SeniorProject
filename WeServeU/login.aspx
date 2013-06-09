@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:Panel ID="pnlCust"  DefaultButton="btnCstLogin" runat="server">
         <div id="cstLoginPnl">
             <div class="loginHead">
                 <h2>Customers Please Log in Here</h2>
@@ -15,7 +16,8 @@
             <asp:Button ID="btnCstLogin" runat="server" Text="Login" CssClass="btnLogin" CausesValidation="true" ValidationGroup="cstLogintxt" OnClick="btnCstLogin_Click" /><br />
             <asp:Label ID="lblCstError" runat="server" ForeColor="Red"></asp:Label>
         </div>
-
+    </asp:Panel>
+    <asp:Panel ID="pnlEmp" DefaultButton="btnEmpLogin" runat="server">
         <div id="empLoginPnl">
             <div class="loginHead">
                 <h2>Employees Please Log in Here</h2>
@@ -29,7 +31,7 @@
             <br />
             <asp:Label ID="lblEmpError" runat="server" ForeColor="Red"></asp:Label>
         </div>
-
+    </asp:Panel>
 
 
 

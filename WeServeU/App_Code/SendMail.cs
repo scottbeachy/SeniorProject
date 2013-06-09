@@ -137,8 +137,8 @@ public class SendMail
             MailMessage mailObj = new MailMessage(from, to);
             mailObj.Subject = "A new work order has been created on WeserveU";
             //Create the message body
-            mailObj.Body += "<h2>A new work order has been created by customer number" + id + "</h2> <br /> "
-                + "The workorder is editable at this time but they need to upload documents to complete the serve";
+            mailObj.Body += "<h2>A new work order has been created by customer number " + id + "</h2> <br /> "
+                + "<p>The workorder is editable at this time but they need to upload documents to complete the serve</p>";
                 
 
 
