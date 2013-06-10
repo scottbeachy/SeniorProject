@@ -37,75 +37,7 @@
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
     </asp:DetailsView>
-    <asp:SqlDataSource ID="UpdateClientDataSource" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" DeleteCommand="DELETE FROM [Customer] WHERE [CustomerID] = @original_CustomerID AND (([CFname] = @original_CFname) OR ([CFname] IS NULL AND @original_CFname IS NULL)) AND (([CLname] = @original_CLname) OR ([CLname] IS NULL AND @original_CLname IS NULL)) AND (([CFirmName] = @original_CFirmName) OR ([CFirmName] IS NULL AND @original_CFirmName IS NULL)) AND (([CPhone] = @original_CPhone) OR ([CPhone] IS NULL AND @original_CPhone IS NULL)) AND (([CFax] = @original_CFax) OR ([CFax] IS NULL AND @original_CFax IS NULL)) AND (([CEmail] = @original_CEmail) OR ([CEmail] IS NULL AND @original_CEmail IS NULL)) AND (([CAddress] = @original_CAddress) OR ([CAddress] IS NULL AND @original_CAddress IS NULL)) AND (([CApt] = @original_CApt) OR ([CApt] IS NULL AND @original_CApt IS NULL)) AND (([CCity] = @original_CCity) OR ([CCity] IS NULL AND @original_CCity IS NULL)) AND (([CState] = @original_CState) OR ([CState] IS NULL AND @original_CState IS NULL)) AND (([CCounty] = @original_CCounty) OR ([CCounty] IS NULL AND @original_CCounty IS NULL)) AND (([CZip] = @original_CZip) OR ([CZip] IS NULL AND @original_CZip IS NULL)) AND [CUser] = @original_CUser AND [CPass] = @original_CPass AND [CPerm] = @original_CPerm" InsertCommand="INSERT INTO [Customer] ([CFname], [CLname], [CFirmName], [CPhone], [CFax], [CEmail], [CAddress], [CApt], [CCity], [CState], [CCounty], [CZip], [CUser], [CPass], [CPerm]) VALUES (@CFname, @CLname, @CFirmName, @CPhone, @CFax, @CEmail, @CAddress, @CApt, @CCity, @CState, @CCounty, @CZip, @CUser, @CPass, @CPerm)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Customer]" UpdateCommand="UPDATE [Customer] SET [CFname] = @CFname, [CLname] = @CLname, [CFirmName] = @CFirmName, [CPhone] = @CPhone, [CFax] = @CFax, [CEmail] = @CEmail, [CAddress] = @CAddress, [CApt] = @CApt, [CCity] = @CCity, [CState] = @CState, [CCounty] = @CCounty, [CZip] = @CZip, [CUser] = @CUser, [CPass] = @CPass, [CPerm] = @CPerm WHERE [CustomerID] = @original_CustomerID AND (([CFname] = @original_CFname) OR ([CFname] IS NULL AND @original_CFname IS NULL)) AND (([CLname] = @original_CLname) OR ([CLname] IS NULL AND @original_CLname IS NULL)) AND (([CFirmName] = @original_CFirmName) OR ([CFirmName] IS NULL AND @original_CFirmName IS NULL)) AND (([CPhone] = @original_CPhone) OR ([CPhone] IS NULL AND @original_CPhone IS NULL)) AND (([CFax] = @original_CFax) OR ([CFax] IS NULL AND @original_CFax IS NULL)) AND (([CEmail] = @original_CEmail) OR ([CEmail] IS NULL AND @original_CEmail IS NULL)) AND (([CAddress] = @original_CAddress) OR ([CAddress] IS NULL AND @original_CAddress IS NULL)) AND (([CApt] = @original_CApt) OR ([CApt] IS NULL AND @original_CApt IS NULL)) AND (([CCity] = @original_CCity) OR ([CCity] IS NULL AND @original_CCity IS NULL)) AND (([CState] = @original_CState) OR ([CState] IS NULL AND @original_CState IS NULL)) AND (([CCounty] = @original_CCounty) OR ([CCounty] IS NULL AND @original_CCounty IS NULL)) AND (([CZip] = @original_CZip) OR ([CZip] IS NULL AND @original_CZip IS NULL)) AND [CUser] = @original_CUser AND [CPass] = @original_CPass AND [CPerm] = @original_CPerm">
-        <DeleteParameters>
-            <asp:Parameter Name="original_CustomerID" Type="Decimal" />
-            <asp:Parameter Name="original_CFname" Type="String" />
-            <asp:Parameter Name="original_CLname" Type="String" />
-            <asp:Parameter Name="original_CFirmName" Type="String" />
-            <asp:Parameter Name="original_CPhone" Type="String" />
-            <asp:Parameter Name="original_CFax" Type="String" />
-            <asp:Parameter Name="original_CEmail" Type="String" />
-            <asp:Parameter Name="original_CAddress" Type="String" />
-            <asp:Parameter Name="original_CApt" Type="String" />
-            <asp:Parameter Name="original_CCity" Type="String" />
-            <asp:Parameter Name="original_CState" Type="String" />
-            <asp:Parameter Name="original_CCounty" Type="String" />
-            <asp:Parameter Name="original_CZip" Type="String" />
-            <asp:Parameter Name="original_CUser" Type="String" />
-            <asp:Parameter Name="original_CPass" Type="String" />
-            <asp:Parameter Name="original_CPerm" Type="String" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="CFname" Type="String" />
-            <asp:Parameter Name="CLname" Type="String" />
-            <asp:Parameter Name="CFirmName" Type="String" />
-            <asp:Parameter Name="CPhone" Type="String" />
-            <asp:Parameter Name="CFax" Type="String" />
-            <asp:Parameter Name="CEmail" Type="String" />
-            <asp:Parameter Name="CAddress" Type="String" />
-            <asp:Parameter Name="CApt" Type="String" />
-            <asp:Parameter Name="CCity" Type="String" />
-            <asp:Parameter Name="CState" Type="String" />
-            <asp:Parameter Name="CCounty" Type="String" />
-            <asp:Parameter Name="CZip" Type="String" />
-            <asp:Parameter Name="CUser" Type="String" />
-            <asp:Parameter Name="CPass" Type="String" />
-            <asp:Parameter Name="CPerm" Type="String" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="CFname" Type="String" />
-            <asp:Parameter Name="CLname" Type="String" />
-            <asp:Parameter Name="CFirmName" Type="String" />
-            <asp:Parameter Name="CPhone" Type="String" />
-            <asp:Parameter Name="CFax" Type="String" />
-            <asp:Parameter Name="CEmail" Type="String" />
-            <asp:Parameter Name="CAddress" Type="String" />
-            <asp:Parameter Name="CApt" Type="String" />
-            <asp:Parameter Name="CCity" Type="String" />
-            <asp:Parameter Name="CState" Type="String" />
-            <asp:Parameter Name="CCounty" Type="String" />
-            <asp:Parameter Name="CZip" Type="String" />
-            <asp:Parameter Name="CUser" Type="String" />
-            <asp:Parameter Name="CPass" Type="String" />
-            <asp:Parameter Name="CPerm" Type="String" />
-            <asp:Parameter Name="original_CustomerID" Type="Decimal" />
-            <asp:Parameter Name="original_CFname" Type="String" />
-            <asp:Parameter Name="original_CLname" Type="String" />
-            <asp:Parameter Name="original_CFirmName" Type="String" />
-            <asp:Parameter Name="original_CPhone" Type="String" />
-            <asp:Parameter Name="original_CFax" Type="String" />
-            <asp:Parameter Name="original_CEmail" Type="String" />
-            <asp:Parameter Name="original_CAddress" Type="String" />
-            <asp:Parameter Name="original_CApt" Type="String" />
-            <asp:Parameter Name="original_CCity" Type="String" />
-            <asp:Parameter Name="original_CState" Type="String" />
-            <asp:Parameter Name="original_CCounty" Type="String" />
-            <asp:Parameter Name="original_CZip" Type="String" />
-            <asp:Parameter Name="original_CUser" Type="String" />
-            <asp:Parameter Name="original_CPass" Type="String" />
-            <asp:Parameter Name="original_CPerm" Type="String" />
-        </UpdateParameters>
+    <asp:SqlDataSource ID="UpdateClientDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Customer]">
     </asp:SqlDataSource>
     
 </asp:Content>

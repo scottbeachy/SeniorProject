@@ -302,11 +302,16 @@ public partial class AdminHome : System.Web.UI.Page
         {
             lblGenReport.Text = "Please choose at least one from the checkbox selection.";
             lblGenReport.Visible = true;
-            return;
         }
     }
     protected void btnGenReportSubmit_Click(object sender, EventArgs e)
     {
+        string id = null;
+
+        id = ddGenReport.SelectedValue;
+
+        Session["WorkOrderID"] = id;
+
         Response.Redirect("TrackCompleteServes.aspx");
     }
 }
