@@ -46,8 +46,12 @@
 
         <div id="createAcctTxtPnl">
             <asp:TextBox ID="txtFname" runat="server" CssClass="createAcctTxt"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*Required" ForeColor="Red" ControlToValidate="txtFname"></asp:RequiredFieldValidator>
+
             <br />
             <asp:TextBox ID="txtLname" runat="server" CssClass="createAcctTxt"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*Required" ForeColor="Red" ControlToValidate="txtLname"></asp:RequiredFieldValidator>
+
             <br />
             <asp:TextBox ID="txtFirmName" runat="server" CssClass="createAcctTxt"></asp:TextBox>
             <br />
