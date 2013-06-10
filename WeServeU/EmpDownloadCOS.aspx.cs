@@ -24,7 +24,11 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
     //Variables for pdf creation
     string day, county, clientStatus, clientFName, clientLName, opFName, opLName, empFName, empLName, empLCounty;
     string caseNum, dateCreated, paperTitle, toBeServed, serveStreet, serveApt, serveCity, serveState, serveZip;
-    string serveDt, serveTime;
+    string servedFName, servedLName, servedRel;
+    string serveDt, serveTime, serveCharge;
+
+    //This will always be opposite of clientStatus. Set this during the clientStatus if statements.
+    string opposingPartyStatus;
 
     //Variable for Date/Time objects from DB
     DateTime dt = new DateTime();
@@ -32,25 +36,24 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Check permission level and redirect if needed
-        if (Session["Perm"] == null)
-        {
-            Response.Redirect("login.aspx");
-        }
+        //if (Session["Perm"] == null)
+        //{
+        //    Response.Redirect("login.aspx");
+        //}
 
-        if (!Session["Perm"].Equals("E"))
-        {
-            Response.Redirect("login.aspx");
-
-        }
+        //if (!Session["Perm"].Equals("E"))
+        //{
+        //    Response.Redirect("login.aspx");
+        //}
 
         //assign the variables from the session created from the login page
-        id = Convert.ToInt32(Session["EmpID"]);
-        perm = Session["Perm"].ToString();
-        fname = Session["EmpFname"].ToString();
-        lname = Session["EmpLname"].ToString();
+        //id = Convert.ToInt32(Session["EmpID"]);
+        //perm = Session["Perm"].ToString();
+        //fname = Session["EmpFname"].ToString();
+        //lname = Session["EmpLname"].ToString();
 
         //Custom welcome message on the screen
-        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        //lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
@@ -64,7 +67,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         string templatePath = "";
         if (rblDownloadCOS.SelectedValue == "superiorSub")
         {
-            templatePath = "PDFs/SuperiorSubShell1.pdf";
+            templatePath = "PDFs/SuperiorSubShell2.pdf";
         }
         else if (rblDownloadCOS.SelectedValue == "superiorPersonal")
         {
@@ -85,7 +88,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         string connection = ConfigurationManager.ConnectionStrings["testdb"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
         SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed," +
-            "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
+            "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime, WServeCharge, WServedFName, WServedLName, WServedRel from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
         
 
         //*********WorkOrderID needs to be dynamically filled, not set explicitly
@@ -107,6 +110,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             empLName = dr[1].ToString();
             empLCounty = dr[2].ToString();
         }
+        dr.Close();
 
         dr = cmd.ExecuteReader();
         while (dr.Read())
@@ -128,7 +132,12 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             serveZip = dr[14].ToString();
             serveDt = dr[15].ToString();
             serveTime = dr[16].ToString();
+            serveCharge = dr[17].ToString();
+            servedFName = dr[18].ToString();
+            servedLName = dr[19].ToString();
+            servedRel = dr[20].ToString();
         }
+
         dr.Close();
         conn.Close();
 
@@ -162,11 +171,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         dateReceived.Append(", ");
         dateReceived.Append(dt.ToString("yyyy"));
         dateReceived.Append(" I received the following documents:");
-
-        StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
-        paragraphTwo.Append(toBeServed);
-        paragraphTwo.Append(" by leaving a copy with \"Jane Doe\" (whose true name is refused) at: ");
-        //*******************Need to finish this one
 
 
         //StringBuilder for Serve address - w/ and w/o Apartment
@@ -240,6 +244,10 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         executeDate.Append(dt.Year.ToString());
         executeDate.Append(".");
 
+        StringBuilder charge = new StringBuilder("$");
+        charge.Append(serveCharge);
+        charge.Append(".00");
+
 
         //Read in the PDF template
         var reader = new PdfReader(Server.MapPath(templatePath));
@@ -249,6 +257,86 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         var output = new MemoryStream();
         var stamper = new PdfStamper(reader, output);
 
+
+        //Write Names/Statuses (RE, DE, PE, PL) in the correct positions
+        if (clientStatus == "DE")
+        {
+            stamper.AcroFields.SetField("bottomStatus", "Defendant,");
+            stamper.AcroFields.SetField("topStatus", "Plantiff,");
+            stamper.AcroFields.SetField("bottomName", clientName.ToString());
+            stamper.AcroFields.SetField("topName", opName.ToString());
+            opposingPartyStatus = "Plantiff";
+
+            //*******Probably need to also set Name in paragraphTwo depending on the clientStatus
+        }
+        else if (clientStatus == "PE")
+        {
+            stamper.AcroFields.SetField("bottomStatus", "Defendant,");
+            stamper.AcroFields.SetField("topStatus", "Plantiff,");
+            stamper.AcroFields.SetField("bottomName", opName.ToString());
+            stamper.AcroFields.SetField("topName", clientName.ToString());
+            opposingPartyStatus = "Respondent";
+        }
+        else if (clientStatus == "RE")
+        {
+            stamper.AcroFields.SetField("bottomStatus", "Respondent,");
+            stamper.AcroFields.SetField("topStatus", "Petitioner,");
+            stamper.AcroFields.SetField("bottomName", clientName.ToString());
+            stamper.AcroFields.SetField("topName", opName.ToString());
+            opposingPartyStatus = "Petitioner";
+        }
+        else
+        {
+            stamper.AcroFields.SetField("bottomStatus", "Respondent,");
+            stamper.AcroFields.SetField("topStatus", "Petitioner,");
+            stamper.AcroFields.SetField("bottomName", opName.ToString());
+            stamper.AcroFields.SetField("topName", clientName.ToString());
+            opposingPartyStatus = "Defendant";
+        }
+
+
+
+        //**********************
+        //Need to write an if statement looking at the template type so that I know
+        //what to write in paragraphTwo. This whole portion (up until the bottom stars)
+        //will have to go within the template if statement.
+        //Side Note, have to do this if statement & stringbuilder this far down because
+        //the opposingPartyStatus is being set in the stamper commands just above this.
+
+        StringBuilder personServed = new StringBuilder();
+
+        if ((servedFName == "") || (servedLName == ""))
+        {
+            personServed.Append("\"John/Jane Doe\" (whose true name is refused),");
+        }
+        else
+        {
+            personServed.Append(servedFName);
+            personServed.Append(" ");
+            personServed.Append(servedLName);
+            personServed.Append(", ");
+        }
+
+
+        StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
+        paragraphTwo.Append(opposingPartyStatus);
+        paragraphTwo.Append(" ");
+        paragraphTwo.Append(opName);
+        paragraphTwo.Append(" by leaving a copy with ");
+        paragraphTwo.Append(personServed);
+        paragraphTwo.Append(servedRel);
+        paragraphTwo.Append(" of ");
+        paragraphTwo.Append(opposingPartyStatus);
+        paragraphTwo.Append(", a person of suitable age and discretion who resides with ");
+        paragraphTwo.Append(opposingPartyStatus);
+        paragraphTwo.Append(" at:");
+
+
+
+        //*******************
+
+
+        
         //Use the AcroFields property & SetField method to insert text into Pdf fields
         stamper.AcroFields.SetField("countyLine", countyLine.ToString().ToUpper());
         stamper.AcroFields.SetField("caseNumber", caseNum);
@@ -259,18 +347,8 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         stamper.AcroFields.SetField("serveAddress", serveAddress.ToString());
         stamper.AcroFields.SetField("serveDateTime", serveDate.ToString());
         stamper.AcroFields.SetField("executeDate", executeDate.ToString());
+        stamper.AcroFields.SetField("cost", charge.ToString());
 
-
-        //Write Names/Statuses (RE, DE, PE, PL) in the correct positions
-        if (clientStatus == "DE")
-        {
-            stamper.AcroFields.SetField("bottomStatus", "Defendant");
-            stamper.AcroFields.SetField("topStatus", "Plantiff");
-            stamper.AcroFields.SetField("bottomName", clientName.ToString());
-            stamper.AcroFields.SetField("topName", opName.ToString());
-
-            //*******Probably need to also set Name in paragraphTwo depending on the clientStatus
-        }
 
 
         //Disable field editing by flattening the stamper
