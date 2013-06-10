@@ -53,6 +53,7 @@ public partial class EmpHome : System.Web.UI.Page
     {
         lblWONum.Text = "Work Order # " + ddlWOList.SelectedValue.ToString();
         lblWONum.Visible = true;
+        Session["workOrderID"] = ddlWOList.SelectedValue.ToString();
     }
 
 

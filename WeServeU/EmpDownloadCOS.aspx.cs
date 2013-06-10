@@ -20,6 +20,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
     string fname;
     string lname;
     string perm;
+    string woID;
 
     //Variables for pdf creation
     string day, county, clientStatus, clientFName, clientLName, opFName, opLName, empFName, empLName, empLCounty;
@@ -36,24 +37,24 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Check permission level and redirect if needed
-        //if (Session["Perm"] == null)
-        //{
-        //    Response.Redirect("login.aspx");
-        //}
+        if (Session["Perm"] == null)
+        {
+            Response.Redirect("login.aspx");
+        }
 
-        //if (!Session["Perm"].Equals("E"))
-        //{
-        //    Response.Redirect("login.aspx");
-        //}
+        if (!Session["Perm"].Equals("E"))
+        {
+            Response.Redirect("login.aspx");
+        }
 
         //assign the variables from the session created from the login page
-        //id = Convert.ToInt32(Session["EmpID"]);
-        //perm = Session["Perm"].ToString();
-        //fname = Session["EmpFname"].ToString();
-        //lname = Session["EmpLname"].ToString();
+        id = Convert.ToInt32(Session["EmpID"]);
+        perm = Session["Perm"].ToString();
+        fname = Session["EmpFname"].ToString();
+        lname = Session["EmpLname"].ToString();
 
         //Custom welcome message on the screen
-        //lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
@@ -64,6 +65,11 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
     }
     protected void btnEmpDownloadCOS_Click(object sender, EventArgs e)
     {
+        //work order ID session is created in EmpHome.aspx.cs
+        woID = Session["workOrderID"].ToString();
+
+        //grab selectedValue from radio button & write path for appropriate template
+        //Path will be used for the pdf reader & stamper
         string templatePath = "";
         if (rblDownloadCOS.SelectedValue == "superiorSub")
         {
@@ -80,7 +86,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         }
         else
         {
-            templatePath = "PDFs/JusticePersonal.pdf";
+            templatePath = "PDFs/JusticePersonal1.pdf";
         }
 
 
@@ -89,17 +95,15 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         SqlConnection conn = new SqlConnection(connection);
         SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed," +
             "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime, WServeCharge, WServedFName, WServedLName, WServedRel from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
-        
 
-        //*********WorkOrderID needs to be dynamically filled, not set explicitly
-        cmd.Parameters.AddWithValue("@WorkOrderID", 90);
-
+        //woID is set through the WorkOrderID session variable
+        cmd.Parameters.AddWithValue("@WorkOrderID", woID);
 
         //Need additional SqlCommand to pull Employee info with an Inner Join
         SqlCommand empCmd = new SqlCommand("SELECT Employee.EmpFName, Employee.EmpLName, Employee.EmpLicCnty FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID=Employee.EmpID WHERE WorkOrderID = @WorkorderID", conn);
 
-        //*********WorkOrderID needs to be dynamically filled, not set explicitly
-        empCmd.Parameters.AddWithValue("@WorkOrderID", 90);
+        //woID is set through the WorkOrderID session variable
+        empCmd.Parameters.AddWithValue("@WorkOrderID", woID);
 
         //Open connection, insert DB info into variables, repeat with 2nd SqlCommand, close connection
         conn.Open();
@@ -202,8 +206,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             serveAddress.Append(" on:");
         }
 
-
-
         //convert string "serveDT" to DateTime in order to properly format & pull the month, day, & year
         dt = DateTime.Parse(serveDt);
         StringBuilder serveDate = new StringBuilder();
@@ -214,7 +216,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         serveDate.Append(dt.ToString("yyyy"));
         serveDate.Append(" at ");
         serveDate.Append(serveTime);
-
 
 
         //StringBuilder & formatting for Execute date
@@ -235,7 +236,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         else if ((dt.Day == 3) || (dt.Day == 23)) day = dt.ToString("%d") + "rd";
         else day = dt.ToString("%d") + "th";
 
-
+        //continuation of StringBuilders
         StringBuilder executeDate = new StringBuilder("Executed this ");
         executeDate.Append(day);
         executeDate.Append(" day of ");
@@ -247,6 +248,10 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         StringBuilder charge = new StringBuilder("$");
         charge.Append(serveCharge);
         charge.Append(".00");
+
+        StringBuilder sig = new StringBuilder(empFName);
+        sig.Append(" ");
+        sig.Append(empLName);
 
 
         //Read in the PDF template
@@ -266,8 +271,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             stamper.AcroFields.SetField("bottomName", clientName.ToString());
             stamper.AcroFields.SetField("topName", opName.ToString());
             opposingPartyStatus = "Plantiff";
-
-            //*******Probably need to also set Name in paragraphTwo depending on the clientStatus
         }
         else if (clientStatus == "PE")
         {
@@ -303,35 +306,49 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         //Side Note, have to do this if statement & stringbuilder this far down because
         //the opposingPartyStatus is being set in the stamper commands just above this.
 
-        StringBuilder personServed = new StringBuilder();
 
+        StringBuilder personServed = new StringBuilder();
+        StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
+
+        //This will only apply on the justiceSub & superiorSub templates
         if ((servedFName == "") || (servedLName == ""))
         {
+            //This is written if WServedFName || WServedLName is left blank in the DB
             personServed.Append("\"John/Jane Doe\" (whose true name is refused),");
         }
         else
         {
+            //This is written if WServedFName && WServedLName have data
             personServed.Append(servedFName);
             personServed.Append(" ");
             personServed.Append(servedLName);
             personServed.Append(", ");
         }
 
+        //This will only be written on superiorSub || justiceSub templates
+        if ((rblDownloadCOS.SelectedValue == "superiorSub") || (rblDownloadCOS.SelectedValue == "justiceSub"))
+        {
+            paragraphTwo.Append(opposingPartyStatus);
+            paragraphTwo.Append(" ");
+            paragraphTwo.Append(opName);
+            paragraphTwo.Append(" by leaving a copy with ");
+            paragraphTwo.Append(personServed);
+            paragraphTwo.Append(servedRel);
+            paragraphTwo.Append(" of ");
+            paragraphTwo.Append(opposingPartyStatus);
+            paragraphTwo.Append(", a person of suitable age and discretion who resides with ");
+            paragraphTwo.Append(opposingPartyStatus);
+            paragraphTwo.Append(" at:");
+        }
 
-        StringBuilder paragraphTwo = new StringBuilder("I personally served true copies of the document upon: ");
-        paragraphTwo.Append(opposingPartyStatus);
-        paragraphTwo.Append(" ");
-        paragraphTwo.Append(opName);
-        paragraphTwo.Append(" by leaving a copy with ");
-        paragraphTwo.Append(personServed);
-        paragraphTwo.Append(servedRel);
-        paragraphTwo.Append(" of ");
-        paragraphTwo.Append(opposingPartyStatus);
-        paragraphTwo.Append(", a person of suitable age and discretion who resides with ");
-        paragraphTwo.Append(opposingPartyStatus);
-        paragraphTwo.Append(" at:");
-
-
+        //This will be written on superiorPersonal || justicePersonal templates
+        else
+        {
+            paragraphTwo.Append(opposingPartyStatus);
+            paragraphTwo.Append(", ");
+            paragraphTwo.Append(opName);
+            paragraphTwo.Append(" a person of suitable age and discretion at his/her usual place of abode at:");
+        }
 
         //*******************
 
@@ -348,8 +365,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         stamper.AcroFields.SetField("serveDateTime", serveDate.ToString());
         stamper.AcroFields.SetField("executeDate", executeDate.ToString());
         stamper.AcroFields.SetField("cost", charge.ToString());
-
-
+        stamper.AcroFields.SetField("signature", sig.ToString());
 
         //Disable field editing by flattening the stamper
         stamper.FormFlattening = true;
