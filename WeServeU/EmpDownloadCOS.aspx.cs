@@ -26,7 +26,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
     string day, county, clientStatus, clientFName, clientLName, opFName, opLName, empFName, empLName, empLCounty;
     string caseNum, dateCreated, paperTitle, toBeServed, serveStreet, serveApt, serveCity, serveState, serveZip;
     string servedFName, servedLName, servedRel;
-    string serveDt, serveTime, serveCharge;
+    string serveDt, serveTime, serveCharge, court;
 
     //This will always be opposite of clientStatus. Set this during the clientStatus if statements.
     string opposingPartyStatus;
@@ -71,30 +71,31 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         //grab selectedValue from radio button & write path for appropriate template
         //Path will be used for the pdf reader & stamper
         string templatePath = "";
-        if (rblDownloadCOS.SelectedValue == "superiorSub")
+        if ((rblDownloadCOS.SelectedValue == "superiorSub") || (rblDownloadCOS.SelectedValue == "superiorPersonal"))
         {
-            templatePath = "PDFs/SuperiorSubShell2.pdf";
+            templatePath = "PDFs/SuperiorSub.pdf";
         }
-        else if (rblDownloadCOS.SelectedValue == "superiorPersonal")
-        {
-            templatePath = "PDFs/SuperiorPersonal.pdf";
-        }
+        //else if (rblDownloadCOS.SelectedValue == "superiorPersonal")
+        //{
+        //    templatePath = "PDFs/SuperiorPersonal.pdf";
+        //}
 
-        else if (rblDownloadCOS.SelectedValue == "justiceSub")
+        else //if ((rblDownloadCOS.SelectedValue == "justiceSub") || (rblDownloadCOS.SelectedValue == "justicePersonal"))
         {
-            templatePath = "PDFs/JusticeSub.pdf";
+            templatePath = "PDFs/JusticePersonal.pdf";
         }
-        else
-        {
-            templatePath = "PDFs/JusticePersonal1.pdf";
-        }
+        //else
+        //{
+        //    templatePath = "PDFs/JusticePersonal1.pdf";
+        //}
 
 
         //Make DB connection & SqlCommand to pull info for COS
         string connection = ConfigurationManager.ConnectionStrings["testdb"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
         SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed," +
-            "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime, WServeCharge, WServedFName, WServedLName, WServedRel from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
+            "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime, WServeCharge, WServedFName, WServedLName, WServedRel," +
+            "WCourtFiled from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
 
         //woID is set through the WorkOrderID session variable
         cmd.Parameters.AddWithValue("@WorkOrderID", woID);
@@ -140,12 +141,13 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             servedFName = dr[18].ToString();
             servedLName = dr[19].ToString();
             servedRel = dr[20].ToString();
+            court = dr[21].ToString();
         }
 
         dr.Close();
         conn.Close();
 
-        //build necessary strings to fill in PDF
+        //build necessary strings to fill in 
         StringBuilder countyLine = new StringBuilder("IN AND FOR THE COUNTY OF ");
         countyLine.Append(county);
         StringBuilder clientName = new StringBuilder();
@@ -348,6 +350,15 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             paragraphTwo.Append(", ");
             paragraphTwo.Append(opName);
             paragraphTwo.Append(" a person of suitable age and discretion at his/her usual place of abode at:");
+        }
+
+        //Another conditional block for writing the courtLine on the justice court templates (uppermost line on PDF)
+        if ((rblDownloadCOS.SelectedValue == "justiceSub") || (rblDownloadCOS.SelectedValue == "justicePersonal"))
+        {
+            StringBuilder courtLine = new StringBuilder("IN THE ");
+            courtLine.Append(court);
+            courtLine.Append(" JUSTICE COURT OF THE STATE OF ARIZONA");
+            stamper.AcroFields.SetField("courtLine", courtLine.ToString().ToUpper());
         }
 
         //*******************
