@@ -108,7 +108,6 @@ public partial class AdminHome : System.Web.UI.Page
             lblUpdate.Text = ("There was an error connecting to the database. Description: " + ex);
             lblUpdate.Visible = true;
         }
-
     }
 
 
@@ -182,7 +181,7 @@ public partial class AdminHome : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select * FROM Customer WHERE (CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName) ;", conn);
+            SqlCommand cmd = new SqlCommand("Select CFname, CLname, CFirmName FROM Customer WHERE (CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName) ;", conn);
 
             cmd.Parameters.AddWithValue("@clientFName", clientFName);
             cmd.Parameters.AddWithValue("@clientLName", clientLName);
@@ -202,8 +201,8 @@ public partial class AdminHome : System.Web.UI.Page
 
                 }
                 lblCLientUpdate.Visible = false;
-                btnSelectClient.Visible = true;
-                ddUpdateClient.Visible = true;
+                //btnSelectClient.Visible = true;
+                //ddUpdateClient.Visible = true;
             }
 
             else
@@ -213,6 +212,9 @@ public partial class AdminHome : System.Web.UI.Page
                 btnSelectClient.Visible = false;
                 ddUpdateClient.Visible = false;
             }
+            btnSelectClient.Visible = true;
+            ddUpdateClient.Visible = true;
+
             conn.Close();
         }
         catch (Exception ex)
@@ -258,51 +260,90 @@ public partial class AdminHome : System.Web.UI.Page
     {
         string WStatus = txtGenStatus.Text;
 
-        if (RadioButtonReport.SelectedIndex == 0)
+        //if (RadioButtonReport.SelectedIndex == 0)
+        //{
+        //    try
+        //    {
+        //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        //        SqlConnection conn = new SqlConnection(connection);
+        //        SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
+
+        //        cmd.Parameters.AddWithValue("@WStatus", WStatus);
+
+        //        conn.Open();
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            for (int i = 0; i < dt.Rows.Count; i++)
+        //            {
+
+        //                ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        //            }
+        //        }
+
+        //        else
+        //        {
+        //            lblGenReport.Text = ("Input invalid. Please enter proper data.");
+        //            lblGenReport.Visible = true;
+        //        }
+        //        btnGenReportSubmit.Visible = true;
+        //        ddGenReport.Visible = true;
+        //        conn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Oops, something bad happened...
+        //        lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+        //        lblGenReport.Visible = true;
+        //    }
+        //}
+        //else
+        //{
+        //    lblGenReport.Text = "Please choose at least one from the checkbox selection.";
+        //    lblGenReport.Visible = true;
+        //}
+
+        try
         {
-            try
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
+
+            cmd.Parameters.AddWithValue("@WStatus", WStatus);
+
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
             {
-                string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-                SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
-
-                cmd.Parameters.AddWithValue("@WStatus", WStatus);
-
-                conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                if (dt.Rows.Count > 0)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
 
-                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                    }
+                    ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
                 }
-
-                else
-                {
-                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
-                    lblGenReport.Visible = true;
-                }
-                btnGenReportSubmit.Visible = true;
-                ddGenReport.Visible = true;
-                conn.Close();
             }
-            catch (Exception ex)
+
+            else
             {
-                //Oops, something bad happened...
-                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+                lblGenReport.Text = ("Input invalid. Please enter proper data.");
                 lblGenReport.Visible = true;
             }
+            btnGenReportSubmit.Visible = true;
+            ddGenReport.Visible = true;
+            conn.Close();
         }
-        else
+        catch (Exception ex)
         {
-            lblGenReport.Text = "Please choose at least one from the checkbox selection.";
+            //Oops, something bad happened...
+            lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
             lblGenReport.Visible = true;
         }
+
     }
     protected void btnGenReportSubmit_Click(object sender, EventArgs e)
     {
