@@ -19,6 +19,7 @@ public partial class EmpHome : System.Web.UI.Page
 {
     //Some variables for use on this page
     int id;
+    int woID;
     string fname;
     string lname;
     string perm;
@@ -49,20 +50,20 @@ public partial class EmpHome : System.Web.UI.Page
 
 
 
-    protected void ddlWOList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        lblWONum.Text = "Work Order # " + ddlWOList.SelectedValue.ToString();
-        lblWONum.Visible = true;
-        Session["workOrderID"] = ddlWOList.SelectedValue.ToString();
-    }
+    //protected void ddlWOList_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    lblWONum.Text = "Work Order # " + ddlWOList.SelectedValue.ToString();
+    //    lblWONum.Visible = true;
+    //    Session["workOrderID"] = ddlWOList.SelectedValue.ToString();
+    //}
 
 
-    protected void btnAssign_Click(object sender, EventArgs e)
+    protected void btnEmpUpdate_Click(object sender, EventArgs e)
     {
         
-        string id = null;
+        
 
-        id = ddlWOList.SelectedValue;
+        woID = Convert.ToInt16(ddlWOList.SelectedValue);
 
         Session["WorkOrderID"] = id;
 
@@ -80,7 +81,12 @@ public partial class EmpHome : System.Web.UI.Page
     }
     protected void btnDownloadCOS_Click(object sender, EventArgs e)
     {
+        woID = Convert.ToInt16(ddlWOList.SelectedValue);
+
+        Session["WorkOrderID"] = id;
+
         Response.Redirect("EmpDownloadCOS.aspx");
+
     }
     protected void btnUploadCOS_Click(object sender, EventArgs e)
     {

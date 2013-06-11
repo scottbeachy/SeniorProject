@@ -18,7 +18,7 @@
             <div id="woSelect">
                 <p>Select a Work Order From Below:</p>
                 
-                <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID" OnSelectedIndexChanged="ddlWOList_SelectedIndexChanged" AutoPostBack="true">                
+                <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID"  AutoPostBack="true">                
                 </asp:DropDownList><br />
                 <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID],  [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([WStatus] = @WStatus) AND ([EmpID] = @EmpID) ORDER BY [WorkOrderID]">
                     <SelectParameters>
@@ -34,7 +34,7 @@
         </div>
         <div class="btnMenuEmp">
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnAssign" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnAssign_Click" />
+                <asp:Button ID="btnEmpUpdate" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnEmpUpdate_Click" />
                 <asp:Label ID="Label1" runat="server" Text="View the current work order selected from above" CssClass="btnDash3"></asp:Label>
                 <br />
                 &nbsp;</div>
@@ -64,13 +64,8 @@
                 <br />
                 &nbsp;</div>
             <br />
-            <div class="btnMenuEmpItem">
-                <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btnDash2" OnClick="btnLogout_Click" />
-                <asp:Label ID="Label6" runat="server" Text="Log Out of Your Account" CssClass="btnDash3"></asp:Label>
-                <br />
-                &nbsp;</div>
-            <br />
-            <br />
+            
+            
             <br />
         </div>
     </div>

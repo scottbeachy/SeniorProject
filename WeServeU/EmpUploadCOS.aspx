@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EmpUploadCOS.aspx.cs" Inherits="EmpUploadCOS" %>
+﻿<%@ Page Title="WeServeU -Upload Completed COS-" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EmpUploadCOS.aspx.cs" Inherits="EmpUploadCOS" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -11,23 +11,19 @@
     </div>
     
 
-    <div class="adminDashboard">
-        <br />
-        <h3>UPLOAD CERTIFICATE OF SERVICE</h3>
+     <div id="custUpload">
+    <h2>Please upload you court provided documents here.</h2>
+    <h3>First, Please choose a Work Order to upload documents to.</h3><br />
+    <h3>WeserveU requires documents to be uploaded in PDF format.</h3>
+         <h3>The documents will be uploaded to the work order selected from the previous page. </h3>
+         <p>If you need to select a different work order, please return to the Employee Dashboard</p>
+
     
-        <div class="empUploadCOS">
-            Click Browse to find the Certificate Of Service to Upload, then click Upload:
-            <br />
-            <br />
-            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="empFileUpload" />
-            <br />
-            <br />
-        </div>
-            <asp:Button ID="Button2" runat="server" Text="Upload" CssClass="btnDash" />
+    <asp:FileUpload ID="cstFileUp" runat="server" CssClass="custFileUpload" /><br /><br /><br />
+    <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" CssClass="btnDash" /><br />
+    <asp:Label ID="lblUploadStatus" runat="server" Text=""></asp:Label>
         
-
-
-    </div>
+        </div>
 
 </asp:Content>
 
