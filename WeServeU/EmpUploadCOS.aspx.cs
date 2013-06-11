@@ -47,6 +47,7 @@ public partial class EmpUploadCOS : System.Web.UI.Page
     {
         Response.Redirect("EmpHome.aspx");
     }
+
     protected void btnUpload_Click(object sender, EventArgs e)
     {
         int fileLength;
