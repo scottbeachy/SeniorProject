@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -41,6 +43,16 @@ public partial class EmpAddNotes : System.Web.UI.Page
         string notes;
 
         notes = tbNotes.Text;
+
+        //Create parameterized insert statement
+        string insertStmt = "INSERT into WorkNotes(WNComments) VALUES(notes)";
+
+        //Set up connection
+        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connection);
+
+        //Iniatalize & add parameters to the SqlCommand object
+        SqlCommand cmd = new SqlCommand(insertStmt, conn);
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {
