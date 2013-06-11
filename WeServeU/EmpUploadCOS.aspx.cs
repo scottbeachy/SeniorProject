@@ -43,4 +43,8 @@ public partial class EmpUploadCOS : System.Web.UI.Page
         Session.Clear();
         Response.Redirect("login.aspx");
     }
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpHome.aspx");
+    }
 }

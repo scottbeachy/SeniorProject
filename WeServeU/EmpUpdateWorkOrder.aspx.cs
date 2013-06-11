@@ -37,4 +37,16 @@ public partial class EmpUpdateWorkOrder : System.Web.UI.Page
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
     
     }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.RemoveAll();
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("login.aspx");
+    }
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpHome.aspx");
+    }
 }

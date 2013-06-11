@@ -6,7 +6,10 @@
 
     <div class="welcomeBox">
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
+        <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
+        <asp:Button ID="btnReturnHome" runat="server" Text="Back to Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
     </div>
+    
 
     <asp:DetailsView ID="dtvEmploy" runat="server" Height="50px" CssClass="updateTable" AlternatingRowStyle-BackColor="#CCCCCC" AutoGenerateRows="False" DataKeyNames="WorkOrderID,CustomerID,EmpID" DataSourceID="dsEmpView" >
 <AlternatingRowStyle BackColor="#CCCCCC"></AlternatingRowStyle>

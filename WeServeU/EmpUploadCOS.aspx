@@ -6,8 +6,10 @@
 
     <div class="welcomeBox">
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
-        <asp:Button ID="Button1" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
+        <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="returnHome" OnClick="btnLogout_Click" />
+        <asp:Button ID="btnReturnHome" runat="server" Text="Back to Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
     </div>
+    
 
     <div class="adminDashboard">
         <br />
