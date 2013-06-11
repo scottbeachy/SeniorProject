@@ -348,46 +348,24 @@ width:166px;
     width:100%;
 }
 
-.createAcctLbl
+.createAcctLbl 
 {
-    display: inline-block;
-    padding: 0px;
-    margin: 0px 0px 16px 0px;
+    float: left;
+    width: 250px;
+    margin: 5px 5px 0px 15px;
+    text-align: right;
 }
 
-.createAcctTxt
+.createAcctMain
 {
-    display: inline-block;
-    padding: 0px;
-    margin: 0px 0px 15px 0px;
-}
-
-.createAcctSubmitBtn
-{
-    margin-left: 100px;
-}
+    text-align: left;
+ }
 
 .createAcctContainer 
 {
     width: 700px;
     margin: 0 auto;
-    text-align: center;
-    
-}
-
-#createAcctLblPnl
-{
-    float: left;
-    width: 275px;
-    text-align: right;
-}
-
-#createAcctTxtPnl
-{
-    float: left;
-    margin-left: 5px;
-    width: 375px;
-    text-align: left;
+    text-align: center;  
 }
 
 .termsUse 
@@ -529,7 +507,7 @@ width:166px;
     text-align: center;
 }
 
-    #redirectText a:link
+    #redirectText a
     {
          color: blue;
          text-decoration: none;
