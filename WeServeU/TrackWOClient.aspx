@@ -9,7 +9,7 @@
         <asp:Label ID="lblWelcome" runat="server" Text=""></asp:Label>
     </div>
 
-    <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="100%" AutoGenerateRows="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" DataKeyNames="WorkOrderID" DataSourceID="WOClientDataSource" ForeColor="Black" GridLines="Vertical">
+    <asp:DetailsView ID="DetailsView1" runat="server" CssClass="updateTable" Height="50px" AutoGenerateRows="False" DataKeyNames="WorkOrderID" DataSourceID="WOClientDataSource">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
         <Fields>
@@ -31,6 +31,10 @@
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
     </asp:DetailsView>
-    <asp:SqlDataSource ID="WOClientDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID], [WCaseNumber], [CustomerID], [WClientStatus], [WFName], [WLName], [WToBeServed], [WServDate], [WServTime], [WFiledBy], [WDateCreated], [WcertID], [WPaperTitle] FROM [WorkOrder]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="WOClientDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID], [WCaseNumber], [CustomerID], [WClientStatus], [WFName], [WLName], [WToBeServed], [WServDate], [WServTime], [WFiledBy], [WDateCreated], [WcertID], [WPaperTitle] FROM [WorkOrder] WHERE ([WorkOrderID] = @WorkOrderID) ORDER BY [WorkOrderID]">
+        <SelectParameters>
+            <asp:SessionParameter Name="WorkOrderID" SessionField="WorkOrderID" Type="Decimal" />
+        </SelectParameters>
+        </asp:SqlDataSource>
 </asp:Content>
 

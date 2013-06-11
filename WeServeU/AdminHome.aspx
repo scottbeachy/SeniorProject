@@ -95,8 +95,8 @@
         <asp:UpdatePanel ID="UpdateGenReportPanel" runat="server">
             <ContentTemplate>
                 <asp:RadioButtonList ID="RadioButtonReport" CssClass="RadioButtonReport" runat="server" RepeatDirection="Horizontal" CellPadding="5">
-<%--                    <asp:ListItem>Completed</asp:ListItem>
-                    <asp:ListItem>Not Completed</asp:ListItem>--%>
+                    <asp:ListItem>Completed</asp:ListItem>
+                    <asp:ListItem>Not Completed</asp:ListItem>
                     <asp:ListItem>Client</asp:ListItem>
                     <asp:ListItem>Plaintiff/Respondent</asp:ListItem>
                 </asp:RadioButtonList>
