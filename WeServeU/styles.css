@@ -593,10 +593,13 @@ width:166px;
 
 .RadioButtonReport td
 {
-   padding-left:110px;
+   padding-left:30px;
 }
 
-
+.RadioButtonReport 
+{
+    margin-left:330px;
+}
 
 .cosRadio 
 {
