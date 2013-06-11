@@ -10,26 +10,24 @@
     </div>
     <h3 class="updateClientHeader">To Make Updates to the Client, Please Click the "Edit" Button At The Bottom Of The Page.</h3>
 
-    <asp:DetailsView ID="UpdateClientDetailsView" runat="server" CssClass="updateTable" Height="50px" AutoGenerateRows="False" DataKeyNames="CustomerID" DataSourceID="UpdateClientDataSource">
+    <asp:DetailsView ID="UpdateClientDetailsView" runat="server" CssClass="updateTable" Height="50px" Width="100%" AutoGenerateRows="False" DataKeyNames="CustomerID" DataSourceID="UpdateClientDataSource">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-        <Fields>
+       <Fields>
             <asp:BoundField DataField="CustomerID" HeaderText="CustomerID" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" />
-            <asp:BoundField DataField="CFname" HeaderText="CFname" SortExpression="CFname" />
-            <asp:BoundField DataField="CLname" HeaderText="CLname" SortExpression="CLname" />
-            <asp:BoundField DataField="CFirmName" HeaderText="CFirmName" SortExpression="CFirmName" />
-            <asp:BoundField DataField="CPhone" HeaderText="CPhone" SortExpression="CPhone" />
-            <asp:BoundField DataField="CFax" HeaderText="CFax" SortExpression="CFax" />
-            <asp:BoundField DataField="CEmail" HeaderText="CEmail" SortExpression="CEmail" />
-            <asp:BoundField DataField="CAddress" HeaderText="CAddress" SortExpression="CAddress" />
-            <asp:BoundField DataField="CApt" HeaderText="CApt" SortExpression="CApt" />
-            <asp:BoundField DataField="CCity" HeaderText="CCity" SortExpression="CCity" />
-            <asp:BoundField DataField="CState" HeaderText="CState" SortExpression="CState" />
-            <asp:BoundField DataField="CCounty" HeaderText="CCounty" SortExpression="CCounty" />
-            <asp:BoundField DataField="CZip" HeaderText="CZip" SortExpression="CZip" />
-            <asp:BoundField DataField="CUser" HeaderText="CUser" SortExpression="CUser" />
-            <asp:BoundField DataField="CPass" HeaderText="CPass" SortExpression="CPass" />
-            <asp:BoundField DataField="CPerm" HeaderText="CPerm" SortExpression="CPerm" />
+            <asp:BoundField DataField="CFname" HeaderText="First Name" SortExpression="CFname" />
+            <asp:BoundField DataField="CLname" HeaderText="Last Name" SortExpression="CLname" />
+            <asp:BoundField DataField="CFirmName" HeaderText="Firm Name ( if applicable, leave blank if n/a)" SortExpression="CFirmName" />
+            <asp:BoundField DataField="CPhone" HeaderText="Phone Number" SortExpression="CPhone" />
+            <asp:BoundField DataField="CFax" HeaderText="Fax ( if applicable )" SortExpression="CFax" />
+            <asp:BoundField DataField="CEmail" HeaderText="Email" SortExpression="CEmail" />
+            <asp:BoundField DataField="CAddress" HeaderText="Street address" SortExpression="CAddress" />
+            <asp:BoundField DataField="CApt" HeaderText="Apartment number ( if applicable)" SortExpression="CApt" />
+            <asp:BoundField DataField="CCity" HeaderText="City" SortExpression="CCity" />
+            <asp:BoundField DataField="CCounty" HeaderText="County" SortExpression="CCounty" />
+            <asp:BoundField DataField="CZip" HeaderText="Zip" SortExpression="CZip" />
+            <asp:BoundField DataField="CUser" HeaderText="Username" SortExpression="CUser" />
+            <asp:BoundField DataField="CPass" HeaderText="Password (please remember this is case sensitive)" SortExpression="CPass" />
             <asp:CommandField ShowEditButton="True" />
         </Fields>
         <FooterStyle BackColor="#CCCCCC" />

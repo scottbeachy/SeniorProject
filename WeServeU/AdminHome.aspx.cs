@@ -181,7 +181,7 @@ public partial class AdminHome : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select CFname, CLname, CFirmName FROM Customer WHERE CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName ;", conn);
+            SqlCommand cmd = new SqlCommand("Select * FROM Customer WHERE CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName ;", conn);
 
             cmd.Parameters.AddWithValue("@clientFName", clientFName);
             cmd.Parameters.AddWithValue("@clientLName", clientLName);
@@ -288,6 +288,8 @@ public partial class AdminHome : System.Web.UI.Page
                     {
 
                         ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        btnGenReportSubmit.Visible = true;
+                        ddGenReport.Visible = true;
                     }
                 }
 
@@ -298,8 +300,6 @@ public partial class AdminHome : System.Web.UI.Page
                     btnGenReportSubmit.Visible = false;
                     ddGenReport.Visible = false;
                 }
-                btnGenReportSubmit.Visible = true;
-                ddGenReport.Visible = true;
                 conn.Close();
             }
             catch (Exception ex)
@@ -332,6 +332,8 @@ public partial class AdminHome : System.Web.UI.Page
                     {
 
                         ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        btnGenReportSubmit.Visible = true;
+                        ddGenReport.Visible = true;
                     }
                 }
 
@@ -342,8 +344,6 @@ public partial class AdminHome : System.Web.UI.Page
                     btnGenReportSubmit.Visible = false;
                     ddGenReport.Visible = false;
                 }
-                btnGenReportSubmit.Visible = true;
-                ddGenReport.Visible = true;
                 conn.Close();
             }
             catch (Exception ex)
@@ -361,8 +361,8 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                //SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (ClientFName = @WOClientFName OR  ClientLName = @ClientLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (ClientFName = @WOClientFName OR  ClientLName = @WOClientLName);", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (ClientFName = @WOClientFName OR  ClientLName = @WOClientLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
+                //SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE ClientFName = @WOClientFName OR  ClientLName = @WOClientLName;", conn);
 
                 cmd.Parameters.AddWithValue("@WOClientFName", ClientFName);
                 cmd.Parameters.AddWithValue("@WOClientLName", ClientLName);
@@ -381,6 +381,8 @@ public partial class AdminHome : System.Web.UI.Page
                     {
 
                         ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        btnGenReportSubmit.Visible = true;
+                        ddGenReport.Visible = true;
                     }
                 }
 
@@ -391,8 +393,6 @@ public partial class AdminHome : System.Web.UI.Page
                     btnGenReportSubmit.Visible = false;
                     ddGenReport.Visible = false;
                 }
-                btnGenReportSubmit.Visible = true;
-                ddGenReport.Visible = true;
                 conn.Close();
             }
             catch (Exception ex)
@@ -408,7 +408,7 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WOPFName = @WOPFName OR  WOPLName = @WOPLName);", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WOPFName = @WOPFName OR  WOPLName = @WOPLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
 
                 cmd.Parameters.AddWithValue("@WOPFName", WOPFName);
                 cmd.Parameters.AddWithValue("@WOPLName", WOPLName);
@@ -427,6 +427,8 @@ public partial class AdminHome : System.Web.UI.Page
                     {
 
                         ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        btnGenReportSubmit.Visible = true;
+                        ddGenReport.Visible = true;
                     }
                 }
 
@@ -437,8 +439,6 @@ public partial class AdminHome : System.Web.UI.Page
                     btnGenReportSubmit.Visible = false;
                     ddGenReport.Visible = false;
                 }
-                btnGenReportSubmit.Visible = true;
-                ddGenReport.Visible = true;
                 conn.Close();
             }
             catch (Exception ex)

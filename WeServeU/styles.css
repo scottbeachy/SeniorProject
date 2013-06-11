@@ -339,6 +339,8 @@ width:166px;
 .updateClientDetails
 {
     width:100%;
+    border:2px solid #FFF;
+    margin-top:5px;
 }
 
 .completeServesDetails
