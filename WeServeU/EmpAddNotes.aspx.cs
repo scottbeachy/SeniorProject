@@ -38,7 +38,9 @@ public partial class EmpAddNotes : System.Web.UI.Page
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
+        string notes;
 
+        notes = tbNotes.Text;
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {

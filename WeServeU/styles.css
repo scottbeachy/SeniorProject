@@ -546,7 +546,6 @@ width:166px;
 }
 .txtAddEmp
 {
-    width: 300px;
     margin-top: 5px;
 }
 .ddlEmp
@@ -629,3 +628,18 @@ width:166px;
     text-align: center;
     margin-top: 5px;
 }
+
+.lblEmail 
+{
+    padding-left:200px;
+    float: left;
+    width: 125px;
+    margin:5px 5px 0px 15px;
+    text-align: right;
+}
+
+.txtEmail 
+{
+    margin-top: 5px;
+}
+
