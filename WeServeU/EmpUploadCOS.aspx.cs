@@ -70,9 +70,10 @@ public partial class EmpUploadCOS : System.Web.UI.Page
                 success = fw.UploadFile(connectionString, woID.ToString(), fileBytes);
                 if (success)
                 {
-                    lblUploadStatus.Text = "Your file has been uploaded and the staff at WeServeU notified.";
+                    lblUploadStatus.Text = "Your file has been uploaded and the Customer has been notified.";
                     lblUploadStatus.ForeColor = System.Drawing.Color.Green;
                     lblUploadStatus.Visible = true;
+                    
                 }
                 else
                 {

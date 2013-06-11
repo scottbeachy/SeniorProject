@@ -119,6 +119,14 @@ public class SendMail
              * */
     public bool Send_CustMail(string workOrderID)
     {
+        string workOrderNum = workOrderID;
+        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connection);
+        SqlCommand cmd = new SqlCommand("SELECT ;", conn);
+
+        cmd.Parameters.AddWithValue("WorkOrderID", workOrderNum);
+
+        conn.Open();
         //just put this in to remove the squiggles
         return false;
     }
@@ -137,7 +145,7 @@ public class SendMail
             MailMessage mailObj = new MailMessage(from, to);
             mailObj.Subject = "A new work order has been created on WeserveU";
             //Create the message body
-            mailObj.Body += "<h2>A new work order has been created by customer number " + id + "</h2> <br /> "
+            mailObj.Body = "<h2>A new work order has been created by customer number " + id + "</h2> <br /> "
                 + "<p>The workorder is editable at this time but they need to upload documents to complete the serve</p>";
                 
 
@@ -157,6 +165,25 @@ public class SendMail
         }
         
         
+    }
+    /*firstname, lastname, email, message
+     * */
+    public void CustQuestion(string email, string firstName, string lastName, string message)
+    {
+        MailAddress from = new MailAddress(email);
+        MailAddress to = new MailAddress("info@weservu.biz");
+        MailMessage mailObj = new MailMessage(from, to);
+        mailObj.Subject = "You have recieved a question from WeServeUllc.com";
+        //Create the message body
+        mailObj.Body = "<h2>" + firstName + " " + lastName + " has a question.</h2><p> " + message + "</p>"
+            + "<p>And can be reached at this email address: " + email + "</p>";
+        mailObj.IsBodyHtml = true;
+
+        //uncomment these lines when loading to GoDaddy Servers. 
+
+        //SmtpClient smtp = new SmtpClient(SERVER);
+        //smtp.Send(mailObj);
+        //mailObj = null;
     }
 
     public bool Retrieve_Password(string email, string pass)
