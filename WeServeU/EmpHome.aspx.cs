@@ -96,4 +96,8 @@ public partial class EmpHome : System.Web.UI.Page
     {
         Response.Redirect("workOrderTemplate.pdf");
     }
+    protected void btnAddNotes_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpAddNotes.aspx");
+    }
 }
