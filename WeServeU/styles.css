@@ -377,7 +377,24 @@ width:166px;
     width: 700px;
     margin: 0 auto;
     text-align: center;
-    
+}
+
+.createAcctLbl 
+{
+    float: left;
+    width: 250px;
+    margin: 5px 5px 0px 15px;
+    text-align: right;
+}
+
+.createAcctError
+{
+    text-align: center;
+}
+
+.createAcctMain
+{
+    text-align: left;
 }
 
 #createAcctLblPnl
