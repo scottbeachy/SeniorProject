@@ -100,4 +100,8 @@ public partial class EmpHome : System.Web.UI.Page
     {
         Response.Redirect("EmpAddNotes.aspx");
     }
+    protected void btnCompleteCOS_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpUpdateAccount.aspx");
+    }
 }

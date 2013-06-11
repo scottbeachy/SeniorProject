@@ -393,4 +393,8 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         Response.BinaryWrite(output.ToArray());
         Response.End();
     }
+    protected void btnReturnHome_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmpHome.aspx");
+    }
 }

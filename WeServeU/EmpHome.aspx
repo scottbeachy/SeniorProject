@@ -65,7 +65,7 @@
             </div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnCompleteCOS" runat="server" Text="Update Account" CssClass="btnDash2" />
+                <asp:Button ID="btnCompleteCOS" runat="server" Text="Update Account" CssClass="btnDash2" OnClick="btnCompleteCOS_Click" />
                 <asp:Label ID="Label5" runat="server" Text="Update Your Account Information" CssClass="btnDash3"></asp:Label>
                 <br />
                 &nbsp;</div>
