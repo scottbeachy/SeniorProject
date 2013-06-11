@@ -181,7 +181,7 @@ public partial class AdminHome : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select CFname, CLname, CFirmName FROM Customer WHERE (CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName) ;", conn);
+            SqlCommand cmd = new SqlCommand("Select CFname, CLname, CFirmName FROM Customer WHERE CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName ;", conn);
 
             cmd.Parameters.AddWithValue("@clientFName", clientFName);
             cmd.Parameters.AddWithValue("@clientLName", clientLName);
@@ -259,91 +259,151 @@ public partial class AdminHome : System.Web.UI.Page
     protected void btnSubmitRep_Click(object sender, EventArgs e)
     {
         string WStatus = txtGenStatus.Text;
+        string ClientFName = txtGenFName.Text;
+        string ClientLName = txtGenLName.Text;
+        string WOPFName = txtGenFName.Text;
+        string WOPLName = txtGenLName.Text;
+        string WOdate1 = txtStartDateRep.Text;
+        string WOdate2 = txtEndDateRep.Text;
 
-        //if (RadioButtonReport.SelectedIndex == 0)
-        //{
-        //    try
-        //    {
-        //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-        //        SqlConnection conn = new SqlConnection(connection);
-        //        SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
 
-        //        cmd.Parameters.AddWithValue("@WStatus", WStatus);
 
-        //        conn.Open();
-        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //        DataTable dt = new DataTable();
-        //        da.Fill(dt);
+        if (RadioButtonReport.SelectedIndex == 0)
+        {
+            try
+            {
+                string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connection);
+                //SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (ClientFName = @WOClientFName OR  ClientLName = @ClientLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (ClientFName = @WOClientFName OR  ClientLName = @ClientLName);", conn);
 
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            for (int i = 0; i < dt.Rows.Count; i++)
-        //            {
+                cmd.Parameters.AddWithValue("@WOClientFName", ClientFName);
+                cmd.Parameters.AddWithValue("@WOClientLName", ClientLName);
+                cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+                cmd.Parameters.AddWithValue("@WODate2", WOdate2);
 
-        //                ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-        //            }
-        //        }
 
-        //        else
-        //        {
-        //            lblGenReport.Text = ("Input invalid. Please enter proper data.");
-        //            lblGenReport.Visible = true;
-        //        }
-        //        btnGenReportSubmit.Visible = true;
-        //        ddGenReport.Visible = true;
-        //        conn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //Oops, something bad happened...
-        //        lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
-        //        lblGenReport.Visible = true;
-        //    }
-        //}
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+
+                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    }
+                }
+
+                else
+                {
+                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
+                    lblGenReport.Visible = true;
+                }
+                btnGenReportSubmit.Visible = true;
+                ddGenReport.Visible = true;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                //Oops, something bad happened...
+                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+                lblGenReport.Visible = true;
+            }
+        }
         //else
         //{
         //    lblGenReport.Text = "Please choose at least one from the checkbox selection.";
         //    lblGenReport.Visible = true;
         //}
-
-        try
+        else if (RadioButtonReport.SelectedIndex == 1)
         {
-            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
-
-            cmd.Parameters.AddWithValue("@WStatus", WStatus);
-
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            if (dt.Rows.Count > 0)
+            try
             {
-                for (int i = 0; i < dt.Rows.Count; i++)
+                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connection);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WOPFName = @WOPFName OR  WOPLName = @WOPLName);", conn);
+
+                cmd.Parameters.AddWithValue("@WOPFName", WOPFName);
+                cmd.Parameters.AddWithValue("@WOPLName", WOPLName);
+                cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+                cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
                 {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
 
-                    ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    }
                 }
-            }
 
-            else
+                else
+                {
+                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
+                    lblGenReport.Visible = true;
+                }
+                btnGenReportSubmit.Visible = true;
+                ddGenReport.Visible = true;
+                conn.Close();
+            }
+            catch (Exception ex)
             {
-                lblGenReport.Text = ("Input invalid. Please enter proper data.");
+                
+                 //Oops, something bad happened...
+                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
                 lblGenReport.Visible = true;
             }
-            btnGenReportSubmit.Visible = true;
-            ddGenReport.Visible = true;
-            conn.Close();
         }
-        catch (Exception ex)
+        else
         {
-            //Oops, something bad happened...
-            lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
-            lblGenReport.Visible = true;
-        }
+            try
+            {
+                string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+                SqlConnection conn = new SqlConnection(connection);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
 
+                cmd.Parameters.AddWithValue("@WStatus", WStatus);
+
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+
+                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    }
+                }
+
+                else
+                {
+                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
+                    lblGenReport.Visible = true;
+                }
+                btnGenReportSubmit.Visible = true;
+                ddGenReport.Visible = true;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                //Oops, something bad happened...
+                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+                lblGenReport.Visible = true;
+            }
+            
+        }
     }
     protected void btnGenReportSubmit_Click(object sender, EventArgs e)
     {
