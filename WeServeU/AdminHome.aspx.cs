@@ -265,8 +265,8 @@ public partial class AdminHome : System.Web.UI.Page
     protected void btnSubmitRep_Click(object sender, EventArgs e)
     {
         string WStatus = txtGenStatus.Text;
-        string ClientFName = txtGenFName.Text;
-        string ClientLName = txtGenLName.Text;
+        string WFName = txtGenFName.Text;
+        string WLName = txtGenLName.Text;
         string WOPFName = txtGenFName.Text;
         string WOPLName = txtGenLName.Text;
         string WOdate1 = txtStartDateRep.Text;
@@ -279,9 +279,11 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus OR WDateCreated Between @WODate1 AND @WODate2 ;", conn);
 
                 cmd.Parameters.AddWithValue("@WStatus", WStatus);
+                cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+                cmd.Parameters.AddWithValue("@WODate2", WOdate2);
 
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -323,9 +325,11 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus ;", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus OR WDateCreated Between @WODate1 AND @WODate2 ;", conn);
 
                 cmd.Parameters.AddWithValue("@WStatus", WStatus);
+                cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+                cmd.Parameters.AddWithValue("@WODate2", WOdate2);
 
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -367,11 +371,10 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (ClientFName = @WOClientFName OR  ClientLName = @WOClientLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
-                //SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE ClientFName = @WOClientFName OR  ClientLName = @WOClientLName;", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WFName = @WFName OR  WLName = @WLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
 
-                cmd.Parameters.AddWithValue("@WOClientFName", ClientFName);
-                cmd.Parameters.AddWithValue("@WOClientLName", ClientLName);
+                cmd.Parameters.AddWithValue("@WFName", WFName);
+                cmd.Parameters.AddWithValue("@WLName", WLName);
                 cmd.Parameters.AddWithValue("@WODate1", WOdate1);
                 cmd.Parameters.AddWithValue("@WODate2", WOdate2);
 
@@ -403,10 +406,12 @@ public partial class AdminHome : System.Web.UI.Page
             }
             catch (Exception ex)
             {
+
                 //Oops, something bad happened...
                 lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
                 lblGenReport.Visible = true;
             }
+
         }
         else if (RadioButtonReport.SelectedIndex == 3)
         {

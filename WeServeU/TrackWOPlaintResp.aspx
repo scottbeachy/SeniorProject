@@ -44,7 +44,7 @@
             <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate" />
             <asp:BoundField DataField="WServTime" HeaderText="Time of Service" SortExpression="WServTime" />
             <asp:BoundField DataField="WStatus" HeaderText="Work order status (C=complete, I=incomplete, U=unable to complete)" SortExpression="WStatus" />
-            <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server" SortExpression="WFiledBy" />
+            <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server)" SortExpression="WFiledBy" />
             <asp:BoundField DataField="WDateCreated" HeaderText="Date the workorder was created" SortExpression="WDateCreated" />
         </Fields>
         <FooterStyle BackColor="#CCCCCC" />
