@@ -64,6 +64,23 @@
                 <asp:Label ID="lblUpdate" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
+        <h3>View, Add, Update the work notes for a work order</h3>
+        <p>First Select a date range</p>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label3" runat="server" Text="Begining Date:" CssClass="lblDash"></asp:Label>
+                <asp:TextBox ID="txtNoteBeginDate" runat="server" ValidationGroup="noteUpdate" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="noteUpdate" ControlToValidate="txtNoteBeginDate"></asp:RequiredFieldValidator>
+                <asp:Label ID="Label5" runat="server" Text="End Date:" CssClass="lblDash"></asp:Label>
+                <asp:TextBox ID="txtNoteEndDate" runat="server" ValidationGroup="noteUpdate" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="noteUpdate" ControlToValidate="txtNoteEndDate"></asp:RequiredFieldValidator>
+                <asp:Button ID="btnUpdateNotes" runat="server" Text="Submit" CssClass="btnDash" ValidationGroup="noteUpdate" CausesValidation="true" OnClick="btnUpdateNotes_Click"  /><br />
+                <asp:DropDownList ID="ddlUpdateNote" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList>
+                <asp:Button ID="btnViewNotes" runat="server" Text="View Notes" OnClick="btnViewNotes_Click" CssClass="btnDash" /><br />
+                <asp:Label ID="lblViewNote" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
         <h3>Add a new Employee</h3>
         <asp:Button ID="btnAddEmp" runat="server" Text="Add Employee"  CssClass="btnDash" OnClick="btnAddEmp_Click" />

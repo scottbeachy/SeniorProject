@@ -50,10 +50,16 @@ public partial class AdminHome : System.Web.UI.Page
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
 
-        lblUpdate.Visible = false;
-        btnChoose.Visible = false;
+        
         btnSelectClient.Visible = false;
         btnGenReportSubmit.Visible = false;
+        if (!Page.IsPostBack)
+        {
+            btnViewNotes.Visible = false;
+            lblViewNote.Visible = false;
+            lblUpdate.Visible = false;
+            btnChoose.Visible = false;
+        }
 
         //if (RadioButtonReport.SelectedIndex == 0)
         //{
@@ -466,5 +472,59 @@ public partial class AdminHome : System.Web.UI.Page
         Session["WorkOrderID"] = id;
 
         Response.Redirect("TrackCompleteServes.aspx");
+    }
+
+    protected void btnViewNotes_Click(object sender, EventArgs e)
+    {
+        string woID = null;
+        woID = ddlUpdateNote.SelectedValue;
+
+        Session["WorkOrderID"] = woID;
+        Response.Redirect("ViewWorkNotes.aspx");
+    }
+    protected void btnUpdateNotes_Click(object sender, EventArgs e)
+    {
+        date1 = txtNoteBeginDate.Text;
+        date2 = txtNoteEndDate.Text;
+        try
+        {
+            //Connnect to DB and fill the ddl list with the WorkOrder Values
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand("Select WorkOrder.WorkOrderID, WorkOrder.WLName + ' VS ' + WorkOrder.WOPLName AS CustomerName FROM WorkOrder WHERE WorkOrder.WDateCreated Between @date1 AND @date2 ORDER BY WorkOrderID;", conn);
+            cmd.Parameters.AddWithValue("@date1", date1);
+            cmd.Parameters.AddWithValue("@date2", date2);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    ddlUpdateNote.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+
+                }
+            }
+
+            else
+            {
+                //If there are no workorders in the specified date range, display this message
+                lblViewNote.Text = ("There are no work orders in that date range. Please select another range.");
+                lblViewNote.Visible = true;
+            }
+            //make both the select button and the ddl visible
+            btnViewNotes.Visible = true;
+            ddlUpdateNote.Visible = true;
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            //Oops, something bad happened...
+            lblViewNote.Text = ("There was an error connecting to the database. Description: " + ex);
+            lblViewNote.Visible = true;
+        }
     }
 }

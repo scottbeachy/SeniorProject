@@ -328,7 +328,7 @@ width:166px;
     
     width: 100%;
     border:2px solid #FFF;
-    margin-top:5px;
+    /*margin-top:5px;*/
 
 }
     .updateTable td
@@ -348,6 +348,7 @@ width:166px;
     width:100%;
 }
 
+   
 .createAcctLbl 
 {
     float: left;

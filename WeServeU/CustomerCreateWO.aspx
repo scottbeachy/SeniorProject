@@ -10,55 +10,38 @@
         <asp:Button ID="btnReturnHome" runat="server" Text="Back to Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
     </div>
 
-    <div class="createAcctContainer">
+    <div id="AddEmp">
 
         <h3>CREATE NEW WORK ORDER</h3>
 
 
-        <div id="createAcctLblPnl">
-            <asp:Label ID="Label1" runat="server" Text="Case Number:" CssClass="createAcctLbl"></asp:Label>
+        
+            <asp:Label ID="Label1" runat="server" Text="Case Number:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtCaseNumber" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label2" runat="server" Text="First Name Service Requested By:" CssClass="createAcctLbl"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="First Name Service Requested By:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtFNameServiceRequestedBy" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label15" runat="server" Text="Last Name Service Requested By:" CssClass="createAcctLbl"></asp:Label>
+            <asp:Label ID="Label15" runat="server" Text="Last Name Service Requested By:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtLNameServiceRequestedBy" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label3" runat="server" Text="First Name Opposing Party:" CssClass="createAcctLbl"></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="First Name Opposing Party:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtOppFName" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label4" runat="server" Text="First Name Opposing Party:" CssClass="createAcctLbl"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="First Name Opposing Party:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtOppLName" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />            
-            <asp:Label ID="Label7" runat="server" Text="Service Street Address:" CssClass="createAcctLbl"></asp:Label>
+            <asp:Label ID="Label7" runat="server" Text="Service Street Address:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtServiceStreetAddress" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label8" runat="server" Text="Apartment/Suite Number" CssClass="createAcctLbl"></asp:Label>
+            <asp:Label ID="Label8" runat="server" Text="Apartment/Suite Number" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtApartment" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label12" runat="server" Text="City:" CssClass="createAcctLbl"></asp:Label>
-            <br />
-            <asp:Label ID="Label9" runat="server" Text="State:" CssClass="createAcctLbl"></asp:Label>
-            <br />
-            <asp:Label ID="Label10" runat="server" Text="County:" CssClass="createAcctLbl"></asp:Label>
-            <br />
-            <asp:Label ID="Label11" runat="server" Text="Zip Code:" CssClass="createAcctLbl"></asp:Label>
-            <br />
-
-        </div>
-
-        <div id="createAcctTxtPnl">
-            <asp:TextBox ID="txtCaseNumber" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtFNameServiceRequestedBy" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtLNameServiceRequestedBy" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtOppFName" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtOppLName" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />           
-            <asp:TextBox ID="txtServiceStreetAddress" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtApartment" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtCity" runat="server" CssClass="createAcctTxt"></asp:TextBox>
-            <br />
-            <asp:DropDownList ID="ddState" runat="server" CssClass="createAcctTxt">
+            <asp:Label ID="Label12" runat="server" Text="City:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtCity" runat="server" CssClass="txtAddEmp"></asp:TextBox>
+        <br />
+            <asp:Label ID="Label9" runat="server" Text="State:" CssClass="lblEmp"></asp:Label>
+            <asp:DropDownList ID="ddState" runat="server" CssClass="txtAddEmp">
                 <asp:ListItem Value="">Select</asp:ListItem>
                 <asp:ListItem Value="AL">Alabama</asp:ListItem>
                 <asp:ListItem Value="AK">Alaska</asp:ListItem>
@@ -113,15 +96,12 @@
                 <asp:ListItem Value="WY">Wyoming</asp:ListItem>
             </asp:DropDownList>
             <br />
-            <asp:TextBox ID="txtCounty" runat="server" CssClass="createAcctTxt"></asp:TextBox>
+            <asp:Label ID="Label10" runat="server" Text="County:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtCounty" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:TextBox ID="txtZip" runat="server" CssClass="createAcctTxt" MaxLength="10"></asp:TextBox>
-            <br />
-            <br />
-            
-        </div>
-
-        
+            <asp:Label ID="Label11" runat="server" Text="Zip Code:" CssClass="lblEmp"></asp:Label>
+            <asp:TextBox ID="txtZip" runat="server" CssClass="txtAddEmp" MaxLength="10"></asp:TextBox>
+            <br />        
          
             <asp:Button ID="btnCreateWO" runat="server" Text="Create Work Order" CssClass="btnDash" OnClick="btnCreateWO_Click" /><br />
         <asp:Label ID="lblCreateWOError" runat="server" Text="" Visible="false"></asp:Label><br />
