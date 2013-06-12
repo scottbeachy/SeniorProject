@@ -52,10 +52,6 @@ public class SendMail
                 MailAddress to = new MailAddress(email.Trim());
                 MailMessage mailObj = new MailMessage(from, to);
 
-                //string body = "<h2>You have been assigned a new serve by the staff at WeserveU.biz.</h2> <br /> " +
-                //    "<h3>Please log in to WeServeU.biz to download documents</h3><h2>Details: </h2> <P>Case Number: " +
-                //    dt.Rows[0][2].ToString() + "</p><p>Customer: " + dt.Rows[0][0].ToString() + "</p><p>Opposing Party: " +
-                //    dt.Rows[0][1].ToString() + "</p>";
                 
 
                 mailObj.Subject = "You were assigned a new serve from WeserveU";
@@ -65,19 +61,7 @@ public class SendMail
                     "<h3>Please log in to WeServeU.biz to download documents</h3><h2>Details: </h2> <P>Case Number: " +
                     dt.Rows[0][2].ToString() + "</p><p>Customer: " + dt.Rows[0][0].ToString() + "</p><p>Opposing Party: " +
                     dt.Rows[0][1].ToString();
-                //Tried to get the logo into the message but it is not working at this time. 
-                //ContentType ct = new ContentType("text/html");
-                //ContentType plain = new ContentType("text/plain");
-                //string path = HttpContext.Current.Server.MapPath("images/newbanner.jpg");
-                //AlternateView plainTextView = AlternateView.CreateAlternateViewFromString(body, plain);
-                //AlternateView htmlView = AlternateView.CreateAlternateViewFromString("<image src=\"cid:Logo\" />" + body, ct);
-                
-                ////"<image src=cid:Logo />" + body, null, MediaTypeNames.Text.Html
-                //LinkedResource image = new LinkedResource(path, "image/jpeg");
-                //image.ContentId = "Logo";
-                //htmlView.LinkedResources.Add(image);
-                //mailObj.AlternateViews.Add(plainTextView);
-                //mailObj.AlternateViews.Add(htmlView);
+              
                 
                 mailObj.IsBodyHtml = true;
 
@@ -101,22 +85,7 @@ public class SendMail
 
 
     }
-            //Send the Customer Email when the CoS is completed. 
-            /* Need to read the data from the docs table into a byte[] with a dataReader and then convert to a memory stream object.
-             * Code Sample:
-             * MailMessage mail = new MailMessage();
-             //Create a MemoryStream from a file for this test
-                MemoryStream ms = new MemoryStream();
-
-                 mail.Attachments.Add(new System.Net.Mail.Attachment(ms, "test.gif"));
-                if (mail.Attachments[0].ContentStream == ms) Console.WriteLine("Streams are referencing the same resource");
-                    Console.WriteLine("Stream length: " + mail.Attachments[0].ContentStream.Length);
-
-                 //Dispose the mail as you should after sending the email
-                mail.Dispose();
-
-             * 
-             * */
+            
     public bool Send_CustMail(string workOrderID)
     {
         string workOrderNum = workOrderID;

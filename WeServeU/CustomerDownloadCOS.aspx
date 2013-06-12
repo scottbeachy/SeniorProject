@@ -10,6 +10,7 @@
     </div>
     <div id="adminDashboard">
         <h2>You completed Certificate of Service will begin to download momentarily.</h2>
+        <h2>You can choose to open and view the Certificate of Service or save it. </h2>
 
 
     </div>
