@@ -3,6 +3,7 @@
     margin:0px;
     font-family:Tahoma;
     /*background-image:url('images/freedom.jpg');*/
+    background:#ffffff url('images/freedom2.jpg') repeat-y fixed center top;
 }
 
 #wrapper {
@@ -10,6 +11,7 @@
     background-color:#fff;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom:10px;
 }
 
 #header {
