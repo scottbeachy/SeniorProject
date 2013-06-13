@@ -35,7 +35,6 @@ public partial class EmpHome : System.Web.UI.Page
         if (!Session["Perm"].Equals("E"))
         {
             Response.Redirect("login.aspx");
-
         }
 
         //assign the variables from the session created from the login page
@@ -60,16 +59,9 @@ public partial class EmpHome : System.Web.UI.Page
 
     protected void btnEmpUpdate_Click(object sender, EventArgs e)
     {
-        
-        
-
         woID = Convert.ToInt16(ddlWOList.SelectedValue);
-
-        Session["WorkOrderID"] = id;
-
+        Session["WorkOrderID"] = woID;
         Response.Redirect("EmpUpdateWorkOrder.aspx");
-
-
     }
 
     protected void btnLogout_Click(object sender, EventArgs e)
@@ -82,9 +74,7 @@ public partial class EmpHome : System.Web.UI.Page
     protected void btnDownloadCOS_Click(object sender, EventArgs e)
     {
         woID = Convert.ToInt16(ddlWOList.SelectedValue);
-
-        Session["WorkOrderID"] = id;
-
+        Session["WorkOrderID"] = woID;
         Response.Redirect("EmpDownloadCOS.aspx");
 
     }
