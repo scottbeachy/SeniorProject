@@ -25,5 +25,20 @@ public partial class contact : System.Web.UI.Page
 
         SendMail sm = new SendMail();
         sm.CustQuestion(email, fname, lname, message);
+
+        lblAddSuccess.Visible = true;
+        ClearInputs(Page.Controls);
+        
+    }
+    //this method clears all the textboxes without actually calling all the seperate values
+    private void ClearInputs(ControlCollection ctrls)
+    {
+        foreach (Control ctrl in ctrls)
+        {
+            if (ctrl is TextBox)
+                ((TextBox)ctrl).Text = string.Empty;
+
+            ClearInputs(ctrl.Controls);
+        }
     }
 }

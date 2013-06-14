@@ -5,12 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
     
-        <h3>Please fill out the form below to have one of our business associates contact you:</h3>
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please fill out the form below to have one of our business associates contact you:</h3>
     
         <div id="contactContainer">
 
             <div id="AddEmp">
-        <asp:Label ID="lblAddSuccess" runat="server" Text="" Visible="false" ForeColor="Green"></asp:Label><br />
+        <asp:Label ID="lblAddSuccess" runat="server" Text="Thank You!!! You will hear from a WeServeU Associate within 24 hours." Visible="False" ForeColor="Green" CssClass="eMailSuccess"></asp:Label><br />
 
         <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="lblEmail" AssociatedControlID="txtFName" ></asp:Label>
         <asp:TextBox ID="txtFName" CssClass="txtEmail" runat="server" ToolTip="First Name"></asp:TextBox><br />
