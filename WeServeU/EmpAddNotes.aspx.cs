@@ -45,7 +45,7 @@ public partial class EmpAddNotes : System.Web.UI.Page
         notes = tbNotes.Text;
 
         //Create parameterized insert statement
-        string insertStmt = "INSERT into WorkNotes(WNComments) VALUES(notes)";
+        string insertStmt = "INSERT into WorkNotes(WorkOrderID, WorkNoteID, EmpID, CustomerID, WNComments) VALUES(@WorkOrderID, @WorkNoteID, @EmpID, @CustomerID, notes)";
 
         //Set up connection
         string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
@@ -53,7 +53,23 @@ public partial class EmpAddNotes : System.Web.UI.Page
 
         //Iniatalize & add parameters to the SqlCommand object
         SqlCommand cmd = new SqlCommand(insertStmt, conn);
+
+        lblAddSuccess.Visible = true;
+        ClearInputs(Page.Controls);
+
     }
+    //this method clears all the textboxes without actually calling all the seperate values
+    private void ClearInputs(ControlCollection ctrls)
+    {
+        foreach (Control ctrl in ctrls)
+        {
+            if (ctrl is TextBox)
+                ((TextBox)ctrl).Text = string.Empty;
+
+            ClearInputs(ctrl.Controls);
+        }
+    }
+    
     protected void btnLogout_Click(object sender, EventArgs e)
     {
         Session.RemoveAll();

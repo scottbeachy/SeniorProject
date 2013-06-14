@@ -18,10 +18,12 @@
 
 
 
-            <asp:TextBox ID="tbNotes" runat="server" Height="150px" Width="470px"></asp:TextBox>
+            <asp:TextBox ID="tbNotes" runat="server" Height="150px" Width="470px" TextMode="MultiLine"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="btnSubNotes" runat="server" OnClick="Button2_Click" Text="Submit Notes" CssClass="btnDash"/>
+            <br />
+            <asp:Label ID="lblAddSuccess" runat="server" Text="Notes Are Added!" Visible="False" ForeColor="Green"></asp:Label>
             <br />
             <br />
 
