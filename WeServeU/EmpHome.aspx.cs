@@ -88,6 +88,8 @@ public partial class EmpHome : System.Web.UI.Page
     }
     protected void btnAddNotes_Click(object sender, EventArgs e)
     {
+        woID = Convert.ToInt16(ddlWOList.SelectedValue);
+        Session["WorkOrderID"] = woID;
         Response.Redirect("EmpAddNotes.aspx");
     }
     protected void btnCompleteCOS_Click(object sender, EventArgs e)

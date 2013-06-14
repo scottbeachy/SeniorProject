@@ -14,6 +14,7 @@ public partial class EmpAddNotes : System.Web.UI.Page
     string fname;
     string lname;
     string perm;
+    string wID;
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -34,6 +35,8 @@ public partial class EmpAddNotes : System.Web.UI.Page
         perm = Session["Perm"].ToString();
         fname = Session["EmpFname"].ToString();
         lname = Session["EmpLname"].ToString();
+        wID = Session["WorkOrderID"].ToString();
+        
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
@@ -43,20 +46,37 @@ public partial class EmpAddNotes : System.Web.UI.Page
         string notes;
 
         notes = tbNotes.Text;
+        DateTime dt = DateTime.Now;
 
         //Create parameterized insert statement
-        string insertStmt = "INSERT into WorkNotes(WorkOrderID, WorkNoteID, EmpID, CustomerID, WNComments) VALUES(@WorkOrderID, @WorkNoteID, @EmpID, @CustomerID, notes)";
+        string insertStmt = "INSERT into WorkNotes(WorkOrderID, EmpID, WNDate, WNComments) VALUES(@WorkOrderID, @EmpID, @WNDate, @WNComments);";
 
-        //Set up connection
+        try
+        {
+        //Set up connections
         string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
 
         //Iniatalize & add parameters to the SqlCommand object
         SqlCommand cmd = new SqlCommand(insertStmt, conn);
+            
+            cmd.Parameters.AddWithValue("@WorkOrderID", wID.ToString());
+            cmd.Parameters.AddWithValue("@EmpID", id.ToString());
+            cmd.Parameters.AddWithValue("@WNDate", dt);
+            cmd.Parameters.AddWithValue("@WNComments", notes);
 
-        lblAddSuccess.Visible = true;
-        ClearInputs(Page.Controls);
-
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            lblAddSuccess.Visible = true;
+            ClearInputs(Page.Controls);
+        }
+        catch(SqlException es)
+        {
+            lblAddFail.Visible = true;
+            ClearInputs(Page.Controls);
+        }
+        
     }
     //this method clears all the textboxes without actually calling all the seperate values
     private void ClearInputs(ControlCollection ctrls)

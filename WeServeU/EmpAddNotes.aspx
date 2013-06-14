@@ -25,6 +25,8 @@
             <br />
             <asp:Label ID="lblAddSuccess" runat="server" Text="Notes Are Added!" Visible="False" ForeColor="Green"></asp:Label>
             <br />
+            <asp:Label ID="lblAddFail" runat="server" Text="Error! Notes Were Not Added!" Visible="False" ForeColor="Red"></asp:Label>
+            <br />
             <br />
 
 
