@@ -34,12 +34,14 @@
             <br />
             <asp:Label ID="Label6" runat="server" Text="Address:" CssClass="createAcctLbl"></asp:Label>
             <asp:TextBox ID="txtAddress" runat="server" CssClass="txtAddEmp"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtAddress"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="Label7" runat="server" Text="Apartment:" CssClass="createAcctLbl"></asp:Label>
             <asp:TextBox ID="txtApartment" runat="server" CssClass="txtAddEmp" MaxLength="10"></asp:TextBox>
             <br />
             <asp:Label ID="Label8" runat="server" Text="City:" CssClass="createAcctLbl"></asp:Label>
             <asp:TextBox ID="txtCity" runat="server" CssClass="txtAddEmp"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtCity"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="Label9" runat="server" Text="State:" CssClass="createAcctLbl"></asp:Label>
             <asp:DropDownList ID="ddState" runat="server" CssClass="txtAddEmp">
@@ -96,12 +98,15 @@
                 <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
                 <asp:ListItem Value="WY">Wyoming</asp:ListItem>
             </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddState"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="Label10" runat="server" Text="County:" CssClass="createAcctLbl"></asp:Label>
             <asp:TextBox ID="txtCounty" runat="server" CssClass="txtAddEmp"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtCounty"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="Label11" runat="server" Text="Zip Code:" CssClass="createAcctLbl"></asp:Label>
             <asp:TextBox ID="txtZip" runat="server" CssClass="txtAddEmp" MaxLength="10"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtZip"></asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="Label12" runat="server" Text="Username:" CssClass="createAcctLbl"></asp:Label>
             <asp:TextBox ID="txtUsername" runat="server" CssClass="txtAddEmp"></asp:TextBox>

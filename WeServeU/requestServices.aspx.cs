@@ -1,4 +1,8 @@
-﻿using System;
+﻿//This page created by Paul Ortega
+//Last Edited: 6/14/2013
+//Creates a customer record in the DB based on user input
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -29,7 +29,7 @@
     <asp:TextBox ID="txtServiceState" runat="server"></asp:TextBox><br />
                 <asp:Label ID="Label13" runat="server" Text="Service Zip Code: "></asp:Label>
     <asp:TextBox ID="txtServiceZip" runat="server"></asp:TextBox><br />
-    <asp:Button ID="btnPrint" runat="server" Text="Print" OnClick="btnPrint_Click" />
+    <asp:Button ID="btnPrint" runat="server" Text="Print"/>
 
 &nbsp;
     <asp:Button ID="btnDB" runat="server" Text="Print from DB" OnClick="btnDB_Click" />

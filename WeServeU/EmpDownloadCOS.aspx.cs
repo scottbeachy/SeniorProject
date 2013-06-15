@@ -1,4 +1,9 @@
-﻿using System;
+﻿//This page created by Paul Ortega
+//Last Edited: 6/14/2013
+//Creates a certificate of service PDF based on the work order selected on EmpHome.aspx &
+//based on the template selected on EmpDownloadCOS.aspx
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -73,21 +78,13 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         string templatePath = "";
         if ((rblDownloadCOS.SelectedValue == "superiorSub") || (rblDownloadCOS.SelectedValue == "superiorPersonal"))
         {
-            templatePath = "PDFs/SuperiorSub.pdf";
+            templatePath = "PDFs/Superior.pdf";
         }
-        //else if (rblDownloadCOS.SelectedValue == "superiorPersonal")
-        //{
-        //    templatePath = "PDFs/SuperiorPersonal.pdf";
-        //}
 
         else //if ((rblDownloadCOS.SelectedValue == "justiceSub") || (rblDownloadCOS.SelectedValue == "justicePersonal"))
         {
-            templatePath = "PDFs/JusticePersonal.pdf";
+            templatePath = "PDFs/Justice.pdf";
         }
-        //else
-        //{
-        //    templatePath = "PDFs/JusticePersonal1.pdf";
-        //}
 
 
         //Make DB connection & SqlCommand to pull info for COS
@@ -95,10 +92,11 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         SqlConnection conn = new SqlConnection(connection);
         SqlCommand cmd = new SqlCommand("SELECT WCountyFiled, WClientStatus, WFName, WLName, WOPFName, WOPLName, WCaseNumber, WDateCreated, WPaperTitle, WToBeServed," +
             "WServAdd, WServApt, WServCity, WServState, WServZip, WServDate, WServTime, WServeCharge, WServedFName, WServedLName, WServedRel," +
-            "WCourtFiled from WorkOrder WHERE WorkOrderID = @WorkOrderID", conn);
+            "WCourtFiled from WorkOrder WHERE WorkOrderID = @WorkOrderID AND EmpID = @EmpID", conn);
 
         //woID is set through the WorkOrderID session variable
         cmd.Parameters.AddWithValue("@WorkOrderID", woID);
+        cmd.Parameters.AddWithValue("@EmpID", id);
 
         //Need additional SqlCommand to pull Employee info with an Inner Join
         SqlCommand empCmd = new SqlCommand("SELECT Employee.EmpFName, Employee.EmpLName, Employee.EmpLicCnty FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID=Employee.EmpID WHERE WorkOrderID = @WorkorderID", conn);
@@ -180,10 +178,9 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
 
 
         //StringBuilder for Serve address - w/ and w/o Apartment
-        StringBuilder serveAddress = new StringBuilder();
+        StringBuilder serveAddress = new StringBuilder(serveStreet);
         if (serveApt == "")
         {
-            serveAddress.Append(serveStreet);
             serveAddress.Append(" ");
             serveAddress.Append(serveCity);
             serveAddress.Append(", ");
@@ -195,9 +192,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
 
         else
         {
-            serveAddress.Append(serveStreet);
-            serveAddress.Append(" ");
-            serveAddress.Append("Apt ");
+            serveAddress.Append(" Apt ");
             serveAddress.Append(serveApt);
             serveAddress.Append(" ");
             serveAddress.Append(serveCity);
@@ -219,9 +214,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         serveDate.Append(" at ");
         serveDate.Append(serveTime);
 
-
-        //StringBuilder & formatting for Execute date
-        //DateTime myDate = DateTime.Now;
 
         //Old code w/ superscript
         //if ((myDate.Day == 1) || (myDate.Day == 21) || (myDate.Day == 31)) day = myDate.ToString("%d") + "<sup>st</sup>";
@@ -299,12 +291,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             opposingPartyStatus = "Defendant";
         }
 
-
-
-        //**********************
-        //Need to write an if statement looking at the template type so that I know
-        //what to write in paragraphTwo. This whole portion (up until the bottom stars)
-        //will have to go within the template if statement.
         //Side Note, have to do this if statement & stringbuilder this far down because
         //the opposingPartyStatus is being set in the stamper commands just above this.
 
@@ -316,7 +302,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         if ((servedFName == "") || (servedLName == ""))
         {
             //This is written if WServedFName || WServedLName is left blank in the DB
-            personServed.Append("\"John/Jane Doe\" (whose true name is refused),");
+            personServed.Append("\"John/Jane Doe\" (whose true name is refused), ");
         }
         else
         {
@@ -360,10 +346,6 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             courtLine.Append(" JUSTICE COURT OF THE STATE OF ARIZONA");
             stamper.AcroFields.SetField("courtLine", courtLine.ToString().ToUpper());
         }
-
-        //*******************
-
-
         
         //Use the AcroFields property & SetField method to insert text into Pdf fields
         stamper.AcroFields.SetField("countyLine", countyLine.ToString().ToUpper());
