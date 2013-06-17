@@ -626,9 +626,32 @@ width:166px;
     margin-top: 5px;
 }
 
-.center {
-text-align:center;}
+.center 
+{
+text-align:center;
 
-.eMailSuccess {
+}
+
+.eMailSuccess
+{
     padding-left: 200px;
-text-align: center;}
+    text-align: center;
+}
+
+#forgotpassword
+{
+    padding: 10px 10px 10px 30px;
+}
+.lblForgot
+{
+    width:150px;
+    float:left;
+}
+.txtForgot
+{
+    width:150px;
+}
+
+
+
+

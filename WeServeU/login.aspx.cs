@@ -177,30 +177,5 @@ public partial class login : System.Web.UI.Page
         }
         
     }
-    //protected void btnCstForgot_Click(object sender, EventArgs e)
-    //{
-    //    SendMail sm = new SendMail();
-    //    if(sm.Retrieve_Password(_email, _pass))
-    //    {
-    //        lblCustForgot.Text = "Your password has been mailed to the addressed registered with your account";
-    //        lblCustForgot.Visible = true;
-    //    }
-    //    else
-    //    {
-    //        lblCustForgot.Text = "The system encountered an error. Please try again later.";
-    //    }
-    //}
-    //protected void btnEmpForgot_Click(object sender, EventArgs e)
-    //{
-    //    SendMail sm = new SendMail();
-    //    if (sm.Retrieve_Password(_email, _pass))
-    //    {
-    //        lblEmpForgot.Text = "Your password has been mailed to the addressed registered with your account";
-    //        lblEmpForgot.Visible = true;
-    //    }
-    //    else
-    //    {
-    //        lblEmpForgot.Text = "The system encountered an error. Please try again later.";
-    //    }
-    //}
+   
 }

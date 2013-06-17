@@ -82,6 +82,9 @@ public partial class EmpHome : System.Web.UI.Page
     }
     protected void btnUploadCOS_Click(object sender, EventArgs e)
     {
+        woID = Convert.ToInt16(ddlWOList.SelectedValue);
+        //Set WorkOrderID session variable
+        Session["WorkOrderID"] = woID;
         Response.Redirect("EmpUploadCOS.aspx");
     }
     protected void btnPrintWO_Click(object sender, EventArgs e)

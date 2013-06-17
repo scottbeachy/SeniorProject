@@ -12,7 +12,7 @@ using System.Net.Mime;
 
 
 /// Created By Scott Beachy
-/// This class will be used to send all the mail to employees and customers
+/// This class will be used to send all the mail to employees and customers from the system
 /// </summary>
 public class SendMail
 {
@@ -67,9 +67,9 @@ public class SendMail
 
                 //uncomment these lines when loading to GoDaddy Servers. 
 
-                //SmtpClient smtp = new SmtpClient(SERVER);
-                //smtp.Send(mailObj);
-                //mailObj = null;
+                SmtpClient smtp = new SmtpClient(SERVER);
+                smtp.Send(mailObj);
+                mailObj = null;
                 return true;
             }
             catch (SmtpException se)
@@ -96,7 +96,7 @@ public class SendMail
         cmd.Parameters.AddWithValue("WorkOrderID", workOrderNum);
 
         conn.Open();
-        //just put this in to remove the squiggles
+        
         return false;
     }
 
@@ -123,9 +123,9 @@ public class SendMail
 
             //uncomment these lines when loading to GoDaddy Servers. 
 
-            //SmtpClient smtp = new SmtpClient(SERVER);
-            //smtp.Send(mailObj);
-            //mailObj = null;
+            SmtpClient smtp = new SmtpClient(SERVER);
+            smtp.Send(mailObj);
+            mailObj = null;
             return true;
         }
         catch(SmtpException ex)
@@ -150,9 +150,9 @@ public class SendMail
 
         //uncomment these lines when loading to GoDaddy Servers. 
 
-        //SmtpClient smtp = new SmtpClient(SERVER);
-        //smtp.Send(mailObj);
-        //mailObj = null;
+        SmtpClient smtp = new SmtpClient(SERVER);
+        smtp.Send(mailObj);
+        mailObj = null;
     }
 
     public bool Retrieve_Password(string email, string pass)
@@ -178,9 +178,9 @@ public class SendMail
 
             //uncomment these lines when loading to GoDaddy Servers. 
 
-            //SmtpClient smtp = new SmtpClient(SERVER);
-            //smtp.Send(mailObj);
-            //mailObj = null;
+            ////SmtpClient smtp = new SmtpClient(SERVER);
+            ////smtp.Send(mailObj);
+            ////mailObj = null;
             return true;
         }
         catch(SmtpException se)
