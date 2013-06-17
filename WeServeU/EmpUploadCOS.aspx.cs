@@ -13,6 +13,7 @@ public partial class EmpUploadCOS : System.Web.UI.Page
     string lname;
     string perm;
     int woID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //Check permission level and redirect if needed
@@ -52,6 +53,7 @@ public partial class EmpUploadCOS : System.Web.UI.Page
     {
         int fileLength;
         bool success;
+        bool emailSuccess;
         string connectionString = "INSERT INTO Docs (WorkOrderID, EmpID, Doc) VALUES (@WorkOrderID, @EmpID, @Doc)";
         //first check to see if there is actually a file selected, then do work
         if (cstFileUp.HasFile)
@@ -70,9 +72,20 @@ public partial class EmpUploadCOS : System.Web.UI.Page
                 success = fw.UploadFile(connectionString, woID.ToString(), fileBytes);
                 if (success)
                 {
-                    lblUploadStatus.Text = "Your file has been uploaded and the Customer has been notified.";
-                    lblUploadStatus.ForeColor = System.Drawing.Color.Green;
-                    lblUploadStatus.Visible = true;
+                    SendMail sm = new SendMail();
+                    emailSuccess = sm.Send_CustMail(woID.ToString());
+                    if (emailSuccess)
+                    {
+                        lblUploadStatus.Text = "Your file has been uploaded and the Customer has been notified.";
+                        lblUploadStatus.ForeColor = System.Drawing.Color.Green;
+                        lblUploadStatus.Visible = true;
+                    }
+                    else
+                    {
+                        lblUploadStatus.Text = "The file was uploaded but the system failed to notify the customer. Please notify the customer manually.";
+                        lblUploadStatus.ForeColor = System.Drawing.Color.Red;
+                        lblUploadStatus.Visible = true; 
+                    }
                     
                 }
                 else

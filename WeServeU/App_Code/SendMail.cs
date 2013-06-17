@@ -88,16 +88,66 @@ public class SendMail
             
     public bool Send_CustMail(string workOrderID)
     {
+        string email = "";
+        string docID;
         string workOrderNum = workOrderID;
-        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-        SqlConnection conn = new SqlConnection(connection);
-        SqlCommand cmd = new SqlCommand("SELECT ;", conn);
 
-        cmd.Parameters.AddWithValue("WorkOrderID", workOrderNum);
+        try
+        {
 
-        conn.Open();
+
+            
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand("Select CEmail, WCertID FROM Customer INNER JOIN WorkOrder ON WorkOrder.CustomerID = Customer.CustomerID WHERE WorkOrder.WorkOrderID = @WorkOrderID;", conn);
+            cmd.Parameters.AddWithValue("WorkOrderID", workOrderNum);
+
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while(dr.Read())
+                {
+                    email = dr[0].ToString();
+                    docID = dr[1].ToString();
+                }
+                try
+                {
+                    MailAddress from = new MailAddress("info@weserveu.biz");
+                    MailAddress to = new MailAddress(email);
+                    MailMessage mailObj = new MailMessage(from, to);
+                    mailObj.Subject = "Serve Completed -WeserveU-";
+                    //Create the message body
+                    mailObj.Body = "<h2>Your requested serve has been completed and the Certificate of Service is ready to download.</h2> "
+                        + "<p>Please login in to WeServeUllc.com to download your document.</p>"
+                        + "<p>Work order number: " + workOrderNum + "</p>";
+
+
+
+                    mailObj.IsBodyHtml = true;
+
+                    //uncomment these lines when loading to GoDaddy Servers. 
+
+                    //SmtpClient smtp = new SmtpClient(SERVER);
+                    //smtp.Send(mailObj);
+                    //mailObj = null;
+                    return true;
+                }
+                catch (SmtpException me)
+                {
+                    return false;
+                }
+            }
+            return false;
+            
+            
+        }
+        catch(SqlException exc)
+        {
+            return false;
+        }
+
         
-        return false;
     }
 
 
@@ -115,7 +165,7 @@ public class SendMail
             mailObj.Subject = "A new work order has been created on WeserveU";
             //Create the message body
             mailObj.Body = "<h2>A new work order has been created by customer number " + id + "</h2> <br /> "
-                + "<p>The workorder is editable at this time but they need to upload documents to complete the serve</p>";
+                + "<p>The workorder is editable at this time but they need to upload documents to complete the serve.</p>";
                 
 
 
