@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EmpUpdateWorkOrder.aspx.cs" Inherits="EmpUpdateWorkOrder" %>
+﻿<%@ Page Title="WeServeU -Update Work Order-" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EmpUpdateWorkOrder.aspx.cs" Inherits="EmpUpdateWorkOrder" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
