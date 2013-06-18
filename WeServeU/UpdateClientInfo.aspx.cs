@@ -33,7 +33,7 @@ public partial class UpdateClientInfo : System.Web.UI.Page
         lname = Session["EmpLname"].ToString();
 
         //Custom welcome message on the screen
-        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Server ID: " + id;
     }
 
     //This is the onclick for the return button. Do not remove

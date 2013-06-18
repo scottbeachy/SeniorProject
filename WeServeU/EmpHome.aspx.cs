@@ -53,7 +53,7 @@ public partial class EmpHome : System.Web.UI.Page
         lname = Session["EmpLname"].ToString();
 
         //Custom welcome message on the screen
-        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Server ID: " + id;
     }
 
     protected void btnEmpUpdate_Click(object sender, EventArgs e)

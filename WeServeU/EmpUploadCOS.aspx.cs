@@ -35,7 +35,7 @@ public partial class EmpUploadCOS : System.Web.UI.Page
         lname = Session["EmpLname"].ToString();
         woID = Convert.ToInt16(Session["WorkOrderID"]);
         //Custom welcome message on the screen
-        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Server ID: " + id;
     }
     protected void btnLogout_Click(object sender, EventArgs e)
     {

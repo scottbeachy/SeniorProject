@@ -30,7 +30,7 @@ public partial class UpdateEmployee : System.Web.UI.Page
         lname = Session["EmpLname"].ToString();
 
         //Custom welcome message on the screen
-        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
+        lblWelcome.Text = "Welcome " + fname + " " + lname + ". Server ID: " + id;
 
     }
 
