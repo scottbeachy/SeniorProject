@@ -251,4 +251,12 @@ public partial class EmpHome : System.Web.UI.Page
     {
         Response.Redirect("EmpUpdateAccount.aspx");
     }
+    protected void btnDownloadDocs_Click(object sender, EventArgs e)
+    {
+        woID = Convert.ToInt16(ddlWOList.SelectedValue);
+        Session["WorkOrderID"] = woID;
+        FileWork fw = new FileWork();
+        string select = "Select Doc FROM Docs WHERE WorkOrderID = " + woID + ";";
+        fw.DownloadFile(select);
+    }
 }

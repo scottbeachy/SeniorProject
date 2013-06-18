@@ -43,8 +43,17 @@
                 <asp:Button ID="btnAddNotes" runat="server" Text="Add Notes" CssClass="btnDash2" OnClick="btnAddNotes_Click"/>
                 <asp:Label ID="Label7" runat="server" Text="Add Notes to the Work Order Selected" CssClass="btnDash3"></asp:Label>
                 <br />
+                <br />
+                &nbsp;
+
+            </div>
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnDownloadDocs" runat="server" Text="Download Docs" CssClass="btnDash2" OnClick="btnDownloadDocs_Click"  />
+                <asp:Label ID="Label6" runat="server" Text="Download Documents Needed to Complete the Serve" CssClass="btnDash3"></asp:Label>
+                <br />
                 &nbsp;</div>
             <br />
+            
             <div class="btnMenuEmpItem">
                 <asp:Button ID="btnPrintWO" runat="server" Text="Print Work Order Sheet" CssClass="btnDash2" OnClick="btnPrintWO_Click" />
                 <asp:Label ID="Label2" runat="server" Text="Print out the Work Order Sheet to start your work order" CssClass="btnDash3"></asp:Label>
