@@ -118,7 +118,7 @@
                     <asp:ListItem>Plaintiff/Respondent</asp:ListItem>
                 </asp:RadioButtonList>
 
-                <%--                <asp:CheckBox ID="chkGenCompleted" runat="server" Text="Completed" CssClass="chkGenReport" />
+               <%-- <asp:CheckBox ID="chkGenCompleted" runat="server" Text="Completed" CssClass="chkGenReport"/>
                 <asp:CheckBox ID="chkGenNotCompleted" runat="server" Text="Not Completed" CssClass="chkGenReport" />
                 <asp:CheckBox ID="chkGenClientName" runat="server" Text="Client" CssClass="chkGenReport" />
                 <asp:CheckBox ID="chkGenRespondent" runat="server" Text="Plaintiff/Respondent" CssClass="chkGenReport" /><br />--%>

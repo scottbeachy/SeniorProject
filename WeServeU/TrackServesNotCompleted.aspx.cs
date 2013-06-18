@@ -33,6 +33,7 @@ public partial class ServesNotCompleted : System.Web.UI.Page
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Server ID: " + id;
+    }
 
     //This is the onclick for the return button. Do not remove
     protected void btnReturnHome_Click(object sender, EventArgs e)

@@ -61,12 +61,10 @@ public partial class AdminHome : System.Web.UI.Page
             btnChoose.Visible = false;
         }
 
-        //if (RadioButtonReport.SelectedIndex == 0)
+        //if (chkGenCompleted.Checked == true)
         //{
-        //    txtGenFName.Enabled = false;
+        //    this.txtGenFName.Enabled = false;
         //    txtGenLName.Enabled = false;
-        //    txtStartDateRep.Enabled = false;
-        //    txtEndDateRep.Enabled = false;
         //}
     }
 
@@ -187,7 +185,7 @@ public partial class AdminHome : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select * FROM Customer WHERE CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName ;", conn);
+            SqlCommand cmd = new SqlCommand("Select  * FROM Customer WHERE CFname = @clientFName OR CLname = @clientLName OR CFirmName = @firmName ;", conn);
 
             cmd.Parameters.AddWithValue("@clientFName", clientFName);
             cmd.Parameters.AddWithValue("@clientLName", clientLName);
@@ -271,6 +269,8 @@ public partial class AdminHome : System.Web.UI.Page
         string WOPLName = txtGenLName.Text;
         string WOdate1 = txtStartDateRep.Text;
         string WOdate2 = txtEndDateRep.Text;
+        txtGenFName.Enabled = false;
+        txtGenLName.Enabled = false;
 
 
         if (RadioButtonReport.SelectedIndex == 0)
@@ -536,4 +536,5 @@ public partial class AdminHome : System.Web.UI.Page
     {
 
     }
+
 }
