@@ -123,6 +123,6 @@ public partial class CustomerCreateWO : System.Web.UI.Page
 
     protected void btnGoToUpload_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("CustomerUpload.aspx");
     }
 }
