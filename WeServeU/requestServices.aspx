@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <p>
-        New customers must create an account using the form below. Customers can then log in to their accounts where they will be able to submit 
+        New customers may create an account using the form below. Customers can then log in to their accounts where they will be able to submit 
                 work orders, upload documents, and check the status of existing work orders.
     </p>
     <div class="createAcctContainer">

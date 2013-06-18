@@ -23,7 +23,7 @@
     <asp:Panel ID="pnlEmp" DefaultButton="btnEmpLogin" runat="server">
         <div id="empLoginPnl">
             <div class="loginHead">
-                <h2>Employees Please Log in Here</h2>
+                <h2>Servers Please Log in Here</h2>
             </div>
             <asp:Label ID="Label3" runat="server" Text="Username:" CssClass="lblLogin"></asp:Label><asp:TextBox ID="txtEmpUser" runat="server" CssClass="txtLogin" MaxLength="25"></asp:TextBox>
             <asp:RequiredFieldValidator ID="valEmpUser" runat="server" ErrorMessage="*" ControlToValidate="txtEmpUser" ForeColor="Red" ValidationGroup="empLogintxt"></asp:RequiredFieldValidator><br />

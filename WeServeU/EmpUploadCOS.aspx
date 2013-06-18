@@ -16,7 +16,7 @@
     
     <h3>WeserveU requires documents to be uploaded in PDF format.</h3>
          <h3>The documents will be uploaded to the work order selected from the previous page. </h3>
-         <p>If you need to select a different work order, please return to the Employee Dashboard</p>
+         <p>If you need to select a different work order, please return to the Server Dashboard</p>
 
     
     <asp:FileUpload ID="cstFileUp" runat="server" CssClass="custFileUpload" /><br /><br /><br />

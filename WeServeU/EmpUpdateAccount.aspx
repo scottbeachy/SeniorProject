@@ -39,8 +39,8 @@
             <asp:BoundField DataField="EmpECLName" HeaderText="Last Name" SortExpression="EmpECLName" />
             <asp:BoundField DataField="EmpECPhone" HeaderText="Phone Number" SortExpression="EmpECPhone" />
             <asp:BoundField DataField="EmpECAddress" HeaderText="Complete Address" SortExpression="EmpECAddress" />
-            <asp:BoundField DataField="EmpUser" HeaderText="Employee Username" SortExpression="EmpUser" />
-            <asp:BoundField DataField="EmpPass" HeaderText="Password ( case sensitive )" SortExpression="EmpPass" />
+            <asp:BoundField DataField="EmpUser" HeaderText="Server Username" SortExpression="EmpUser" />
+            <asp:BoundField DataField="EmpPass" HeaderText="Password (case sensitive)" SortExpression="EmpPass" />
             <asp:CommandField ShowEditButton="True" />
         </Fields>
     </asp:DetailsView>
