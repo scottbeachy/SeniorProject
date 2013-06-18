@@ -48,7 +48,7 @@ public class SendMail
             {
                 //Create the email message
                 email = dt.Rows[0][3].ToString();
-                MailAddress from = new MailAddress("info@weserveu.biz");
+                MailAddress from = new MailAddress("info@weserveullc.com");
                 MailAddress to = new MailAddress(email.Trim());
                 MailMessage mailObj = new MailMessage(from, to);
 
@@ -113,7 +113,7 @@ public class SendMail
                 }
                 try
                 {
-                    MailAddress from = new MailAddress("info@weserveu.biz");
+                    MailAddress from = new MailAddress("info@weserveullc.com");
                     MailAddress to = new MailAddress(email);
                     MailMessage mailObj = new MailMessage(from, to);
                     mailObj.Subject = "Serve Completed -WeserveU-";
@@ -128,9 +128,9 @@ public class SendMail
 
                     //uncomment these lines when loading to GoDaddy Servers. 
 
-                    //SmtpClient smtp = new SmtpClient(SERVER);
-                    //smtp.Send(mailObj);
-                    //mailObj = null;
+                    SmtpClient smtp = new SmtpClient(SERVER);
+                    smtp.Send(mailObj);
+                    mailObj = null;
                     return true;
                 }
                 catch (SmtpException me)
@@ -159,8 +159,8 @@ public class SendMail
         {
             //Create the email message
             
-            MailAddress from = new MailAddress("info@weserveu.biz");
-            MailAddress to = new MailAddress("info@weservu.biz");
+            MailAddress from = new MailAddress("info@weserveullc.com");
+            MailAddress to = new MailAddress("info@weserveullc.com");
             MailMessage mailObj = new MailMessage(from, to);
             mailObj.Subject = "A new work order has been created on WeserveU";
             //Create the message body
@@ -185,12 +185,11 @@ public class SendMail
         
         
     }
-    /*firstname, lastname, email, message
-     * */
+    
     public void CustQuestion(string email, string firstName, string lastName, string message)
     {
         MailAddress from = new MailAddress(email);
-        MailAddress to = new MailAddress("info@weservu.biz");
+        MailAddress to = new MailAddress("info@weserveullc.com");
         MailMessage mailObj = new MailMessage(from, to);
         mailObj.Subject = "You have recieved a question from WeServeUllc.com";
         //Create the message body
@@ -214,7 +213,7 @@ public class SendMail
         {
             //Create the email message
 
-            MailAddress from = new MailAddress("info@weserveu.biz");
+            MailAddress from = new MailAddress("info@weserveullc.com");
             MailAddress to = new MailAddress(email.Trim());
             MailMessage mailObj = new MailMessage(from, to);
             mailObj.Subject = "Password Recovery";
@@ -228,9 +227,9 @@ public class SendMail
 
             //uncomment these lines when loading to GoDaddy Servers. 
 
-            ////SmtpClient smtp = new SmtpClient(SERVER);
-            ////smtp.Send(mailObj);
-            ////mailObj = null;
+            SmtpClient smtp = new SmtpClient(SERVER);
+            smtp.Send(mailObj);
+            mailObj = null;
             return true;
         }
         catch(SmtpException se)

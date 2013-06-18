@@ -17,10 +17,10 @@
         
         <div class="cosRadio">
             <asp:RadioButtonList ID="rblDownloadCOS" runat="server" CausesValidation="True" CellPadding="10" CssClass="radioButtonCOS" TextAlign="Right" RepeatLayout="Table" RepeatColumns="1">
-                <asp:ListItem Text="SuperiorSub" Value="superiorSub"></asp:ListItem>
-                <asp:ListItem Text="SuperiorPersonal" Value="superiorPersonal"></asp:ListItem>
-                <asp:ListItem Text="JusticeSub" Value="justiceSub"></asp:ListItem>
-                <asp:ListItem Text="JustincePersonal" Value="justicePersonal"></asp:ListItem>
+                <asp:ListItem Text="Superior Substitute" Value="superiorSub"></asp:ListItem>
+                <asp:ListItem Text="Superior Personal" Value="superiorPersonal"></asp:ListItem>
+                <asp:ListItem Text="Justice Substitute" Value="justiceSub"></asp:ListItem>
+                <asp:ListItem Text="Justice Personal" Value="justicePersonal"></asp:ListItem>
             </asp:RadioButtonList>
         </div>
         <br />

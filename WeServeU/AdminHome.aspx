@@ -142,5 +142,20 @@
                 <asp:Label ID="lblGenReport" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
+        <h3>Calculate Payroll</h3>
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label6" runat="server" Text="Begining Date:" CssClass="lblDash"></asp:Label>
+                <asp:TextBox ID="txtDate1" runat="server" ValidationGroup="payroll" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkUpdate" ControlToValidate="txtWrkDate1"></asp:RequiredFieldValidator>
+                <asp:Label ID="Label7" runat="server" Text="End Date:" CssClass="lblDash"></asp:Label>
+                <asp:TextBox ID="txtDate2" runat="server" ValidationGroup="payroll" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkUpdate" ControlToValidate="txtWrkDate2"></asp:RequiredFieldValidator>
+                <br />
+                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>
+                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" /><br />
+                <asp:Label ID="lblPayroll" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
 </asp:Content>

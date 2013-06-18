@@ -532,4 +532,8 @@ public partial class AdminHome : System.Web.UI.Page
             lblViewNote.Visible = true;
         }
     }
+    protected void btnShowPayroll_Click(object sender, EventArgs e)
+    {
+
+    }
 }

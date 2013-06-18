@@ -27,7 +27,7 @@
                 <asp:Panel ID="pnlViewWO" runat="server" Visible="false" CssClass="pnlViewWO" Width="100%">
                     <asp:DropDownList ID="ddlCustWO" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
 
-                    <asp:SqlDataSource ID="CustWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, WLName + ' ' + WOPLName AS Parties 
+                    <asp:SqlDataSource ID="CustWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, WLName + ' VS ' + WOPLName AS Parties 
 FROM WorkOrder
 WHERE CustomerID = @CustomerID
 ORDER BY WorkOrderID">
