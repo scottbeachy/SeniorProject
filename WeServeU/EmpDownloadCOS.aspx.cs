@@ -164,7 +164,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         paragraphOne.Append(empLName.ToUpper());
         paragraphOne.Append(", a private process server, having been so appointed by the court in the County of ");
         paragraphOne.Append(empLCounty);
-        paragraphOne.Append(".");
+        paragraphOne.Append(" and State of Arizona.");
 
         //convert string "dateCreated" to DateTime in order to properly format & pull the month, day, & year
         dt = DateTime.Parse(dateCreated);
@@ -335,7 +335,7 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
             paragraphTwo.Append(opposingPartyStatus);
             paragraphTwo.Append(", ");
             paragraphTwo.Append(opName);
-            paragraphTwo.Append(" a person of suitable age and discretion at his/her usual place of abode at:");
+            paragraphTwo.Append(" a person of suitable age and discretion at:");
         }
 
         //Another conditional block for writing the courtLine on the justice court templates (uppermost line on PDF)

@@ -31,7 +31,7 @@ public partial class EmpHome : System.Web.UI.Page
 
     //Variables for PDF creation
     string clientFName, clientLName, opFName, opLName, serveStreet, serveApt, serveCity, serveCounty, serveState, serveZip;
-    string clientStreet, clientApt, clientCity, clientState, clientZip;
+    string clientStreet, clientApt, clientCity, clientState, clientZip, serveCharge;
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -98,7 +98,7 @@ public partial class EmpHome : System.Web.UI.Page
         string connection = ConfigurationManager.ConnectionStrings["testdb"].ConnectionString;
         SqlConnection conn = new SqlConnection(connection);
         SqlCommand cmd = new SqlCommand("SELECT WFName, WLName, WOPFName, WOPLName, WServAdd, WServApt, WServCity, WServCounty," +
-            "WServState, WServZip FROM WorkOrder WHERE WorkOrderID = @WorkOrderID AND EmpID = @EmpID", conn);
+            "WServState, WServZip, WServeCharge FROM WorkOrder WHERE WorkOrderID = @WorkOrderID AND EmpID = @EmpID", conn);
 
         //Add IDs from variables to query
         cmd.Parameters.AddWithValue("@WorkOrderID", woID.ToString());
@@ -128,6 +128,7 @@ public partial class EmpHome : System.Web.UI.Page
             serveCounty = dr[7].ToString();
             serveState = dr[8].ToString();
             serveZip = dr[9].ToString();
+            serveCharge = dr[10].ToString();
         }
         dr.Close();
 
@@ -189,6 +190,10 @@ public partial class EmpHome : System.Web.UI.Page
         clientCityStateZip.Append(" ");
         clientCityStateZip.Append(clientZip);
         stamper.AcroFields.SetField("cityStateZip", clientCityStateZip.ToString());
+
+        StringBuilder cost = new StringBuilder("$");
+        cost.Append(serveCharge);
+        stamper.AcroFields.SetField("cost", cost.ToString());
 
         //build full name string for person to be served (opposing party) & write to PDF field
         StringBuilder opName = new StringBuilder(opFName);
