@@ -39,12 +39,12 @@
             <asp:BoundField DataField="WServedWeight" HeaderText="Person served weight" SortExpression="WServedWeight" />
             <asp:BoundField DataField="WServedHair" HeaderText="Person served hair color" SortExpression="WServedHair" />
             <asp:BoundField DataField="WServedEye" HeaderText="Person served eye color" SortExpression="WServedEye" />
-            <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served" SortExpression="WServedSex" />
+            <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served (M for male and F for female)" SortExpression="WServedSex" />
             <asp:BoundField DataField="WServedAge" HeaderText="Age of person served" SortExpression="WServedAge" />
             <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate"  DataFormatString="{0:dd/MM/yyyy}"/>
             <asp:BoundField DataField="WServTime" HeaderText="Time of Service" SortExpression="WServTime" />
-            <asp:BoundField DataField="WStatus" HeaderText="Work order status (C=complete, I=incomplete, U=unable to complete)" SortExpression="WStatus" />
-            <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server" SortExpression="WFiledBy" />
+            <asp:BoundField DataField="WStatus" HeaderText="Work order status (C=complete, I=incomplete, U=unable to complete, A=active)" SortExpression="WStatus" />
+            <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server)" SortExpression="WFiledBy" />
             <asp:BoundField DataField="WDateCreated" HeaderText="Date the workorder was created" SortExpression="WDateCreated" />
             <asp:BoundField DataField="WServeCharge" HeaderText="Price of the serve" SortExpression="WServeCharge" />
             <asp:BoundField DataField="WEmpBPay" HeaderText="Employee Bonus Pay" SortExpression="WEmpBPay" />

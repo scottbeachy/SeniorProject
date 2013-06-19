@@ -38,7 +38,7 @@
             <asp:BoundField DataField="WServedWeight" HeaderText="Person served weight" SortExpression="WServedWeight" />
             <asp:BoundField DataField="WServedHair" HeaderText="Person served hair color" SortExpression="WServedHair" />
             <asp:BoundField DataField="WServedEye" HeaderText="Person served eye color" SortExpression="WServedEye" />
-            <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served" SortExpression="WServedSex" />
+            <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served ( M for male and F for female)" SortExpression="WServedSex" />
             <asp:BoundField DataField="WServedAge" HeaderText="Age of person served" SortExpression="WServedAge" />
             <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate" />
             <asp:BoundField DataField="WServTime" HeaderText="Time of Service" SortExpression="WServTime" />

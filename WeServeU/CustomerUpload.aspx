@@ -16,7 +16,7 @@
 
     <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID" AutoPostBack="true">                
                 </asp:DropDownList><br /><br /><br />
-                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID],  [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([CustomerID] = @CustomerID) ORDER BY [WorkOrderID]">
+                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID], CAST([WorkOrderID] AS varchar(20)) + ' ' + [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([CustomerID] = @CustomerID) ORDER BY [WorkOrderID]">
                     <SelectParameters>
                         <asp:SessionParameter Name="CustomerID" SessionField="CustID" Type="String" />
                     </SelectParameters>

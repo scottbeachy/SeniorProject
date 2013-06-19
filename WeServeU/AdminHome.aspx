@@ -36,13 +36,14 @@
             <div id="woSelect">
                 <p>Select a Work Order to Assign and Click Assign Work Below:</p>
                 
-                <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID" OnSelectedIndexChanged="ddlWOList_SelectedIndexChanged" AutoPostBack="true">                
-                </asp:DropDownList><br />
-                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID],  [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([WStatus] = @WStatus) ORDER BY [WorkOrderID]">
+                <asp:DropDownList ID="ddlWOList" runat="server" DataSourceID="SelectWODDL" DataTextField="Parties"  DataValueField="WorkOrderID" OnSelectedIndexChanged="ddlWOList_SelectedIndexChanged" AutoPostBack="true">
+                    </asp:DropDownList>
+                <asp:SqlDataSource ID="SelectWODDL" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT [WorkOrderID], CAST([WorkOrderID] AS varchar(20)) + ' ' + [WLName] + ' VS ' + [WOPLName] AS Parties FROM [WorkOrder] WHERE ([WStatus] = @WStatus) ORDER BY [WorkOrderID]">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="A" Name="WStatus" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
+                <br />
                 <asp:Label ID="lblWONum" runat="server" Text="Work Order #" Visible="false"></asp:Label><br />
                 
                 <asp:Button ID="btnAssign" runat="server" Text="Assign Work" CssClass="btnDash" OnClick="btnAssign_Click" /><br />
