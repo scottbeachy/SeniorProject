@@ -109,12 +109,12 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-        <h3>To Generate a Report Please Enter Dates Below:</h3>
+        <h3>To Generate a Report Please Choose a Client or Plaintiff/Respondent and Enter Dates Below:</h3>
         <asp:UpdatePanel ID="UpdateGenReportPanel" runat="server">
             <ContentTemplate>
                 <asp:RadioButtonList ID="RadioButtonReport" CssClass="RadioButtonReport" runat="server" RepeatDirection="Horizontal" CellPadding="5">
-                    <asp:ListItem>Completed</asp:ListItem>
-                    <asp:ListItem>Not Completed</asp:ListItem>
+<%--                    <asp:ListItem>Completed</asp:ListItem>
+                    <asp:ListItem>Not Completed</asp:ListItem>--%>
                     <asp:ListItem>Client</asp:ListItem>
                     <asp:ListItem>Plaintiff/Respondent</asp:ListItem>
                 </asp:RadioButtonList>
@@ -152,9 +152,13 @@
                 <asp:Label ID="Label7" runat="server" Text="End Date:" CssClass="lblDash"></asp:Label>
                 <asp:TextBox ID="txtDate2" runat="server" ValidationGroup="payroll" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkUpdate" ControlToValidate="txtWrkDate2"></asp:RequiredFieldValidator>
+                <asp:Button ID="btnPayRoll" CssClass="btnSubmitRep" runat="server" Text="Calculate Pay" OnClick="btnPayRoll_Click" />
                 <br />
-                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>
-                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" /><br />
+                <asp:Label ID="lblEmpPay" runat="server" Text="Employee Pay"></asp:Label><br />
+                <asp:DropDownList ID="ddPayRoll" CssClass="btnDash" runat="server"></asp:DropDownList><br />
+<%--                <asp:ListBox ID="ListBoxPay" runat="server"></asp:ListBox>--%>
+<%--                <asp:DropDownList ID="DropDownListPay" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>--%>
+<%--                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" /><br />--%>
                 <asp:Label ID="lblPayroll" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>

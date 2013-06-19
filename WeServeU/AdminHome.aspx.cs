@@ -61,11 +61,10 @@ public partial class AdminHome : System.Web.UI.Page
             btnChoose.Visible = false;
         }
 
-        //if (chkGenCompleted.Checked == true)
-        //{
-        //    this.txtGenFName.Enabled = false;
-        //    txtGenLName.Enabled = false;
-        //}
+        //btnShowPayroll.Visible = false;
+        ddPayRoll.Visible = false;
+        //ListBoxPay.Visible = false;
+        lblEmpPay.Visible = false;
     }
 
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
@@ -269,9 +268,197 @@ public partial class AdminHome : System.Web.UI.Page
         string WOPLName = txtGenLName.Text;
         string WOdate1 = txtStartDateRep.Text;
         string WOdate2 = txtEndDateRep.Text;
-        txtGenFName.Enabled = false;
-        txtGenLName.Enabled = false;
+        //txtGenFName.Enabled = false;
+        //txtGenLName.Enabled = false;
 
+
+        //if (RadioButtonReport.SelectedIndex == 0)
+        //{
+        //    try
+        //    {
+        //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        //        SqlConnection conn = new SqlConnection(connection);
+        //        SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus OR WDateCreated Between @WODate1 AND @WODate2 ;", conn);
+
+        //        cmd.Parameters.AddWithValue("@WStatus", WStatus);
+        //        cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+        //        cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+        //        conn.Open();
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            for (int i = 0; i < dt.Rows.Count; i++)
+        //            {
+
+        //                ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        //                btnGenReportSubmit.Visible = true;
+        //                ddGenReport.Visible = true;
+        //            }
+        //        }
+
+        //        else
+        //        {
+        //            lblGenReport.Text = ("Input invalid. Please enter proper data.");
+        //            lblGenReport.Visible = true;
+        //            btnGenReportSubmit.Visible = false;
+        //            ddGenReport.Visible = false;
+        //        }
+        //        conn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Oops, something bad happened...
+        //        lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+        //        lblGenReport.Visible = true;
+        //    }
+
+        //}
+
+        //else if (RadioButtonReport.SelectedIndex == 1)
+        //{
+        //    try
+        //    {
+        //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        //        SqlConnection conn = new SqlConnection(connection);
+        //        SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus OR WDateCreated Between @WODate1 AND @WODate2 ;", conn);
+
+        //        cmd.Parameters.AddWithValue("@WStatus", WStatus);
+        //        cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+        //        cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+        //        conn.Open();
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            for (int i = 0; i < dt.Rows.Count; i++)
+        //            {
+
+        //                ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        //                btnGenReportSubmit.Visible = true;
+        //                ddGenReport.Visible = true;
+        //            }
+        //        }
+
+        //        else
+        //        {
+        //            lblGenReport.Text = ("Input invalid. Please enter proper data.");
+        //            lblGenReport.Visible = true;
+        //            btnGenReportSubmit.Visible = false;
+        //            ddGenReport.Visible = false;
+        //        }
+        //        conn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Oops, something bad happened...
+        //        lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+        //        lblGenReport.Visible = true;
+        //    }
+
+        //}
+
+        //else if (RadioButtonReport.SelectedIndex == 2)
+        //{
+        //    try
+        //    {
+        //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        //        SqlConnection conn = new SqlConnection(connection);
+        //        SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WFName = @WFName OR  WLName = @WLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
+
+        //        cmd.Parameters.AddWithValue("@WFName", WFName);
+        //        cmd.Parameters.AddWithValue("@WLName", WLName);
+        //        cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+        //        cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+
+        //        conn.Open();
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            for (int i = 0; i < dt.Rows.Count; i++)
+        //            {
+
+        //                ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        //                btnGenReportSubmit.Visible = true;
+        //                ddGenReport.Visible = true;
+        //            }
+        //        }
+
+        //        else
+        //        {
+        //            lblGenReport.Text = ("Input invalid. Please enter proper data.");
+        //            lblGenReport.Visible = true;
+        //            btnGenReportSubmit.Visible = false;
+        //            ddGenReport.Visible = false;
+        //        }
+        //        conn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        //Oops, something bad happened...
+        //        lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+        //        lblGenReport.Visible = true;
+        //    }
+
+        //}
+        //else if (RadioButtonReport.SelectedIndex == 3)
+        //{
+        //    try
+        //    {
+        //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        //        SqlConnection conn = new SqlConnection(connection);
+        //        SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WOPFName = @WOPFName OR  WOPLName = @WOPLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
+
+        //        cmd.Parameters.AddWithValue("@WOPFName", WOPFName);
+        //        cmd.Parameters.AddWithValue("@WOPLName", WOPLName);
+        //        cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+        //        cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+
+        //        conn.Open();
+        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            for (int i = 0; i < dt.Rows.Count; i++)
+        //            {
+
+        //                ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+        //                btnGenReportSubmit.Visible = true;
+        //                ddGenReport.Visible = true;
+        //            }
+        //        }
+
+        //        else
+        //        {
+        //            lblGenReport.Text = ("Input invalid. Please enter proper data.");
+        //            lblGenReport.Visible = true;
+        //            btnGenReportSubmit.Visible = false;
+        //            ddGenReport.Visible = false;
+        //        }
+        //        conn.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        //Oops, something bad happened...
+        //        lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+        //        lblGenReport.Visible = true;
+        //    }
+        //}
 
         if (RadioButtonReport.SelectedIndex == 0)
         {
@@ -279,11 +466,13 @@ public partial class AdminHome : System.Web.UI.Page
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus OR WDateCreated Between @WODate1 AND @WODate2 ;", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WStatus = @WStatus OR WFName = @WFName OR  WLName = @WLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
 
-                cmd.Parameters.AddWithValue("@WStatus", WStatus);
+                cmd.Parameters.AddWithValue("@WFName", WFName);
+                cmd.Parameters.AddWithValue("@WLName", WLName);
                 cmd.Parameters.AddWithValue("@WODate1", WOdate1);
                 cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+                cmd.Parameters.AddWithValue("@WStatus", WStatus);
 
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -312,120 +501,26 @@ public partial class AdminHome : System.Web.UI.Page
             }
             catch (Exception ex)
             {
+
                 //Oops, something bad happened...
                 lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
                 lblGenReport.Visible = true;
             }
 
         }
-
         else if (RadioButtonReport.SelectedIndex == 1)
         {
             try
             {
                 string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE WStatus = @WStatus OR WDateCreated Between @WODate1 AND @WODate2 ;", conn);
-
-                cmd.Parameters.AddWithValue("@WStatus", WStatus);
-                cmd.Parameters.AddWithValue("@WODate1", WOdate1);
-                cmd.Parameters.AddWithValue("@WODate2", WOdate2);
-
-                conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                if (dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-
-                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                        btnGenReportSubmit.Visible = true;
-                        ddGenReport.Visible = true;
-                    }
-                }
-
-                else
-                {
-                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
-                    lblGenReport.Visible = true;
-                    btnGenReportSubmit.Visible = false;
-                    ddGenReport.Visible = false;
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                //Oops, something bad happened...
-                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
-                lblGenReport.Visible = true;
-            }
-
-        }
-
-        else if (RadioButtonReport.SelectedIndex == 2)
-        {
-            try
-            {
-                string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-                SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WFName = @WFName OR  WLName = @WLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
-
-                cmd.Parameters.AddWithValue("@WFName", WFName);
-                cmd.Parameters.AddWithValue("@WLName", WLName);
-                cmd.Parameters.AddWithValue("@WODate1", WOdate1);
-                cmd.Parameters.AddWithValue("@WODate2", WOdate2);
-
-
-                conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                if (dt.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-
-                        ddGenReport.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                        btnGenReportSubmit.Visible = true;
-                        ddGenReport.Visible = true;
-                    }
-                }
-
-                else
-                {
-                    lblGenReport.Text = ("Input invalid. Please enter proper data.");
-                    lblGenReport.Visible = true;
-                    btnGenReportSubmit.Visible = false;
-                    ddGenReport.Visible = false;
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-
-                //Oops, something bad happened...
-                lblGenReport.Text = ("There was an error connecting to the database. Please contact your system administrator.");
-                lblGenReport.Visible = true;
-            }
-
-        }
-        else if (RadioButtonReport.SelectedIndex == 3)
-        {
-            try
-            {
-                string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
-                SqlConnection conn = new SqlConnection(connection);
-                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WOPFName = @WOPFName OR  WOPLName = @WOPLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
+                SqlCommand cmd = new SqlCommand("Select * FROM WorkOrder WHERE (WStatus = @WStatus OR WOPFName = @WOPFName OR  WOPLName = @WOPLName OR WDateCreated Between @WODate1 AND @WODate2);", conn);
 
                 cmd.Parameters.AddWithValue("@WOPFName", WOPFName);
                 cmd.Parameters.AddWithValue("@WOPLName", WOPLName);
                 cmd.Parameters.AddWithValue("@WODate1", WOdate1);
                 cmd.Parameters.AddWithValue("@WODate2", WOdate2);
-
+                cmd.Parameters.AddWithValue("@WStatus", WStatus);
 
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -460,12 +555,11 @@ public partial class AdminHome : System.Web.UI.Page
                 lblGenReport.Visible = true;
             }
         }
-
-        else
-        {
-            lblGenReport.Text = "Please choose at least one from the checkbox selection.";
-            lblGenReport.Visible = true;
-        }
+          else
+          {
+              lblGenReport.Text = "Please choose at least one from the checkbox selection.";
+              lblGenReport.Visible = true;
+          }
 
     }
     protected void btnGenReportSubmit_Click(object sender, EventArgs e)
@@ -476,7 +570,7 @@ public partial class AdminHome : System.Web.UI.Page
 
         Session["WorkOrderID"] = id;
 
-        Response.Redirect("TrackCompleteServes.aspx");
+        Response.Redirect("TrackWOPlaintResp.aspx");
     }
 
     protected void btnViewNotes_Click(object sender, EventArgs e)
@@ -532,9 +626,68 @@ public partial class AdminHome : System.Web.UI.Page
             lblViewNote.Visible = true;
         }
     }
-    protected void btnShowPayroll_Click(object sender, EventArgs e)
+    //protected void btnShowPayroll_Click(object sender, EventArgs e)
+    //{
+
+    //    //string woID;
+    //    //woID = ddPayRoll.SelectedValue;
+
+    //    //Session["EmpID"] = woID;
+    //    //Response.Redirect("Payroll.aspx");
+    //}
+
+    protected void btnPayRoll_Click(object sender, EventArgs e)
     {
+        string WOdate1 = txtDate1.Text;
+        string WOdate2 = txtDate2.Text;
+        try
+        {
+            string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connection);
+            SqlCommand cmd = new SqlCommand("Select Employee.EmpFName + ' ' + Employee.EmpLName as Name,'$' + CONVERT(varchar(12), WorkOrder.WEmpBPay * WorkOrder.WServeCharge + WorkOrder.WServeCharge * CONVERT(float, Employee.EmpPay)), WorkOrder.WDateCreated AS Pay FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID = Employee.EmpID WHERE WorkOrder.WDateCreated Between @WODate1 AND @WODate2 ;", conn);
 
+            cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+            cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    ddPayRoll.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+                    //ListBoxPay.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString()));
+                }
+                lblPayroll.Visible = false;
+                //btnShowPayroll.Visible = true;
+                ddPayRoll.Visible = true;
+                //ListBoxPay.Visible = true;
+                lblEmpPay.Visible = true;
+            }
+
+            else
+            {
+                lblPayroll.Text = ("Input invalid. Please enter proper customer data.");
+                lblPayroll.Visible = true;
+                //btnShowPayroll.Visible = false;
+                ddPayRoll.Visible = false;
+                //ListBoxPay.Visible = false;
+                lblEmpPay.Visible = false;
+            }
+            //btnSelectClient.Visible = true;
+            //ddPayRoll.Visible = true;
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            //Oops, something bad happened...
+            lblPayroll.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+            lblPayroll.Visible = true;
+        }
     }
-
 }
