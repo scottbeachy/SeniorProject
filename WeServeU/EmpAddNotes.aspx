@@ -13,7 +13,7 @@
     <div class="adminDashboard">
         
         <h3>ADD NOTES TO WORK ORDER</h3>
-
+        <p>Please enter the date and time of note entry each time you enter a note.</p>
         <div class="worknotes">
 
 

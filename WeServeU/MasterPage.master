@@ -26,7 +26,9 @@
           
             <h1>Welcome to WeServeU LLC</h1>
             <h1>(602) 238-3666</h1>
-
+            <div id="ccLogo">
+            <img src="images/cclogos.png" />
+        </div>
 
         </div>
     </div>
@@ -51,13 +53,14 @@
 
 
     <div id="footer">
-        <p class="footerText">
-            2013 &copy; www.WeServeUllc.com
-            <p class="footerText">
-                <a class="footerLink" href="PrivacyPolicy.aspx">Privacy Policy</a>
-                <a class="footerLink" href="TermsOfUse.aspx">Terms of Use</a>
-            </p>
-        </p>
+       
+        <p>2013 &copy; www.WeServeUllc.com</p>
+            
+                <a href="PrivacyPolicy.aspx">Privacy Policy</a>
+                <a href="TermsOfUse.aspx">Terms of Use</a>
+           
+        
+        
     </div>
 
     </div>

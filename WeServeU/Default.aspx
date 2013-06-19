@@ -24,8 +24,7 @@
 
        
         <div id="box2">
-            <p>At We Serve U LLC we are commited to providing you with the highest level of customer service available. We are here to handle all of your document serving needs. This website is our vehicle to 
-                help streamline this process and make getting your documents served and validated through any court system in the state of Arizona. To begin, please click the button above to create an account with us. Then you will be able to upload all of your court documents to our secure servers so that we may start the serve process. There is no need for you to hand deliver documents to us. We will use the electronic documents to handle the serving process and make it painless for you. Once your documents have been served and validated with the court, you will recieve an email notification that your Certificate of Service is available to download from our site. At We Serve U LLC we really do serve you. 
+            <p>At We Serve U LLC we are committed to providing you with the highest level of customer service available. We are here to handle all of your document serving needs. This website is our vehicle to help streamline this process and get your documents served and validated through any court system in the state of Arizona as efficiently as possible. To begin, please click the "Request Services" button above to create an account with us. Then you will be able to upload all of your court documents to our secure servers so that we may start the service process. There is no need for you to hand deliver documents to us. We will use the electronic documents to handle the serving process and make it painless for you. Once your documents have been served and validated with the court, you will receive an email notification that your Certificate of Service is available to download from our site. At We Serve U LLC we really do serve you!
             </p>
         </div>
 

@@ -7,8 +7,12 @@
         New customers may create an account using the form below. Customers can then log in to their accounts where they will be able to submit 
                 work orders, upload documents, and check the status of existing work orders.
     </p>
+    <p>This website does not support online payments at this time.</p>
+    <p>If you do not wish to create an account here on our site please call us at (602) 238-3666 and we will be happy to complete your serve in the traditional manner. </p>
+    <p>You can also contact us using the <a href="contact.aspx">Contact Us</a> page. No personal information is stored when contacting us in this way.</p>
     <div class="createAcctContainer">
         <div class="createAcctMain">
+            <h3>Create a new account here</h3>
 
 
             <asp:Label ID="Label1" runat="server" Text="First Name:" CssClass="createAcctLbl"></asp:Label>
