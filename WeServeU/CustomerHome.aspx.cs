@@ -69,10 +69,7 @@ public partial class CustomerHome : System.Web.UI.Page
     }
 
 
-    protected void btnDownloadCOS_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("CustomerDownloadCOS.aspx");
-    }
+    
     protected void btnGoToUpload_Click(object sender, EventArgs e)
     {
         Response.Redirect("CustomerUpload.aspx");
@@ -81,5 +78,14 @@ public partial class CustomerHome : System.Web.UI.Page
     {
         Session["WorkOrderID"] = ddlCustWO.SelectedValue;
         Response.Redirect("CustomerViewWO.aspx");
+    }
+    protected void btnDownloadCOS_Click(object sender, EventArgs e)
+    {
+        pnlDwnCos.Visible = true;
+    }
+    protected void btnDownLoad_Click(object sender, EventArgs e)
+    {
+        Session["WorkOrderID"] = ddlCustCos.SelectedValue;
+        Response.Redirect("CustomerDownloadCOS.aspx");
     }
 }

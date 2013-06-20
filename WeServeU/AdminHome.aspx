@@ -158,7 +158,7 @@
                 <asp:DropDownList ID="ddPayRoll" CssClass="btnDash" runat="server"></asp:DropDownList><br />
 <%--                <asp:ListBox ID="ListBoxPay" runat="server"></asp:ListBox>--%>
 <%--                <asp:DropDownList ID="DropDownListPay" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>--%>
-<%--                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" /><br />--%>
+<%--                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" Visible="false"/><br />--%>
                 <asp:Label ID="lblPayroll" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>

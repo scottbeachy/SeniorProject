@@ -9,7 +9,7 @@
         <asp:Button ID="btnReturnHome" runat="server" Text="Back to Dashboard" CssClass="returnHome" OnClick="btnReturnHome_Click" />
     </div>
     <div id="adminDashboard">
-        <h2>You completed Certificate of Service will begin to download momentarily.</h2>
+        <h2>Your completed Certificate of Service will begin to download momentarily.</h2>
         <h2>You can choose to open and view the Certificate of Service or save it. </h2>
 
 

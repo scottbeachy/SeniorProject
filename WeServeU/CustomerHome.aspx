@@ -27,7 +27,7 @@
                 <asp:Panel ID="pnlViewWO" runat="server" Visible="false" CssClass="pnlViewWO" Width="100%">
                     <asp:DropDownList ID="ddlCustWO" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
 
-                    <asp:SqlDataSource ID="CustWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, WLName + ' VS ' + WOPLName AS Parties 
+                    <asp:SqlDataSource ID="CustWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, CAST([WorkOrderID] AS varchar(20)) + ' ' + WLName + ' VS ' + WOPLName AS Parties 
 FROM WorkOrder
 WHERE CustomerID = @CustomerID
 ORDER BY WorkOrderID">
@@ -46,9 +46,25 @@ ORDER BY WorkOrderID">
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnDownloadCOS" runat="server" Text="Download C.O.S." CssClass="btnDash2" OnClick="btnDownloadCOS_Click" />
+                <asp:Button ID="btnDownloadCOS" runat="server" Text="Download COS" CssClass="btnDash2" OnClick="btnDownloadCOS_Click" />
+
                 <asp:Label ID="Label4" runat="server" Text="Download the Completed Certificate of Service" CssClass="btnDash3"></asp:Label>
                 <br />
+                <br />
+                <asp:Panel ID="pnlDwnCos" runat="server" Visible="false" CssClass="pnlViewWO" Width="100%">
+                    <asp:Label ID="lblChooseCos" runat="server" Text="First, choose a work order number"></asp:Label><br /><br />
+                    <asp:DropDownList ID="ddlCustCos" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
+
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, CAST([WorkOrderID] AS varchar(20)) + ' ' + WLName + ' VS ' + WOPLName AS Parties 
+FROM WorkOrder
+WHERE CustomerID = @CustomerID
+ORDER BY WorkOrderID">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="10" Name="CustomerID" SessionField="CustID" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Button ID="btnDownLoad" runat="server" Text="Download Now" CssClass="btnDash" OnClick="btnDownLoad_Click"  />
+                </asp:Panel>
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
