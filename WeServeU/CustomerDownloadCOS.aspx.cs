@@ -37,7 +37,7 @@ public partial class CustomerDownloadCOS : System.Web.UI.Page
 
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Customer ID: " + id;
-        string select = "SELECT Doc from Docs WHERE CustomerID = " + id + " AND EmpID IS NOT NULL AND WorkOrderID = " + woID + ";";
+        string select = "SELECT Doc from Docs WHERE EmpID IS NOT NULL AND WorkOrderID = " + woID + ";";
         FileWork fw = new FileWork();
         fw.DownloadFile(select);
 
