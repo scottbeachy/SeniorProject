@@ -26,6 +26,7 @@ public partial class AdminHome : System.Web.UI.Page
     string date1;
     string date2;
     string emp;
+    string woID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -575,7 +576,7 @@ public partial class AdminHome : System.Web.UI.Page
 
     protected void btnViewNotes_Click(object sender, EventArgs e)
     {
-        string woID = null;
+        //string woID = null;
         woID = ddlUpdateNote.SelectedValue;
 
         Session["WorkOrderID"] = woID;
@@ -690,4 +691,5 @@ public partial class AdminHome : System.Web.UI.Page
             lblPayroll.Visible = true;
         }
     }
+   
 }

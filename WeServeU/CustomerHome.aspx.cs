@@ -58,34 +58,27 @@ public partial class CustomerHome : System.Web.UI.Page
 
     protected void btnViewWorkOrder_Click(object sender, EventArgs e)
     {
-        pnlViewWO.Visible = true;
-        //Response.Redirect("CustomerViewWO.aspx");
+        Session["WorkOrderID"] = ddlWOCustSelect.SelectedValue;
+        Response.Redirect("CustomerViewWO.aspx");
     }
-
-
     protected void btnUpdateAccount_Click(object sender, EventArgs e)
     {
         Response.Redirect("CustomerUpdateAccount.aspx");
-    }
-
-
-    
+    }    
     protected void btnGoToUpload_Click(object sender, EventArgs e)
     {
         Response.Redirect("CustomerUpload.aspx");
     }
-    protected void btnViewWO_Click(object sender, EventArgs e)
-    {
-        Session["WorkOrderID"] = ddlCustWO.SelectedValue;
-        Response.Redirect("CustomerViewWO.aspx");
-    }
+    
     protected void btnDownloadCOS_Click(object sender, EventArgs e)
     {
-        pnlDwnCos.Visible = true;
-    }
-    protected void btnDownLoad_Click(object sender, EventArgs e)
-    {
-        Session["WorkOrderID"] = ddlCustCos.SelectedValue;
+        Session["WorkOrderID"] = ddlWOCustSelect.SelectedValue;
         Response.Redirect("CustomerDownloadCOS.aspx");
+    }
+
+    protected void btnCstViewNotes_Click(object sender, EventArgs e)
+    {
+        Session["WorkOrderID"] = ddlWOCustSelect.SelectedValue;
+        Response.Redirect("CustomerViewNotes.aspx");
     }
 }

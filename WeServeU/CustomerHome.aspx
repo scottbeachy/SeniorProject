@@ -9,10 +9,10 @@
     </div>
 
     <div class="adminDashboard">
-        <h2>Please select your task below</h2>
+
+
+        
         <h3>CUSTOMER DASHBOARD</h3>
-
-
         <div class="btnMenuEmp">
             <div class="btnMenuEmpItem">
                 <asp:Button ID="btnCreateWorkOrder" runat="server" Text="Create Work Order" CssClass="btnDash2" OnClick="btnCreateWorkOrder_Click" />
@@ -21,11 +21,15 @@
                 &nbsp;</div>
             <br />
             <div class="btnMenuEmpItem">
-                <asp:Button ID="btnViewWorkOrder" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnViewWorkOrder_Click" />
-                <asp:Label ID="Label2" runat="server" Text="View One Of Your Current Work Orders" CssClass="btnDash3"></asp:Label>
-                <br /><br />
-                <asp:Panel ID="pnlViewWO" runat="server" Visible="false" CssClass="pnlViewWO" Width="100%">
-                    <asp:DropDownList ID="ddlCustWO" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
+                <asp:Button ID="btnUpdateAccount" runat="server" Text="Update Account" CssClass="btnDash2" OnClick="btnUpdateAccount_Click" />
+                <asp:Label ID="Label3" runat="server" Text="Update Your Customer Account Information" CssClass="btnDash3"></asp:Label>
+                <br />
+                &nbsp;<br />
+            </div>
+            <h3>Please select a work order and then select your task below</h3>
+            <div class="btnMenuEmpItem">
+                <asp:Panel ID="pnlWOSelect" runat="server" Visible="true" CssClass="pnlViewWO" Width="100%">
+                    <asp:DropDownList ID="ddlWOCustSelect" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
 
                     <asp:SqlDataSource ID="CustWODataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, CAST([WorkOrderID] AS varchar(20)) + ' ' + WLName + ' VS ' + WOPLName AS Parties 
 FROM WorkOrder
@@ -35,46 +39,45 @@ ORDER BY WorkOrderID">
                             <asp:SessionParameter DefaultValue="10" Name="CustomerID" SessionField="CustID" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    <asp:Button ID="btnViewWO" runat="server" Text="View" CssClass="btnDash" OnClick="btnViewWO_Click" />
+
+
                 </asp:Panel>
-                &nbsp;</div>
-            <br />
-            <div class="btnMenuEmpItem">
-                <asp:Button ID="btnUpdateAccount" runat="server" Text="Update Account" CssClass="btnDash2" OnClick="btnUpdateAccount_Click" />
-                <asp:Label ID="Label3" runat="server" Text="Update Your Customer Account Information" CssClass="btnDash3"></asp:Label>
                 <br />
+                <br />
+                    
+            </div>
+            
+            <div class="btnMenuEmpItem">
+                <asp:Button ID="btnViewWorkOrder" runat="server" Text="View Work Order" CssClass="btnDash2" OnClick="btnViewWorkOrder_Click" />
+                <asp:Label ID="Label2" runat="server" Text="View the Selected Work Order" CssClass="btnDash3"></asp:Label>
+                <br /><br />               
                 &nbsp;</div>
-            <br />
+          
+            
+            
             <div class="btnMenuEmpItem">
                 <asp:Button ID="btnDownloadCOS" runat="server" Text="Download COS" CssClass="btnDash2" OnClick="btnDownloadCOS_Click" />
 
-                <asp:Label ID="Label4" runat="server" Text="Download the Completed Certificate of Service" CssClass="btnDash3"></asp:Label>
+                <asp:Label ID="Label4" runat="server" Text="Download the Completed Certificate of Service For The Selected Work Order" CssClass="btnDash3"></asp:Label>
                 <br />
-                <br />
-                <asp:Panel ID="pnlDwnCos" runat="server" Visible="false" CssClass="pnlViewWO" Width="100%">
-                    <asp:Label ID="lblChooseCos" runat="server" Text="First, choose a work order number"></asp:Label><br /><br />
-                    <asp:DropDownList ID="ddlCustCos" runat="server" Width="300px" DataSourceID="CustWODataSource" DataTextField="Parties" DataValueField="WorkOrderID"></asp:DropDownList>
-
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT WorkOrderID, CAST([WorkOrderID] AS varchar(20)) + ' ' + WLName + ' VS ' + WOPLName AS Parties 
-FROM WorkOrder
-WHERE CustomerID = @CustomerID
-ORDER BY WorkOrderID">
-                        <SelectParameters>
-                            <asp:SessionParameter DefaultValue="10" Name="CustomerID" SessionField="CustID" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-                    <asp:Button ID="btnDownLoad" runat="server" Text="Download Now" CssClass="btnDash" OnClick="btnDownLoad_Click"  />
-                </asp:Panel>
-                &nbsp;</div>
+                <br />         
             <br />
             <div class="btnMenuEmpItem">
                 <asp:Button ID="btnGoToUpload" runat="server" Text="Upload Documents" CssClass="btnDash2" OnClick="btnGoToUpload_Click"/>
-                <asp:Label ID="Label6" runat="server" Text="Upload Documents for a Work Order" CssClass="btnDash3"></asp:Label>
+                <asp:Label ID="Label6" runat="server" Text="Upload Documents For The Selected Work Order" CssClass="btnDash3"></asp:Label>
                 <br />
                 &nbsp;</div>
+            <br />            
+                <div class="btnMenuEmpItem">
+                    <asp:Button ID="btnCstViewNotes" runat="server" Text="View Notes" CssClass="btnDash2" OnClick="btnCstViewNotes_Click"/>
+                    <asp:Label ID="lblViewNotes" runat="server" Text="View the Server's Notes for the Selected Work Order" CssClass="btnDash3"></asp:Label>
+                    <br />
+                    <br />
+                </div>
             <br />
-            <br />
-            <br />
+
+
+
         </div>
     
     
@@ -93,7 +96,7 @@ ORDER BY WorkOrderID">
     
     
     </div>
-
+</div>
 
 
 </asp:Content>

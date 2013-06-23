@@ -77,7 +77,7 @@
                 <asp:TextBox ID="txtNoteEndDate" runat="server" ValidationGroup="noteUpdate" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="noteUpdate" ControlToValidate="txtNoteEndDate"></asp:RequiredFieldValidator>
                 <asp:Button ID="btnUpdateNotes" runat="server" Text="Submit" CssClass="btnDash" ValidationGroup="noteUpdate" CausesValidation="true" OnClick="btnUpdateNotes_Click"  /><br />
-                <asp:DropDownList ID="ddlUpdateNote" runat="server" Visible="false" CssClass="btnDash"></asp:DropDownList>
+                <asp:DropDownList ID="ddlUpdateNote" runat="server" Visible="false" CssClass="btnDash" ></asp:DropDownList>
                 <asp:Button ID="btnViewNotes" runat="server" Text="View Notes" OnClick="btnViewNotes_Click" CssClass="btnDash" /><br />
                 <asp:Label ID="lblViewNote" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
             </ContentTemplate>

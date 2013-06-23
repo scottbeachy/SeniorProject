@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -54,13 +57,35 @@ public partial class EmpUploadCOS : System.Web.UI.Page
         int fileLength;
         bool success;
         bool emailSuccess;
+        //two different connection strings to use to overwrite the doc if there is one in there already
         string connectionString = "INSERT INTO Docs (WorkOrderID, EmpID, Doc) VALUES (@WorkOrderID, @EmpID, @Doc)";
+        string altConnString = "UPDATE Docs SET Doc = @Doc WHERE WorkOrderID = @WorkOrderID";
+
+        //test the docs table and see if there is a doc in there and then switch the connection string 
+        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connection);
+        SqlCommand cmd = new SqlCommand("SELECT DocID from Docs WHERE WorkOrderID = @WorkOrderID;", conn);
+        cmd.Parameters.AddWithValue("@WorkOrderID", woID);
+        
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+
+        if (dt.Rows.Count > 0)
+        {
+            connectionString = altConnString;
+        }
+        conn.Close();
+        dt.Clear();
+
         //first check to see if there is actually a file selected, then do work
         if (cstFileUp.HasFile)
         {
             string fileExt = System.IO.Path.GetExtension(cstFileUp.FileName);
             if (fileExt == ".pdf")
             {
+
                 //get the file length to initialize the array to
                 fileLength = cstFileUp.PostedFile.ContentLength;
                 byte[] fileBytes = new byte[fileLength - 1];
