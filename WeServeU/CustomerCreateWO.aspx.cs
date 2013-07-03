@@ -63,7 +63,7 @@ public partial class CustomerCreateWO : System.Web.UI.Page
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder (CustomerID, WCaseNumber, WFName, WLName, WOPFName, WOPLName, WServAdd, WServApt, WServCity, WServState, WServZip, WStatus, WDateCreated) VALUES (@CustomerID, @WCaseNumber, @WFName, @WLName, @WOPFname, @WOPLName, @WServAdd, @WServApt, @WServCity, @WServState, @WServZip, @WStatus, @WDateCreated);", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder (CustomerID, WCaseNumber, WFName, WLName, WOPFName, WOPLName, WServAdd, WServApt, WServCity, WServState, WServZip, WStatus, WDateCreated, WEmpBPay) VALUES (@CustomerID, @WCaseNumber, @WFName, @WLName, @WOPFname, @WOPLName, @WServAdd, @WServApt, @WServCity, @WServState, @WServZip, @WStatus, @WDateCreated, @WEmpBPay);", conn);
 
             cmd.Parameters.AddWithValue("@CustomerID", id);
             cmd.Parameters.AddWithValue("@WCaseNumber", txtCaseNumber.Text);
@@ -78,6 +78,7 @@ public partial class CustomerCreateWO : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@WServZip", txtZip.Text);
             cmd.Parameters.AddWithValue("@WStatus", "A");
             cmd.Parameters.AddWithValue("@WDateCreated", today);
+            cmd.Parameters.AddWithValue("@WEmpBPay", "0");
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();

@@ -144,6 +144,8 @@
             </ContentTemplate>
         </asp:UpdatePanel>
         <h3>Calculate Payroll</h3>
+        <h2>Select a date range and then an employee to calculate their earnings.</h2>
+        <p>This includes any bonus pay entered in a particular work order.</p>
              <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <asp:Label ID="Label6" runat="server" Text="Begining Date:" CssClass="lblDash"></asp:Label>
@@ -152,14 +154,15 @@
                 <asp:Label ID="Label7" runat="server" Text="End Date:" CssClass="lblDash"></asp:Label>
                 <asp:TextBox ID="txtDate2" runat="server" ValidationGroup="payroll" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkUpdate" ControlToValidate="txtWrkDate2"></asp:RequiredFieldValidator>
-                <asp:Button ID="btnPayRoll" CssClass="btnSubmitRep" runat="server" Text="Calculate Pay" OnClick="btnPayRoll_Click" />
+                <asp:DropDownList ID="DropDownListPay" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>
+                <%--<asp:Button ID="btnPayRoll" CssClass="btnSubmitRep" runat="server" Text="Calculate Pay" OnClick="btnPayRoll_Click" />--%>
                 <br />
-                <asp:Label ID="lblEmpPay" runat="server" Text="Employee Pay"></asp:Label><br />
-                <asp:DropDownList ID="ddPayRoll" CssClass="btnDash" runat="server"></asp:DropDownList><br />
+                <%--<asp:Label ID="lblEmpPay" runat="server" Text="Employee Pay"></asp:Label><br />
+                <asp:DropDownList ID="ddPayRoll" CssClass="btnDash" runat="server"></asp:DropDownList><br />--%>
 <%--                <asp:ListBox ID="ListBoxPay" runat="server"></asp:ListBox>--%>
-<%--                <asp:DropDownList ID="DropDownListPay" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>--%>
-<%--                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" Visible="false"/><br />--%>
-                <asp:Label ID="lblPayroll" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                
+                <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" /><br />
+                <asp:Label ID="lblPayroll" runat="server" Text="" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>

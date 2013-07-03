@@ -63,9 +63,9 @@ public partial class AdminHome : System.Web.UI.Page
         }
 
         //btnShowPayroll.Visible = false;
-        ddPayRoll.Visible = false;
+        //ddPayRoll.Visible = false;
         //ListBoxPay.Visible = false;
-        lblEmpPay.Visible = false;
+        //lblEmpPay.Visible = false;
     }
 
     protected void btnUpdateWrk_Click(object sender, EventArgs e)
@@ -247,7 +247,7 @@ public partial class AdminHome : System.Web.UI.Page
     protected void btnUpdateEmp_Click(object sender, EventArgs e)
     {
 
-        emp = ddlEmpList.SelectedValue;
+        emp = ddlUpdateEmp.SelectedValue;
         Session["EmployeeID"] = emp;
         Response.Redirect("UpdateEmployee.aspx");
 
@@ -627,69 +627,104 @@ public partial class AdminHome : System.Web.UI.Page
             lblViewNote.Visible = true;
         }
     }
-    //protected void btnShowPayroll_Click(object sender, EventArgs e)
-    //{
-
-    //    //string woID;
-    //    //woID = ddPayRoll.SelectedValue;
-
-    //    //Session["EmpID"] = woID;
-    //    //Response.Redirect("Payroll.aspx");
-    //}
-
-    protected void btnPayRoll_Click(object sender, EventArgs e)
+    protected void btnShowPayroll_Click(object sender, EventArgs e)
     {
-        string WOdate1 = txtDate1.Text;
-        string WOdate2 = txtDate2.Text;
+        string WODate1 = txtDate1.Text;
+        string WODate2 = txtDate2.Text;
+        double pay = 0;
+
+
         try
         {
             string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("Select Employee.EmpFName + ' ' + Employee.EmpLName as Name,'$' + CONVERT(varchar(12), WorkOrder.WEmpBPay * WorkOrder.WServeCharge + WorkOrder.WServeCharge * CONVERT(float, Employee.EmpPay)), WorkOrder.WDateCreated AS Pay FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID = Employee.EmpID WHERE WorkOrder.WDateCreated Between @WODate1 AND @WODate2 ;", conn);
 
-            cmd.Parameters.AddWithValue("@WODate1", WOdate1);
-            cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+            SqlCommand cmd = new SqlCommand("SELECT WServeCharge, WEmpBPay FROM WorkOrder WHERE WServDate BETWEEN @WODate1 AND @WODate2 AND EmpID = @EmpID", conn);
+            cmd.Parameters.AddWithValue("@WODate1", WODate1);
+            cmd.Parameters.AddWithValue("@WODate2", WODate2);
+            cmd.Parameters.AddWithValue("@EmpID", DropDownListPay.SelectedValue);
 
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-
+            //need to deal with NULL values in the WEmpBPay column
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-
-                    ddPayRoll.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
-                    //ListBoxPay.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString()));
+                    pay += Convert.ToDouble(dt.Rows[i][0]) * (Convert.ToDouble(dt.Rows[i][1]) + .5);
                 }
-                lblPayroll.Visible = false;
-                //btnShowPayroll.Visible = true;
-                ddPayRoll.Visible = true;
-                //ListBoxPay.Visible = true;
-                lblEmpPay.Visible = true;
             }
-
-            else
-            {
-                lblPayroll.Text = ("Input invalid. Please enter proper customer data.");
-                lblPayroll.Visible = true;
-                //btnShowPayroll.Visible = false;
-                ddPayRoll.Visible = false;
-                //ListBoxPay.Visible = false;
-                lblEmpPay.Visible = false;
-            }
-            //btnSelectClient.Visible = true;
-            //ddPayRoll.Visible = true;
-
-            conn.Close();
-        }
-        catch (Exception ex)
-        {
-            //Oops, something bad happened...
-            lblPayroll.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+            lblPayroll.Text = String.Format("{0:C}", pay);
+            //lblPayroll.Text = pay.ToString("{0:C, money}");
             lblPayroll.Visible = true;
         }
+        catch(Exception payE)
+        {
+            lblPayroll.Text = "Something bad happened" + payE.ToString();
+            lblPayroll.Visible = true;
+        }
+
+        
+
+        
     }
+
+    //protected void btnPayRoll_Click(object sender, EventArgs e)
+    //{
+    //    string WOdate1 = txtDate1.Text;
+    //    string WOdate2 = txtDate2.Text;
+    //    try
+    //    {
+    //        string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;
+    //        SqlConnection conn = new SqlConnection(connection);
+    //        //SqlCommand cmd = new SqlCommand("Select Employee.EmpFName + ' ' + Employee.EmpLName as Name,'$' + CONVERT(varchar(12), WorkOrder.WEmpBPay * WorkOrder.WServeCharge + WorkOrder.WServeCharge * CONVERT(float, Employee.EmpPay)), WorkOrder.WDateCreated AS Pay FROM WorkOrder INNER JOIN Employee ON WorkOrder.EmpID = Employee.EmpID WHERE WorkOrder.WDateCreated Between @WODate1 AND @WODate2 ;", conn);
+
+    //        SqlCommand cmd = new SqlCommand("");
+    //        cmd.Parameters.AddWithValue("@WODate1", WOdate1);
+    //        cmd.Parameters.AddWithValue("@WODate2", WOdate2);
+
+    //        conn.Open();
+    //        SqlDataAdapter da = new SqlDataAdapter(cmd);
+    //        DataTable dt = new DataTable();
+    //        da.Fill(dt);
+
+    //        if (dt.Rows.Count > 0)
+    //        {
+    //            for (int i = 0; i < dt.Rows.Count; i++)
+    //            {
+
+    //                //ddPayRoll.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][0].ToString()));
+    //                //ListBoxPay.Items.Add(new ListItem(dt.Rows[i][0].ToString() + " " + dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString()));
+    //            }
+    //            lblPayroll.Visible = false;
+    //            //btnShowPayroll.Visible = true;
+    //            //ddPayRoll.Visible = true;
+    //            //ListBoxPay.Visible = true;
+    //            //lblEmpPay.Visible = true;
+    //        }
+
+    //        else
+    //        {
+    //            lblPayroll.Text = ("Input invalid. Please enter proper customer data.");
+    //            lblPayroll.Visible = true;
+    //            //btnShowPayroll.Visible = false;
+    //            //ddPayRoll.Visible = false;
+    //            //ListBoxPay.Visible = false;
+    //            //lblEmpPay.Visible = false;
+    //        }
+    //        //btnSelectClient.Visible = true;
+    //        //ddPayRoll.Visible = true;
+
+    //        conn.Close();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        //Oops, something bad happened...
+    //        lblPayroll.Text = ("There was an error connecting to the database. Please contact your system administrator.");
+    //        lblPayroll.Visible = true;
+    //    }
+    //}
    
 }
