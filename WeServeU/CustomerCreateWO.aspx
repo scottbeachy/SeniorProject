@@ -28,7 +28,7 @@
             <asp:Label ID="Label3" runat="server" Text="First Name Opposing Party:" CssClass="lblEmp"></asp:Label>
             <asp:TextBox ID="txtOppFName" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />
-            <asp:Label ID="Label4" runat="server" Text="First Name Opposing Party:" CssClass="lblEmp"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="Last Name Opposing Party:" CssClass="lblEmp"></asp:Label>
             <asp:TextBox ID="txtOppLName" runat="server" CssClass="txtAddEmp"></asp:TextBox>
             <br />            
             <asp:Label ID="Label7" runat="server" Text="Service Street Address:" CssClass="lblEmp"></asp:Label>
