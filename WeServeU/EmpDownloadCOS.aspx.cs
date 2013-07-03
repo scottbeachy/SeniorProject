@@ -260,35 +260,39 @@ public partial class EmpDownloadCOS : System.Web.UI.Page
         //Write Names/Statuses (RE, DE, PE, PL) in the correct positions
         if (clientStatus == "DE")
         {
+            //This section will write defendant/plantiff
             stamper.AcroFields.SetField("bottomStatus", "Defendant,");
             stamper.AcroFields.SetField("topStatus", "Plantiff,");
             stamper.AcroFields.SetField("bottomName", clientName.ToString());
             stamper.AcroFields.SetField("topName", opName.ToString());
             opposingPartyStatus = "Plantiff";
         }
-        else if (clientStatus == "PE")
+        else if (clientStatus == "PL")
         {
+            //This section will write defendant/plantiff
             stamper.AcroFields.SetField("bottomStatus", "Defendant,");
             stamper.AcroFields.SetField("topStatus", "Plantiff,");
             stamper.AcroFields.SetField("bottomName", opName.ToString());
             stamper.AcroFields.SetField("topName", clientName.ToString());
-            opposingPartyStatus = "Respondent";
+            opposingPartyStatus = "Defendant";
         }
         else if (clientStatus == "RE")
         {
+            //This section will write respondent/petitioner
             stamper.AcroFields.SetField("bottomStatus", "Respondent,");
             stamper.AcroFields.SetField("topStatus", "Petitioner,");
             stamper.AcroFields.SetField("bottomName", clientName.ToString());
             stamper.AcroFields.SetField("topName", opName.ToString());
             opposingPartyStatus = "Petitioner";
         }
-        else
+        else //if (clientStatus == "PE")
         {
+            //This section will write respondent/petitioner
             stamper.AcroFields.SetField("bottomStatus", "Respondent,");
             stamper.AcroFields.SetField("topStatus", "Petitioner,");
             stamper.AcroFields.SetField("bottomName", opName.ToString());
             stamper.AcroFields.SetField("topName", clientName.ToString());
-            opposingPartyStatus = "Defendant";
+            opposingPartyStatus = "Respondent";
         }
 
         //Side Note, have to do this if statement & stringbuilder this far down because
