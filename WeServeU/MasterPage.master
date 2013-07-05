@@ -4,7 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    
+
+    <meta content="At We Serve U LLC we are committed to providing you with the highest level of customer service available. We are here to handle all of your document serving needs. This website is our vehicle      to help streamline this process and get your documents served and validated through any court system in the state of Arizona as efficiently as possible. There is no need for you to hand deliver documents to      us. We will use the electronic documents to handle the serving process and make it painless for you. Once your documents have been served and validated with the court, you will receive an email                   notification that your Certificate of Service is available to download from our site. At We Serve U LLC we really do serve you!" name="Description" />
+
+    <meta content="Phoenix process server, Glendale process server service, Tempe process server service, Mesa process server service, Peoria process server service, Chandler process server service, Gilbert process server service, Arizona process server service , Maricopa County process server service, AZ process servers, Arizona process server, server, server service, Process server, Process service, Serving legal documents Phoenix, Serving legal papers Phoenix, PHX process server service, Arizona Service of Process" name="Keywords" />
+
     <link href="styles.css" rel="stylesheet" />
     <link href="jquery-ui-1.10.2.custom.min.css" rel="stylesheet" />
     <link href="jquery.ui.datepicker.monthyearpicker.css" rel="stylesheet" />
