@@ -18,7 +18,7 @@
             <asp:BoundField DataField="WCaseNumber" HeaderText="Case Number" SortExpression="WCaseNumber" />
             <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" ReadOnly="True" SortExpression="CustomerID" />
             <asp:BoundField DataField="EmpID" HeaderText="Server ID" ReadOnly="True" SortExpression="EmpID" />
-            <asp:BoundField DataField="WClientStatus" HeaderText="Client Status" SortExpression="WClientStatus" />
+            <asp:BoundField DataField="WClientStatus" HeaderText="Client Status (Plaintiff = PL, Petitioner = PE, Respondent = RE, or Defendant = DE)" SortExpression="WClientStatus" ControlStyle-Width="2em"/>
             <asp:BoundField DataField="WFName" HeaderText="Service Requested By: First Name" SortExpression="WFName" />
             <asp:BoundField DataField="WLName" HeaderText="Service Requested By: Last Name" SortExpression="WLName" />
             <asp:BoundField DataField="WOPFName" HeaderText="Opposing Party: First Name" SortExpression="WOPFName" />
@@ -40,12 +40,11 @@
             <asp:BoundField DataField="WServedWeight" HeaderText="Person served weight" SortExpression="WServedWeight" />
             <asp:BoundField DataField="WServedHair" HeaderText="Person served hair color" SortExpression="WServedHair" />
             <asp:BoundField DataField="WServedEye" HeaderText="Person served eye color" SortExpression="WServedEye" />
-            <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served (M for Male and F for female)" SortExpression="WServedSex" />
+            <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served (M for Male and F for female)" SortExpression="WServedSex" ControlStyle-Width="1em" />
             <asp:BoundField DataField="WServedAge" HeaderText="Age of person served" SortExpression="WServedAge" />
             <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate" />
             <asp:BoundField DataField="WServTime" HeaderText="Time of Service" SortExpression="WServTime" />
-            <asp:BoundField DataField="WStatus" HeaderText="Work order status (A=active, C=complete, I=incomplete, U=unable to complete)" SortExpression="WStatus" />
-            <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server)" SortExpression="WFiledBy" />
+            <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server)" SortExpression="WFiledBy" ControlStyle-Width="1em" />
             <asp:BoundField DataField="WDateCreated" HeaderText="Date the workorder was created" SortExpression="WDateCreated" />
             <asp:CommandField ShowEditButton="True" />
         </Fields>
