@@ -113,12 +113,16 @@
         <asp:UpdatePanel ID="UpdateGenReportPanel" runat="server">
             <ContentTemplate>
                 <asp:RadioButtonList ID="RadioButtonReport" CssClass="RadioButtonReport" runat="server" RepeatDirection="Horizontal" CellPadding="5">
-
+<%--                    <asp:ListItem>Completed</asp:ListItem>
+                    <asp:ListItem>Not Completed</asp:ListItem>--%>
                     <asp:ListItem>Client</asp:ListItem>
                     <asp:ListItem>Plaintiff/Respondent</asp:ListItem>
                 </asp:RadioButtonList>
 
-              
+               <%-- <asp:CheckBox ID="chkGenCompleted" runat="server" Text="Completed" CssClass="chkGenReport"/>
+                <asp:CheckBox ID="chkGenNotCompleted" runat="server" Text="Not Completed" CssClass="chkGenReport" />
+                <asp:CheckBox ID="chkGenClientName" runat="server" Text="Client" CssClass="chkGenReport" />
+                <asp:CheckBox ID="chkGenRespondent" runat="server" Text="Plaintiff/Respondent" CssClass="chkGenReport" /><br />--%>
                 <br />
                 <asp:Label ID="lblGenStatus" runat="server" CssClass="lblGenReportStatus" Text="Status:"></asp:Label>
                 <asp:TextBox ID="txtGenStatus" CssClass="txtFirstName" runat="server" ValidationGroup="wrkGenReport"></asp:TextBox>
@@ -151,35 +155,15 @@
                 <asp:TextBox ID="txtDate2" runat="server" ValidationGroup="payroll" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="wrkUpdate" ControlToValidate="txtWrkDate2"></asp:RequiredFieldValidator>
                 <asp:DropDownList ID="DropDownListPay" runat="server" CssClass="btnDash" DataSourceID="updateEmpDDL" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>
-                
+                <%--<asp:Button ID="btnPayRoll" CssClass="btnSubmitRep" runat="server" Text="Calculate Pay" OnClick="btnPayRoll_Click" />--%>
+                <br />
+                <%--<asp:Label ID="lblEmpPay" runat="server" Text="Employee Pay"></asp:Label><br />
+                <asp:DropDownList ID="ddPayRoll" CssClass="btnDash" runat="server"></asp:DropDownList><br />--%>
+<%--                <asp:ListBox ID="ListBoxPay" runat="server"></asp:ListBox>--%>
                 
                 <asp:Button ID="btnShowPayroll" runat="server" Text="Get Payroll"  CssClass="btnDash" OnClick="btnShowPayroll_Click" /><br />
                 <asp:Label ID="lblPayroll" runat="server" Text="" Visible="false"></asp:Label>
             </ContentTemplate>
         </asp:UpdatePanel>
-        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-            <ContentTemplate>
-        <h3>View Work Orders by Status</h3>
-        <p>Select work order status and a date range below, then click submit to see a list of work orders that match the selection criteria.</p>
-        <h2>Work Order Status</h2><br />
-        <asp:RadioButtonList ID="rdoWoStatus" runat="server" RepeatDirection="Horizontal" Width="100%">
-            <asp:ListItem Text="Active" Value="A" Selected="True"></asp:ListItem>
-            <asp:ListItem Text="Completed" Value="C"></asp:ListItem>
-            <asp:ListItem Text="Unable to Complete" Value="U"></asp:ListItem>
-            <asp:ListItem Text="Incomplete" Value="I"></asp:ListItem>
-        </asp:RadioButtonList>
-        <br />
-        <asp:Label ID="Label8" runat="server" Text="Begining Date:" CssClass="lblDash"></asp:Label>
-                <asp:TextBox ID="txtStatusDate1" runat="server" ValidationGroup="woStatus" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="woStatus" ControlToValidate="txtStatusDate1"></asp:RequiredFieldValidator>
-                <asp:Label ID="Label9" runat="server" Text="End Date:" CssClass="lblDash"></asp:Label>
-                <asp:TextBox ID="txtStatusDate2" runat="server" ValidationGroup="woStatus" CssClass="txtDate" ViewStateMode="Enabled"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="woStatus" ControlToValidate="txtStatusDate2"></asp:RequiredFieldValidator><br />
-                <asp:Button ID="btnViewWoByStatus" runat="server" Text="Submit" CssClass="btnDash" OnClick="btnViewWoByStatus_Click" />
-        
-
-</ContentTemplate>
-        </asp:UpdatePanel>
-
     </div>
 </asp:Content>

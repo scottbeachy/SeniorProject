@@ -458,7 +458,7 @@ public partial class AdminHome : System.Web.UI.Page
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            
+            //need to deal with NULL values in the WEmpBPay column
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -472,7 +472,7 @@ public partial class AdminHome : System.Web.UI.Page
         }
         catch(Exception payE)
         {
-            lblPayroll.Text = "Something bad happened " + payE.ToString();
+            lblPayroll.Text = "Something bad happened" + payE.ToString();
             lblPayroll.Visible = true;
         }
 
@@ -481,22 +481,6 @@ public partial class AdminHome : System.Web.UI.Page
         
     }
 
-
-
-    protected void btnViewWoByStatus_Click(object sender, EventArgs e)
-    {
-        string status;
-        string date1;
-        string date2;
-
-        status = rdoWoStatus.SelectedValue;
-        date1 = txtStatusDate1.Text;
-        date2 = txtStatusDate2.Text;
-
-        Session["woStatus"] = status;
-        Session["date1"] = date1;
-        Session["date2"] = date2;
-
-        Response.Redirect("ViewWOByStatus.aspx");
-    }
+    
+   
 }
