@@ -1,6 +1,7 @@
 ﻿//This is the logged in Admin Home Page
 //Created by Scott Beachy
 //4/30/13
+//Updated 7/10/13
 
 
 using System;
@@ -51,7 +52,7 @@ public partial class AdminHome : System.Web.UI.Page
         //Custom welcome message on the screen
         lblWelcome.Text = "Welcome " + fname + " " + lname + ". Employee ID: " + id;
 
-        
+
         btnSelectClient.Visible = false;
         btnGenReportSubmit.Visible = false;
         if (!Page.IsPostBack)
@@ -269,7 +270,7 @@ public partial class AdminHome : System.Web.UI.Page
         string WOPLName = txtGenLName.Text;
         string WOdate1 = txtStartDateRep.Text;
         string WOdate2 = txtEndDateRep.Text;
-       
+
 
         if (RadioButtonReport.SelectedIndex == 0)
         {
@@ -366,11 +367,11 @@ public partial class AdminHome : System.Web.UI.Page
                 lblGenReport.Visible = true;
             }
         }
-          else
-          {
-              lblGenReport.Text = "Please choose at least one from the checkbox selection.";
-              lblGenReport.Visible = true;
-          }
+        else
+        {
+            lblGenReport.Text = "Please choose at least one from the checkbox selection.";
+            lblGenReport.Visible = true;
+        }
 
     }
     protected void btnGenReportSubmit_Click(object sender, EventArgs e)
@@ -458,7 +459,7 @@ public partial class AdminHome : System.Web.UI.Page
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            //need to deal with NULL values in the WEmpBPay column
+
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -470,17 +471,35 @@ public partial class AdminHome : System.Web.UI.Page
             //lblPayroll.Text = pay.ToString("{0:C, money}");
             lblPayroll.Visible = true;
         }
-        catch(Exception payE)
+        catch (Exception payE)
         {
-            lblPayroll.Text = "Something bad happened" + payE.ToString();
+            lblPayroll.Text = "Something bad happened " + payE.ToString();
             lblPayroll.Visible = true;
         }
 
-        
 
-        
+
+
     }
 
-    
-   
+
+
+    protected void btnViewWoByStatus_Click(object sender, EventArgs e)
+    {
+        string status;
+        string date1;
+        string date2;
+
+        status = rdoWoStatus.SelectedValue;
+        date1 = txtStatusDate1.Text;
+        date2 = txtStatusDate2.Text;
+
+        Session["woStatus"] = status;
+        Session["date1"] = date1;
+        Session["date2"] = date2;
+
+        Response.Redirect("ViewWOByStatus.aspx");
+    }
 }
+
+
