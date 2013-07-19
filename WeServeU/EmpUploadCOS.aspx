@@ -14,7 +14,7 @@
      <div id="custUpload">
     <h2>Please upload you court provided documents here.</h2>
     
-    <h3>WeserveU requires documents to be uploaded in PDF format and can be no larger than 10MB.</h3>
+    <h3>WeserveU requires documents to be uploaded in PDF format and can be no larger than 20MB.</h3>
          <h3>The documents will be uploaded to the work order selected from the previous page. </h3>
          <p>If you need to select a different work order, please return to the Server Dashboard</p>
 

@@ -16,7 +16,7 @@
             <asp:BoundField DataField="WCaseNumber" HeaderText="Case Number" SortExpression="WCaseNumber" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" ReadOnly="True" SortExpression="CustomerID" ConvertEmptyStringToNull="false" />
             
-            <asp:BoundField DataField="WClientStatus" HeaderText="Client Status" SortExpression="WClientStatus" ConvertEmptyStringToNull="false" />
+            <asp:BoundField DataField="WClientStatus" HeaderText="Client Status (PL = Plaintiff, DE = Defendent, PE = Petitioner, RE = Respondent)" SortExpression="WClientStatus" ConvertEmptyStringToNull="false" />
             <asp:BoundField DataField="WFName" HeaderText="Service Requested By: First Name" SortExpression="WFName"  ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WLName" HeaderText="Service Requested By: Last Name" SortExpression="WLName" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WOPFName" HeaderText="Opposing Party: First Name" SortExpression="WOPFName" ConvertEmptyStringToNull="false" />
