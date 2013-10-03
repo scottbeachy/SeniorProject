@@ -12,7 +12,7 @@
     <asp:GridView ID="grdCstViewNotes" runat="server" CssClass="updateTable" AutoGenerateColumns="False" DataSourceID="sqlCustViewNotes" AlternatingRowStyle-BackColor="#CCCCCC"  EmptyDataText="Notes have not been added to this work order yet.">
 <AlternatingRowStyle BackColor="#CCCCCC"></AlternatingRowStyle>
         <Columns>
-            <asp:BoundField DataField="WNDate" HeaderText="Date" SortExpression="WNDate" DataFormatString="{0:dd/MM/yyyy}" NullDisplayText="NA" >
+            <asp:BoundField DataField="WNDate" HeaderText="Date" SortExpression="WNDate" DataFormatString="{0:d}" NullDisplayText="NA" >
             </asp:BoundField>
             <asp:BoundField DataField="WNComments" HeaderText="Server's Notes" SortExpression="WNComments" NullDisplayText="Notes have not been entered for this work order yet." >
             <ItemStyle Width="10%" />

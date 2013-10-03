@@ -40,7 +40,7 @@
             <asp:BoundField DataField="WServedEye" HeaderText="Person served eye color" SortExpression="WServedEye" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served (M for Male and F for female)" SortExpression="WServedSex" ConvertEmptyStringToNull="false" />
             <asp:BoundField DataField="WServedAge" HeaderText="Age of person served" SortExpression="WServedAge" ConvertEmptyStringToNull="false" />
-            <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate" DataFormatString="{0:dd/MM/yyyy}" ConvertEmptyStringToNull="false" />
+            <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate" DataFormatString="{0:d}" ConvertEmptyStringToNull="true" />
             <asp:BoundField DataField="WServTime" HeaderText="Time of Service" SortExpression="WServTime" ConvertEmptyStringToNull="false"/>
             
 

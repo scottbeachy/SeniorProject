@@ -1,7 +1,7 @@
 ﻿//This is the logged in Admin Home Page
 //Created by Scott Beachy
 //4/30/13
-//Updated 7/10/13
+//Updated 8/2/13
 
 
 using System;
@@ -199,6 +199,10 @@ public partial class AdminHome : System.Web.UI.Page
 
             if (dt.Rows.Count > 0)
             {
+                //ddUpdateClient.DataSource = dt;
+                //ddUpdateClient.DataValueField = dt.Rows[0]["CustomerID"].ToString().Trim();
+                //ddUpdateClient.DataTextField = dt.Rows[0]["CFName"].ToString().Trim() + " " + dt.Rows[0]["CLName"].ToString().Trim();
+                //ddUpdateClient.DataBind();
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
 
@@ -499,6 +503,10 @@ public partial class AdminHome : System.Web.UI.Page
         Session["date2"] = date2;
 
         Response.Redirect("ViewWOByStatus.aspx");
+    }
+    protected void ddlEmpList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
 

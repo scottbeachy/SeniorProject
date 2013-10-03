@@ -1,4 +1,4 @@
-﻿<%@ Page Title="WeServeU -Admin Dashboard-" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AdminHome.aspx.cs" Inherits="AdminHome" %>
+﻿<%@ Page Title="WeServeU -Admin Dashboard-" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AdminHome.aspx.cs" Inherits="AdminHome" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -31,7 +31,7 @@
         <h3>Assign Work to a Server</h3>
         <div id="empSelect">
             <p>First Select an Employee:</p>
-            <asp:DropDownList ID="ddlEmpList" runat="server" DataSourceID="EmpDDLSource" DataTextField="Employee" DataValueField="EmpID"></asp:DropDownList>
+            <asp:DropDownList ID="ddlEmpList" runat="server" DataSourceID="EmpDDLSource" DataTextField="Employee" DataValueField="EmpID" OnSelectedIndexChanged="ddlEmpList_SelectedIndexChanged"></asp:DropDownList>
             <asp:SqlDataSource ID="EmpDDLSource" runat="server" ConnectionString="<%$ ConnectionStrings:UpdateWODataConnection %>" SelectCommand="SELECT EmpID, EmpFName + ' ' + EmpLName AS Employee FROM Employee WHERE EmpStatus = 'A';"></asp:SqlDataSource>
             <div id="woSelect">
                 <p>Select a Work Order to Assign and Click Assign Work Below:</p>

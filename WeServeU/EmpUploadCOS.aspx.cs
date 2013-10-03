@@ -59,7 +59,7 @@ public partial class EmpUploadCOS : System.Web.UI.Page
         bool emailSuccess;
         //two different connection strings to use to overwrite the doc if there is one in there already
         string connectionString = "INSERT INTO Docs (WorkOrderID, EmpID, Doc) VALUES (@WorkOrderID, @EmpID, @Doc)";
-        string altConnString = "UPDATE Docs SET Doc = @Doc WHERE WorkOrderID = @WorkOrderID";
+        string altConnString = "UPDATE Docs SET Doc = @Doc, EmpID = @EmpID WHERE WorkOrderID = @WorkOrderID";
 
         //test the docs table and see if there is a doc in there and then switch the connection string 
         string connection = ConfigurationManager.ConnectionStrings["testDB"].ConnectionString;

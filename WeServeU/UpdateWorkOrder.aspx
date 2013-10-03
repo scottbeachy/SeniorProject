@@ -41,11 +41,11 @@
             <asp:BoundField DataField="WServedEye" HeaderText="Person served eye color" SortExpression="WServedEye" ConvertEmptyStringToNull="false" />
             <asp:BoundField DataField="WServedSex" HeaderText="Sex of person served (M for male and F for female)" SortExpression="WServedSex" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WServedAge" HeaderText="Age of person served" SortExpression="WServedAge" ConvertEmptyStringToNull="false"/>
-            <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate"  DataFormatString="{0:dd/MM/yyyy}" ConvertEmptyStringToNull="false"/>
+            <asp:BoundField DataField="WServDate" HeaderText="Date of Service" SortExpression="WServDate"  DataFormatString="{0:d}" ConvertEmptyStringToNull="true"/>
             <asp:BoundField DataField="WServTime" HeaderText="Time of Service" SortExpression="WServTime" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WStatus" HeaderText="Work order status (C=complete, I=incomplete, U=unable to complete, A=active)" SortExpression="WStatus" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WFiledBy" HeaderText="Paperwork filed by (A=admin, S=Server)" SortExpression="WFiledBy" ConvertEmptyStringToNull="false"/>
-            <asp:BoundField DataField="WDateCreated" HeaderText="Date the workorder was created" SortExpression="WDateCreated" ConvertEmptyStringToNull="false"/>
+            <asp:BoundField DataField="WDateCreated" HeaderText="Date the workorder was created" SortExpression="WDateCreated" ConvertEmptyStringToNull="true" DataFormatString="{0:d}"/>
             <asp:BoundField DataField="WServeCharge" HeaderText="Price of the serve" SortExpression="WServeCharge" ConvertEmptyStringToNull="false"/>
             <asp:BoundField DataField="WEmpBPay" HeaderText="Employee Bonus Pay" SortExpression="WEmpBPay" ConvertEmptyStringToNull="false" />
             <asp:CommandField ShowEditButton="True" />
